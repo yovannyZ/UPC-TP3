@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TP3ModelStoreContainer" CdmEntityContainer="BD_CLINICA_RPEntities">
+    <EntitySetMapping Name="T_ACTA_EJEC_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_ACTA_EJEC_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="T_ACTA_EJEC_MANTENIMIENTO">
+          <ScalarProperty Name="idActaEjecMant" ColumnName="idActaEjecMant" />
+          <ScalarProperty Name="fechaInicioEjecMant" ColumnName="fechaInicioEjecMant" />
+          <ScalarProperty Name="fechaFinEjecMant" ColumnName="fechaFinEjecMant" />
+          <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+          <ScalarProperty Name="idMantEquipo" ColumnName="idMantEquipo" />
+          <ScalarProperty Name="tecnicoMantExterno" ColumnName="tecnicoMantExterno" />
+          <ScalarProperty Name="ObsPlanEjecMant" ColumnName="ObsPlanEjecMant" />
+          <ScalarProperty Name="idEquipoMedico" ColumnName="idEquipoMedico" />
+          <ScalarProperty Name="estEjecMant" ColumnName="estEjecMant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ACTA_EJEC_MANTENIMIENTO_DET">
+      <EntityTypeMapping TypeName="TP3Model.T_ACTA_EJEC_MANTENIMIENTO_DET">
+        <MappingFragment StoreEntitySet="T_ACTA_EJEC_MANTENIMIENTO_DET">
+          <ScalarProperty Name="idActaEjecMant" ColumnName="idActaEjecMant" />
+          <ScalarProperty Name="idTareaMant" ColumnName="idTareaMant" />
+          <ScalarProperty Name="descTareaMant" ColumnName="descTareaMant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_BIEN">
+      <EntityTypeMapping TypeName="TP3Model.T_BIEN">
+        <MappingFragment StoreEntitySet="T_BIEN">
+          <ScalarProperty Name="codBien" ColumnName="codBien" />
+          <ScalarProperty Name="dscBien" ColumnName="dscBien" />
+          <ScalarProperty Name="fecAdquisicion" ColumnName="fecAdquisicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_DETALLE_HISTORIA_CLINICA">
+      <EntityTypeMapping TypeName="TP3Model.T_DETALLE_HISTORIA_CLINICA">
+        <MappingFragment StoreEntitySet="T_DETALLE_HISTORIA_CLINICA">
+          <ScalarProperty Name="idDetalleHC" ColumnName="idDetalleHC" />
+          <ScalarProperty Name="nroHistoriaClinica" ColumnName="nroHistoriaClinica" />
+          <ScalarProperty Name="diagnóstico" ColumnName="diagnóstico" />
+          <ScalarProperty Name="idEvaluacionSignosVitales" ColumnName="idEvaluacionSignosVitales" />
+          <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+          <ScalarProperty Name="idResultado" ColumnName="idResultado" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_EMPLEADO">
+      <EntityTypeMapping TypeName="TP3Model.T_EMPLEADO">
+        <MappingFragment StoreEntitySet="T_EMPLEADO">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="nroDni" ColumnName="nroDni" />
+          <ScalarProperty Name="nomEmpleado" ColumnName="nomEmpleado" />
+          <ScalarProperty Name="fecIngreso" ColumnName="fecIngreso" />
+          <ScalarProperty Name="stdEmplead" ColumnName="stdEmplead" />
+          <ScalarProperty Name="dscCargo" ColumnName="dscCargo" />
+          <ScalarProperty Name="dscProfesion" ColumnName="dscProfesion" />
+          <ScalarProperty Name="dscArea" ColumnName="dscArea" />
+          <ScalarProperty Name="dscCorreo" ColumnName="dscCorreo" />
+          <ScalarProperty Name="codPersona" ColumnName="codPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_EMPRESA">
+      <EntityTypeMapping TypeName="TP3Model.T_EMPRESA">
+        <MappingFragment StoreEntitySet="T_EMPRESA">
+          <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+          <ScalarProperty Name="nroRuc" ColumnName="nroRuc" />
+          <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="codPersona" ColumnName="codPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_EQUIPO_MEDICO">
+      <EntityTypeMapping TypeName="TP3Model.T_EQUIPO_MEDICO">
+        <MappingFragment StoreEntitySet="T_EQUIPO_MEDICO">
+          <ScalarProperty Name="idEquipoMedico" ColumnName="idEquipoMedico" />
+          <ScalarProperty Name="intervaloMant" ColumnName="intervaloMant" />
+          <ScalarProperty Name="nivelPrioridad" ColumnName="nivelPrioridad" />
+          <ScalarProperty Name="fecUltimoMant" ColumnName="fecUltimoMant" />
+          <ScalarProperty Name="estEquipo" ColumnName="estEquipo" />
+          <ScalarProperty Name="codMueble" ColumnName="codMueble" />
+          <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+          <ScalarProperty Name="codInmueble" ColumnName="codInmueble" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ESPECIALIDAD_MEDICA">
+      <EntityTypeMapping TypeName="TP3Model.T_ESPECIALIDAD_MEDICA">
+        <MappingFragment StoreEntitySet="T_ESPECIALIDAD_MEDICA">
+          <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+          <ScalarProperty Name="nomEspecialidad" ColumnName="nomEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_EVALUACION_SIGNOS_VITALES">
+      <EntityTypeMapping TypeName="TP3Model.T_EVALUACION_SIGNOS_VITALES">
+        <MappingFragment StoreEntitySet="T_EVALUACION_SIGNOS_VITALES">
+          <ScalarProperty Name="idEvaluacionSignosVitales" ColumnName="idEvaluacionSignosVitales" />
+          <ScalarProperty Name="pulso" ColumnName="pulso" />
+          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+          <ScalarProperty Name="presionSistolica" ColumnName="presionSistolica" />
+          <ScalarProperty Name="presionDiastolica" ColumnName="presionDiastolica" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_HISTORIA_CLINICA">
+      <EntityTypeMapping TypeName="TP3Model.T_HISTORIA_CLINICA">
+        <MappingFragment StoreEntitySet="T_HISTORIA_CLINICA">
+          <ScalarProperty Name="nroHistoriaClinica" ColumnName="nroHistoriaClinica" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_INMUEBLE">
+      <EntityTypeMapping TypeName="TP3Model.T_INMUEBLE">
+        <MappingFragment StoreEntitySet="T_INMUEBLE">
+          <ScalarProperty Name="codInmueble" ColumnName="codInmueble" />
+          <ScalarProperty Name="dscTipoEstado" ColumnName="dscTipoEstado" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MANTENIMIENTO_EQUIPO">
+      <EntityTypeMapping TypeName="TP3Model.T_MANTENIMIENTO_EQUIPO">
+        <MappingFragment StoreEntitySet="T_MANTENIMIENTO_EQUIPO">
+          <ScalarProperty Name="idMantEquipo" ColumnName="idMantEquipo" />
+          <ScalarProperty Name="codPlan" ColumnName="codPlan" />
+          <ScalarProperty Name="fecMantenimiento1" ColumnName="fecMantenimiento1" />
+          <ScalarProperty Name="fecMantenimiento2" ColumnName="fecMantenimiento2" />
+          <ScalarProperty Name="fecMantenimiento3" ColumnName="fecMantenimiento3" />
+          <ScalarProperty Name="dscTipoMantenimiento" ColumnName="dscTipoMantenimiento" />
+          <ScalarProperty Name="estMantenimiento" ColumnName="estMantenimiento" />
+          <ScalarProperty Name="idEquipoMedico" ColumnName="idEquipoMedico" />
+          <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+          <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MODELO">
+      <EntityTypeMapping TypeName="TP3Model.T_MODELO">
+        <MappingFragment StoreEntitySet="T_MODELO">
+          <ScalarProperty Name="codModelo" ColumnName="codModelo" />
+          <ScalarProperty Name="nomModelo" ColumnName="nomModelo" />
+          <ScalarProperty Name="dscMarca" ColumnName="dscMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MUEBLE">
+      <EntityTypeMapping TypeName="TP3Model.T_MUEBLE">
+        <MappingFragment StoreEntitySet="T_MUEBLE">
+          <ScalarProperty Name="codMueble" ColumnName="codMueble" />
+          <ScalarProperty Name="dscFuncion" ColumnName="dscFuncion" />
+          <ScalarProperty Name="dscAplicacionMedica" ColumnName="dscAplicacionMedica" />
+          <ScalarProperty Name="garantia" ColumnName="garantia" />
+          <ScalarProperty Name="tipoMueble" ColumnName="tipoMueble" />
+          <ScalarProperty Name="codBien" ColumnName="codBien" />
+          <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+          <ScalarProperty Name="codModelo" ColumnName="codModelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ORDEN_ATENCION">
+      <EntityTypeMapping TypeName="TP3Model.T_ORDEN_ATENCION">
+        <MappingFragment StoreEntitySet="T_ORDEN_ATENCION">
+          <ScalarProperty Name="idAtencion" ColumnName="idAtencion" />
+          <ScalarProperty Name="tipoAtencion" ColumnName="tipoAtencion" />
+          <ScalarProperty Name="tipoCliente" ColumnName="tipoCliente" />
+          <ScalarProperty Name="fecAtencion" ColumnName="fecAtencion" />
+          <ScalarProperty Name="horInicio" ColumnName="horInicio" />
+          <ScalarProperty Name="horFin" ColumnName="horFin" />
+          <ScalarProperty Name="tipoEntregaResultado" ColumnName="tipoEntregaResultado" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PACIENTE">
+      <EntityTypeMapping TypeName="TP3Model.T_PACIENTE">
+        <MappingFragment StoreEntitySet="T_PACIENTE">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="dniPaciente" ColumnName="dniPaciente" />
+          <ScalarProperty Name="fechNacimiento" ColumnName="fechNacimiento" />
+          <ScalarProperty Name="segmentacion" ColumnName="segmentacion" />
+          <ScalarProperty Name="codPersona" ColumnName="codPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PERSONA">
+      <EntityTypeMapping TypeName="TP3Model.T_PERSONA">
+        <MappingFragment StoreEntitySet="T_PERSONA">
+          <ScalarProperty Name="codPersona" ColumnName="codPersona" />
+          <ScalarProperty Name="nompersona" ColumnName="nompersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PLAN_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_PLAN_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="T_PLAN_MANTENIMIENTO">
+          <ScalarProperty Name="codPlan" ColumnName="codPlan" />
+          <ScalarProperty Name="fecRegistro" ColumnName="fecRegistro" />
+          <ScalarProperty Name="estPlan" ColumnName="estPlan" />
+          <ScalarProperty Name="idTecnicoMant" ColumnName="idTecnicoMant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RESERVA_SERVICIO">
+      <EntityTypeMapping TypeName="TP3Model.T_RESERVA_SERVICIO">
+        <MappingFragment StoreEntitySet="T_RESERVA_SERVICIO">
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+          <ScalarProperty Name="fecReserva" ColumnName="fecReserva" />
+          <ScalarProperty Name="tipoAtencion" ColumnName="tipoAtencion" />
+          <ScalarProperty Name="tipoCliente" ColumnName="tipoCliente" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RESULTADO_ATENCION">
+      <EntityTypeMapping TypeName="TP3Model.T_RESULTADO_ATENCION">
+        <MappingFragment StoreEntitySet="T_RESULTADO_ATENCION">
+          <ScalarProperty Name="idResultado" ColumnName="idResultado" />
+          <ScalarProperty Name="valorResultado" ColumnName="valorResultado" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="conclusion" ColumnName="conclusion" />
+          <ScalarProperty Name="fecResultado" ColumnName="fecResultado" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idAtencion" ColumnName="idAtencion" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ROL">
+      <EntityTypeMapping TypeName="TP3Model.T_ROL">
+        <MappingFragment StoreEntitySet="T_ROL">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombreRol" ColumnName="nombreRol" />
+          <ScalarProperty Name="tipoRol" ColumnName="tipoRol" />
+          <ScalarProperty Name="estRol" ColumnName="estRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SERVICIO_SALUD">
+      <EntityTypeMapping TypeName="TP3Model.T_SERVICIO_SALUD">
+        <MappingFragment StoreEntitySet="T_SERVICIO_SALUD">
+          <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+          <ScalarProperty Name="tipoServicio" ColumnName="tipoServicio" />
+          <ScalarProperty Name="nomServicio" ColumnName="nomServicio" />
+          <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SOLICITUD_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_SOLICITUD_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="T_SOLICITUD_MANTENIMIENTO">
+          <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+          <ScalarProperty Name="fecSolicitud" ColumnName="fecSolicitud" />
+          <ScalarProperty Name="estSolicitud" ColumnName="estSolicitud" />
+          <ScalarProperty Name="fecAtencion" ColumnName="fecAtencion" />
+          <ScalarProperty Name="fecAsigTecnico" ColumnName="fecAsigTecnico" />
+          <ScalarProperty Name="dscObsTecnico" ColumnName="dscObsTecnico" />
+          <ScalarProperty Name="dscObsMedico" ColumnName="dscObsMedico" />
+          <ScalarProperty Name="idTecnicoMant" ColumnName="idTecnicoMant" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="idEquipoMedico" ColumnName="idEquipoMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SOLICITUD_UCI">
+      <EntityTypeMapping TypeName="TP3Model.T_SOLICITUD_UCI">
+        <MappingFragment StoreEntitySet="T_SOLICITUD_UCI">
+          <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+          <ScalarProperty Name="fechSolicitud" ColumnName="fechSolicitud" />
+          <ScalarProperty Name="estPaciente" ColumnName="estPaciente" />
+          <ScalarProperty Name="medSolicitante" ColumnName="medSolicitante" />
+          <ScalarProperty Name="gravedad" ColumnName="gravedad" />
+          <ScalarProperty Name="motDesaprobacion" ColumnName="motDesaprobacion" />
+          <ScalarProperty Name="obsDesaprobacion" ColumnName="obsDesaprobacion" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TAREA_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_TAREA_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="T_TAREA_MANTENIMIENTO">
+          <ScalarProperty Name="idTareaMant" ColumnName="idTareaMant" />
+          <ScalarProperty Name="descTareaMant" ColumnName="descTareaMant" />
+          <ScalarProperty Name="descTipoTareaMant" ColumnName="descTipoTareaMant" />
+          <ScalarProperty Name="estTareaMant" ColumnName="estTareaMant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TECNICO_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_TECNICO_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="T_TECNICO_MANTENIMIENTO">
+          <ScalarProperty Name="idTecnicoMant" ColumnName="idTecnicoMant" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="experienciaTrabajoRiesgo" ColumnName="experienciaTrabajoRiesgo" />
+          <ScalarProperty Name="seguroRiesgo" ColumnName="seguroRiesgo" />
+          <ScalarProperty Name="vigenciaEPP" ColumnName="vigenciaEPP" />
+          <ScalarProperty Name="vigenciaExamenMedicoOcup" ColumnName="vigenciaExamenMedicoOcup" />
+          <ScalarProperty Name="habilidades" ColumnName="habilidades" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_USUARIO">
+      <EntityTypeMapping TypeName="TP3Model.T_USUARIO">
+        <MappingFragment StoreEntitySet="T_USUARIO">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+          <ScalarProperty Name="EstUsuario" ColumnName="EstUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertarSolicitudUCI" FunctionName="TP3Model.Store.InsertarSolicitudUCI" />
+    <FunctionImportMapping FunctionImportName="ListarPacientes" FunctionName="TP3Model.Store.ListarPacientes" />
+    <EntitySetMapping Name="T_EQUIPO_USO">
+      <EntityTypeMapping TypeName="TP3Model.T_EQUIPO_USO">
+        <MappingFragment StoreEntitySet="T_EQUIPO_USO">
+          <ScalarProperty Name="fecUso" ColumnName="fecUso" />
+          <ScalarProperty Name="idEquipoMedico" ColumnName="idEquipoMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="obtenerPaciente" FunctionName="TP3Model.Store.obtenerPaciente" />
+    <AssociationSetMapping Name="T_USUARIO_ROL" TypeName="TP3Model.T_USUARIO_ROL" StoreEntitySet="T_USUARIO_ROL">
+      <EndProperty Name="T_USUARIO">
+        <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+      </EndProperty>
+      <EndProperty Name="T_ROL">
+        <ScalarProperty Name="idRol" ColumnName="idRol" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="ActualizarPaciente" FunctionName="TP3Model.Store.ActualizarPaciente" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,109 @@
+﻿@model TP2.Entidades.EF.T_GDA_PACIENTE
+
+@{
+    ViewBag.Title = "Desaprobar";
+}
+
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+
+        $("#btnDesaprobar").click(function () {
+            var gravedad = $('#gravedad').val();
+            var observacion = $('#observacion').val();
+            var idPaciente = $('#idPaciente').val();
+            var Historia = $("#Historia").text();
+            $.ajax({
+                url: "/SolicitudUCI/Desaprobar",
+                type: 'POST',
+                data: {
+                    idPaciente: idPaciente, observacion: observacion, gravedad: gravedad, Historia: Historia
+                },
+                success: function (data) {
+                    alert(data);
+                    if (data.indexOf("Error") == -1) {
+                        window.location.href = '/SolicitudUCI';
+                    }
+                },
+                error: function (error) {
+                    alert("Error: Intente de nuevo.");
+                }
+            });
+        });
+    });
+    </script>
+
+}
+
+<div >
+    <h2 style="text-align:center" class="text-success">Desaprobar Paciente</h2>
+</div>
+
+
+<br />
+<br />
+
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&nbsp; &nbsp; Paciente</td>
+        <td>&nbsp; &nbsp; <b>@Model.nomPaciente</b></td>
+        <td>&nbsp; &nbsp; DNI</td>
+        <td>&nbsp; &nbsp;<b>@Model.numDNI</b></td>
+        <td>&nbsp; &nbsp; Medico</td>
+        <td>&nbsp; &nbsp;<b>OTOYA ZAPATA MARIA FERNANDA</b></td>
+        <td>&nbsp; &nbsp; Historia Clinica</td>
+        <td>
+            &nbsp; &nbsp;
+            @foreach (var item in Model.T_GDA_HISTORIA_CLINICA)
+            {
+                <b id="Historia">@item.nroHistoriaClinica</b>
+            }
+        </td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>&nbsp; &nbsp; Gravedad</td>
+        <td>
+            &nbsp; &nbsp;
+            <select id="gravedad" name="gravedad" class="form-control">
+                <option value="0">Por Defecto</option>
+                <option value="1">Prioritario</option>
+                <option value="2">Grave</option>
+                <option value="3">Muy grave</option>
+            </select>
+        </td>
+        <td>&nbsp; &nbsp; Observacion</td>
+        <td>
+            &nbsp; &nbsp;
+            <textarea rows="4" cols="50" id="observacion" name="observacion"></textarea>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+@Html.HiddenFor(model => model.idPaciente, new { htmlAttributes = new { @class = "form-control" } })
+
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="button" value="Desaprobar" id="btnDesaprobar" class="btn btn-success" />
+    </div>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Regresar atras", "Index")
+</div>
+

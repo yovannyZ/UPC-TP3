@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59D6B7DF-37A7-41D5-B349-37737F008160}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TP3.Entidades.EF</RootNamespace>
+    <AssemblyName>TP3.Entidades.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ListarPacientes_Result.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obtenerPaciente_Result.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TP3Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ACTA_EJEC_MANTENIMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ACTA_EJEC_MANTENIMIENTO_DET.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_BIEN.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_DETALLE_HISTORIA_CLINICA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EMPLEADO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EMPRESA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EQUIPO_MEDICO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EQUIPO_USO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ESPECIALIDAD_MEDICA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EVALUACION_SIGNOS_VITALES.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_HISTORIA_CLINICA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_INMUEBLE.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_MANTENIMIENTO_EQUIPO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_MODELO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_MUEBLE.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ORDEN_ATENCION.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PACIENTE.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PERSONA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PLAN_MANTENIMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RESERVA_SERVICIO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RESULTADO_ATENCION.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ROL.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SERVICIO_SALUD.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SOLICITUD_MANTENIMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SOLICITUD_UCI.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TAREA_MANTENIMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TECNICO_MANTENIMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_USUARIO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TP3Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TP3Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80b119ce55b74b7db88508659e073ca8" Name="Diagram1">
+        <EntityTypeShape EntityType="TP3Model.T_ACTA_EJEC_MANTENIMIENTO" Width="1.5" PointX="15.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_ACTA_EJEC_MANTENIMIENTO_DET" Width="1.5" PointX="18" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_BIEN" Width="1.5" PointX="8" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_DETALLE_HISTORIA_CLINICA" Width="1.5" PointX="7.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_EMPLEADO" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_EMPRESA" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_EQUIPO_MEDICO" Width="1.5" PointX="12.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_ESPECIALIDAD_MEDICA" Width="1.5" PointX="10.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_EVALUACION_SIGNOS_VITALES" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_HISTORIA_CLINICA" Width="1.5" PointX="5.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_INMUEBLE" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_MANTENIMIENTO_EQUIPO" Width="1.5" PointX="9.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_MODELO" Width="1.5" PointX="8" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_MUEBLE" Width="1.5" PointX="10.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_ORDEN_ATENCION" Width="1.5" PointX="7.5" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_PACIENTE" Width="1.5" PointX="3" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_PERSONA" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_PLAN_MANTENIMIENTO" Width="1.5" PointX="7.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_RESERVA_SERVICIO" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_RESULTADO_ATENCION" Width="1.5" PointX="12.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_ROL" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_SERVICIO_SALUD" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_SOLICITUD_MANTENIMIENTO" Width="1.5" PointX="7.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_SOLICITUD_UCI" Width="1.5" PointX="5.25" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_TAREA_MANTENIMIENTO" Width="1.5" PointX="15.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_TECNICO_MANTENIMIENTO" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP3Model.T_USUARIO" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <AssociationConnector Association="TP3Model.FK__T_ACTA_EJ__codEm__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_ACTA_EJ__idAct__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_ACTA_EJ__idEqu__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_ACTA_EJ__idMan__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_ACTA_EJ__idTar__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MUEBLE__codBie__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_DETALLE__idEmp__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_DETALLE__idEva__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_DETALLE__idRes__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_DETALLE__idSol__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_DETALLE__nroHi__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EMPLEAD__codPe__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EVALUAC__idEmp__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_RESERVA__idEmp__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_RESULTA__idEmp__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_SOLICIT__idEmp__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_TECNICO__idEmp__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_USUARIO__idEmp__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EMPRESA__codPe__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MANTENI__codEm__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MUEBLE__codEmp__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_USUARIO__codEm__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EQUIPO___codIn__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EQUIPO___codMu__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_EQUIPO___idEsp__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MANTENI__idEqu__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_SOLICIT__idEqu__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_SERVICI__idEsp__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_HISTORI__idPac__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MANTENI__codPl__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MANTENI__idSol__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_MUEBLE__codMod__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_ORDEN_A__idRes__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_RESULTA__idAte__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_PACIENT__codPe__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_RESERVA__idPac__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_SOLICIT__idPac__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_PLAN_MA__idTec__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_RESERVA__idSer__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="TP3Model.FK__T_SOLICIT__idTec__37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TP3Model.T_EQUIPO_USO" Width="1.5" PointX="14.75" PointY="13.75" />
+        <AssociationConnector Association="TP3Model.FK__T_EQUIPO___idEqu__412EB0B6" />
+        <AssociationConnector Association="TP3Model.T_USUARIO_ROL" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TP3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_ACTA_EJEC_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="idActaEjecMant" />
+    </Key>
+    <Property Name="idActaEjecMant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaInicioEjecMant" Type="DateTime" Precision="0" />
+    <Property Name="fechaFinEjecMant" Type="DateTime" Precision="0" />
+    <Property Name="codEmpresa" Type="Int32" />
+    <Property Name="idMantEquipo" Type="Int32" />
+    <Property Name="tecnicoMantExterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ObsPlanEjecMant" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="idEquipoMedico" Type="Int32" />
+    <Property Name="estEjecMant" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="T_EMPRESA" Relationship="Self.FK__T_ACTA_EJ__codEm__44FF419A" FromRole="T_ACTA_EJEC_MANTENIMIENTO" ToRole="T_EMPRESA" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO_DET" Relationship="Self.FK__T_ACTA_EJ__idAct__4BAC3F29" FromRole="T_ACTA_EJEC_MANTENIMIENTO" ToRole="T_ACTA_EJEC_MANTENIMIENTO_DET" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_ACTA_EJ__idEqu__46E78A0C" FromRole="T_ACTA_EJEC_MANTENIMIENTO" ToRole="T_EQUIPO_MEDICO" />
+    <NavigationProperty Name="T_MANTENIMIENTO_EQUIPO" Relationship="Self.FK__T_ACTA_EJ__idMan__45F365D3" FromRole="T_ACTA_EJEC_MANTENIMIENTO" ToRole="T_MANTENIMIENTO_EQUIPO" />
+  </EntityType>
+  <EntityType Name="T_ACTA_EJEC_MANTENIMIENTO_DET">
+    <Key>
+      <PropertyRef Name="idActaEjecMant" />
+      <PropertyRef Name="idTareaMant" />
+    </Key>
+    <Property Name="idActaEjecMant" Type="Int32" Nullable="false" />
+    <Property Name="idTareaMant" Type="Int32" Nullable="false" />
+    <Property Name="descTareaMant" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO" Relationship="Self.FK__T_ACTA_EJ__idAct__4BAC3F29" FromRole="T_ACTA_EJEC_MANTENIMIENTO_DET" ToRole="T_ACTA_EJEC_MANTENIMIENTO" />
+    <NavigationProperty Name="T_TAREA_MANTENIMIENTO" Relationship="Self.FK__T_ACTA_EJ__idTar__4CA06362" FromRole="T_ACTA_EJEC_MANTENIMIENTO_DET" ToRole="T_TAREA_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="T_BIEN">
+    <Key>
+      <PropertyRef Name="codBien" />
+    </Key>
+    <Property Name="codBien" Type="Int32" Nullable="false" />
+    <Property Name="dscBien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecAdquisicion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="T_MUEBLE" Relationship="Self.FK__T_MUEBLE__codBie__2C3393D0" FromRole="T_BIEN" ToRole="T_MUEBLE" />
+  </EntityType>
+  <EntityType Name="T_DETALLE_HISTORIA_CLINICA">
+    <Key>
+      <PropertyRef Name="idDetalleHC" />
+      <PropertyRef Name="nroHistoriaClinica" />
+    </Key>
+    <Property Name="idDetalleHC" Type="Int32" Nullable="false" />
+    <Property Name="nroHistoriaClinica" Type="Int32" Nullable="false" />
+    <Property Name="diagnóstico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idEvaluacionSignosVitales" Type="Int32" />
+    <Property Name="idSolicitud" Type="Int32" />
+    <Property Name="idResultado" Type="Int32" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_DETALLE__idEmp__73BA3083" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_EVALUACION_SIGNOS_VITALES" Relationship="Self.FK__T_DETALLE__idEva__70DDC3D8" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_EVALUACION_SIGNOS_VITALES" />
+    <NavigationProperty Name="T_RESULTADO_ATENCION" Relationship="Self.FK__T_DETALLE__idRes__72C60C4A" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_RESULTADO_ATENCION" />
+    <NavigationProperty Name="T_SOLICITUD_UCI" Relationship="Self.FK__T_DETALLE__idSol__71D1E811" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_SOLICITUD_UCI" />
+    <NavigationProperty Name="T_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__nroHi__6FE99F9F" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_HISTORIA_CLINICA" />
+  </EntityType>
+  <EntityType Name="T_EMPLEADO">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="nroDni" Type="Int32" />
+    <Property Name="nomEmpleado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fecIngreso" Type="DateTime" Precision="3" />
+    <Property Name="stdEmplead" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="dscCargo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dscProfesion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dscArea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dscCorreo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="codPersona" Type="Int32" />
+    <NavigationProperty Name="T_DETALLE_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__idEmp__73BA3083" FromRole="T_EMPLEADO" ToRole="T_DETALLE_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_PERSONA" Relationship="Self.FK__T_EMPLEAD__codPe__1273C1CD" FromRole="T_EMPLEADO" ToRole="T_PERSONA" />
+    <NavigationProperty Name="T_EVALUACION_SIGNOS_VITALES" Relationship="Self.FK__T_EVALUAC__idEmp__5070F446" FromRole="T_EMPLEADO" ToRole="T_EVALUACION_SIGNOS_VITALES" />
+    <NavigationProperty Name="T_RESERVA_SERVICIO" Relationship="Self.FK__T_RESERVA__idEmp__656C112C" FromRole="T_EMPLEADO" ToRole="T_RESERVA_SERVICIO" />
+    <NavigationProperty Name="T_RESULTADO_ATENCION" Relationship="Self.FK__T_RESULTA__idEmp__6E01572D" FromRole="T_EMPLEADO" ToRole="T_RESULTADO_ATENCION" />
+    <NavigationProperty Name="T_SOLICITUD_MANTENIMIENTO" Relationship="Self.FK__T_SOLICIT__idEmp__38996AB5" FromRole="T_EMPLEADO" ToRole="T_SOLICITUD_MANTENIMIENTO" />
+    <NavigationProperty Name="T_TECNICO_MANTENIMIENTO" Relationship="Self.FK__T_TECNICO__idEmp__15502E78" FromRole="T_EMPLEADO" ToRole="T_TECNICO_MANTENIMIENTO" />
+    <NavigationProperty Name="T_USUARIO" Relationship="Self.FK__T_USUARIO__idEmp__21B6055D" FromRole="T_EMPLEADO" ToRole="T_USUARIO" />
+  </EntityType>
+  <EntityType Name="T_EMPRESA">
+    <Key>
+      <PropertyRef Name="codEmpresa" />
+    </Key>
+    <Property Name="codEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="nroRuc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="razonSocial" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="codPersona" Type="Int32" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO" Relationship="Self.FK__T_ACTA_EJ__codEm__44FF419A" FromRole="T_EMPRESA" ToRole="T_ACTA_EJEC_MANTENIMIENTO" />
+    <NavigationProperty Name="T_PERSONA" Relationship="Self.FK__T_EMPRESA__codPe__1ED998B2" FromRole="T_EMPRESA" ToRole="T_PERSONA" />
+    <NavigationProperty Name="T_MANTENIMIENTO_EQUIPO" Relationship="Self.FK__T_MANTENI__codEm__3F466844" FromRole="T_EMPRESA" ToRole="T_MANTENIMIENTO_EQUIPO" />
+    <NavigationProperty Name="T_MUEBLE" Relationship="Self.FK__T_MUEBLE__codEmp__2D27B809" FromRole="T_EMPRESA" ToRole="T_MUEBLE" />
+    <NavigationProperty Name="T_USUARIO" Relationship="Self.FK__T_USUARIO__codEm__22AA2996" FromRole="T_EMPRESA" ToRole="T_USUARIO" />
+  </EntityType>
+  <EntityType Name="T_EQUIPO_MEDICO">
+    <Key>
+      <PropertyRef Name="idEquipoMedico" />
+    </Key>
+    <Property Name="idEquipoMedico" Type="Int32" Nullable="false" />
+    <Property Name="intervaloMant" Type="Int32" />
+    <Property Name="nivelPrioridad" Type="Int32" />
+    <Property Name="fecUltimoMant" Type="DateTime" Precision="3" />
+    <Property Name="estEquipo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="codMueble" Type="Int32" />
+    <Property Name="idEspecialidad" Type="Int32" />
+    <Property Name="codInmueble" Type="Int32" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO" Relationship="Self.FK__T_ACTA_EJ__idEqu__46E78A0C" FromRole="T_EQUIPO_MEDICO" ToRole="T_ACTA_EJEC_MANTENIMIENTO" />
+    <NavigationProperty Name="T_INMUEBLE" Relationship="Self.FK__T_EQUIPO___codIn__34C8D9D1" FromRole="T_EQUIPO_MEDICO" ToRole="T_INMUEBLE" />
+    <NavigationProperty Name="T_MUEBLE" Relationship="Self.FK__T_EQUIPO___codMu__32E0915F" FromRole="T_EQUIPO_MEDICO" ToRole="T_MUEBLE" />
+    <NavigationProperty Name="T_ESPECIALIDAD_MEDICA" Relationship="Self.FK__T_EQUIPO___idEsp__33D4B598" FromRole="T_EQUIPO_MEDICO" ToRole="T_ESPECIALIDAD_MEDICA" />
+    <NavigationProperty Name="T_MANTENIMIENTO_EQUIPO" Relationship="Self.FK__T_MANTENI__idEqu__3D5E1FD2" FromRole="T_EQUIPO_MEDICO" ToRole="T_MANTENIMIENTO_EQUIPO" />
+    <NavigationProperty Name="T_SOLICITUD_MANTENIMIENTO" Relationship="Self.FK__T_SOLICIT__idEqu__398D8EEE" FromRole="T_EQUIPO_MEDICO" ToRole="T_SOLICITUD_MANTENIMIENTO" />
+    <NavigationProperty Name="T_EQUIPO_USO" Relationship="TP3Model.FK__T_EQUIPO___idEqu__412EB0B6" FromRole="T_EQUIPO_MEDICO" ToRole="T_EQUIPO_USO" />
+  </EntityType>
+  <EntityType Name="T_ESPECIALIDAD_MEDICA">
+    <Key>
+      <PropertyRef Name="idEspecialidad" />
+    </Key>
+    <Property Name="idEspecialidad" Type="Int32" Nullable="false" />
+    <Property Name="nomEspecialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_EQUIPO___idEsp__33D4B598" FromRole="T_ESPECIALIDAD_MEDICA" ToRole="T_EQUIPO_MEDICO" />
+    <NavigationProperty Name="T_SERVICIO_SALUD" Relationship="Self.FK__T_SERVICI__idEsp__628FA481" FromRole="T_ESPECIALIDAD_MEDICA" ToRole="T_SERVICIO_SALUD" />
+  </EntityType>
+  <EntityType Name="T_EVALUACION_SIGNOS_VITALES">
+    <Key>
+      <PropertyRef Name="idEvaluacionSignosVitales" />
+    </Key>
+    <Property Name="idEvaluacionSignosVitales" Type="Int32" Nullable="false" />
+    <Property Name="pulso" Type="Int32" />
+    <Property Name="temperatura" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="presionSistolica" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="presionDiastolica" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <NavigationProperty Name="T_DETALLE_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__idEva__70DDC3D8" FromRole="T_EVALUACION_SIGNOS_VITALES" ToRole="T_DETALLE_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_EVALUAC__idEmp__5070F446" FromRole="T_EVALUACION_SIGNOS_VITALES" ToRole="T_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="T_HISTORIA_CLINICA">
+    <Key>
+      <PropertyRef Name="nroHistoriaClinica" />
+    </Key>
+    <Property Name="nroHistoriaClinica" Type="Int32" Nullable="false" />
+    <Property Name="idPaciente" Type="Int32" />
+    <NavigationProperty Name="T_DETALLE_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__nroHi__6FE99F9F" FromRole="T_HISTORIA_CLINICA" ToRole="T_DETALLE_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_PACIENTE" Relationship="Self.FK__T_HISTORI__idPac__5FB337D6" FromRole="T_HISTORIA_CLINICA" ToRole="T_PACIENTE" />
+  </EntityType>
+  <EntityType Name="T_INMUEBLE">
+    <Key>
+      <PropertyRef Name="codInmueble" />
+    </Key>
+    <Property Name="codInmueble" Type="Int32" Nullable="false" />
+    <Property Name="dscTipoEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_EQUIPO___codIn__34C8D9D1" FromRole="T_INMUEBLE" ToRole="T_EQUIPO_MEDICO" />
+  </EntityType>
+  <EntityType Name="T_MANTENIMIENTO_EQUIPO">
+    <Key>
+      <PropertyRef Name="idMantEquipo" />
+    </Key>
+    <Property Name="idMantEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fecMantenimiento1" Type="DateTime" Precision="3" />
+    <Property Name="fecMantenimiento2" Type="DateTime" Precision="3" />
+    <Property Name="fecMantenimiento3" Type="DateTime" Precision="3" />
+    <Property Name="dscTipoMantenimiento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estMantenimiento" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="idEquipoMedico" Type="Int32" />
+    <Property Name="idSolicitud" Type="Int32" />
+    <Property Name="codEmpresa" Type="Int32" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO" Relationship="Self.FK__T_ACTA_EJ__idMan__45F365D3" FromRole="T_MANTENIMIENTO_EQUIPO" ToRole="T_ACTA_EJEC_MANTENIMIENTO" />
+    <NavigationProperty Name="T_EMPRESA" Relationship="Self.FK__T_MANTENI__codEm__3F466844" FromRole="T_MANTENIMIENTO_EQUIPO" ToRole="T_EMPRESA" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_MANTENI__idEqu__3D5E1FD2" FromRole="T_MANTENIMIENTO_EQUIPO" ToRole="T_EQUIPO_MEDICO" />
+    <NavigationProperty Name="T_PLAN_MANTENIMIENTO" Relationship="Self.FK__T_MANTENI__codPl__3C69FB99" FromRole="T_MANTENIMIENTO_EQUIPO" ToRole="T_PLAN_MANTENIMIENTO" />
+    <NavigationProperty Name="T_SOLICITUD_MANTENIMIENTO" Relationship="Self.FK__T_MANTENI__idSol__3E52440B" FromRole="T_MANTENIMIENTO_EQUIPO" ToRole="T_SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="T_MODELO">
+    <Key>
+      <PropertyRef Name="codModelo" />
+    </Key>
+    <Property Name="codModelo" Type="Int32" Nullable="false" />
+    <Property Name="nomModelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dscMarca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_MUEBLE" Relationship="Self.FK__T_MUEBLE__codMod__2E1BDC42" FromRole="T_MODELO" ToRole="T_MUEBLE" />
+  </EntityType>
+  <EntityType Name="T_MUEBLE">
+    <Key>
+      <PropertyRef Name="codMueble" />
+    </Key>
+    <Property Name="codMueble" Type="Int32" Nullable="false" />
+    <Property Name="dscFuncion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dscAplicacionMedica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="garantia" Type="Boolean" />
+    <Property Name="tipoMueble" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="codBien" Type="Int32" />
+    <Property Name="codEmpresa" Type="Int32" />
+    <Property Name="codModelo" Type="Int32" />
+    <NavigationProperty Name="T_BIEN" Relationship="Self.FK__T_MUEBLE__codBie__2C3393D0" FromRole="T_MUEBLE" ToRole="T_BIEN" />
+    <NavigationProperty Name="T_EMPRESA" Relationship="Self.FK__T_MUEBLE__codEmp__2D27B809" FromRole="T_MUEBLE" ToRole="T_EMPRESA" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_EQUIPO___codMu__32E0915F" FromRole="T_MUEBLE" ToRole="T_EQUIPO_MEDICO" />
+    <NavigationProperty Name="T_MODELO" Relationship="Self.FK__T_MUEBLE__codMod__2E1BDC42" FromRole="T_MUEBLE" ToRole="T_MODELO" />
+  </EntityType>
+  <EntityType Name="T_ORDEN_ATENCION">
+    <Key>
+      <PropertyRef Name="idAtencion" />
+    </Key>
+    <Property Name="idAtencion" Type="Int32" Nullable="false" />
+    <Property Name="tipoAtencion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipoCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecAtencion" Type="DateTime" Precision="3" />
+    <Property Name="horInicio" Type="DateTime" Precision="3" />
+    <Property Name="horFin" Type="DateTime" Precision="3" />
+    <Property Name="tipoEntregaResultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="idReserva" Type="Int32" />
+    <NavigationProperty Name="T_RESERVA_SERVICIO" Relationship="Self.FK__T_ORDEN_A__idRes__6A30C649" FromRole="T_ORDEN_ATENCION" ToRole="T_RESERVA_SERVICIO" />
+    <NavigationProperty Name="T_RESULTADO_ATENCION" Relationship="Self.FK__T_RESULTA__idAte__6D0D32F4" FromRole="T_ORDEN_ATENCION" ToRole="T_RESULTADO_ATENCION" />
+  </EntityType>
+  <EntityType Name="T_PACIENTE">
+    <Key>
+      <PropertyRef Name="idPaciente" />
+    </Key>
+    <Property Name="idPaciente" Type="Int32" Nullable="false" />
+    <Property Name="dniPaciente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fechNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="segmentacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="codPersona" Type="Int32" />
+    <NavigationProperty Name="T_HISTORIA_CLINICA" Relationship="Self.FK__T_HISTORI__idPac__5FB337D6" FromRole="T_PACIENTE" ToRole="T_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_PERSONA" Relationship="Self.FK__T_PACIENT__codPe__59FA5E80" FromRole="T_PACIENTE" ToRole="T_PERSONA" />
+    <NavigationProperty Name="T_RESERVA_SERVICIO" Relationship="Self.FK__T_RESERVA__idPac__66603565" FromRole="T_PACIENTE" ToRole="T_RESERVA_SERVICIO" />
+    <NavigationProperty Name="T_SOLICITUD_UCI" Relationship="Self.FK__T_SOLICIT__idPac__5CD6CB2B" FromRole="T_PACIENTE" ToRole="T_SOLICITUD_UCI" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_PERSONA">
+    <Key>
+      <PropertyRef Name="codPersona" />
+    </Key>
+    <Property Name="codPersona" Type="Int32" Nullable="false" />
+    <Property Name="nompersona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_EMPLEAD__codPe__1273C1CD" FromRole="T_PERSONA" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_EMPRESA" Relationship="Self.FK__T_EMPRESA__codPe__1ED998B2" FromRole="T_PERSONA" ToRole="T_EMPRESA" />
+    <NavigationProperty Name="T_PACIENTE" Relationship="Self.FK__T_PACIENT__codPe__59FA5E80" FromRole="T_PERSONA" ToRole="T_PACIENTE" />
+  </EntityType>
+  <EntityType Name="T_PLAN_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="codPlan" />
+    </Key>
+    <Property Name="codPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecRegistro" Type="DateTime" Precision="3" />
+    <Property Name="estPlan" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="idTecnicoMant" Type="Int32" />
+    <NavigationProperty Name="T_MANTENIMIENTO_EQUIPO" Relationship="Self.FK__T_MANTENI__codPl__3C69FB99" FromRole="T_PLAN_MANTENIMIENTO" ToRole="T_MANTENIMIENTO_EQUIPO" />
+    <NavigationProperty Name="T_TECNICO_MANTENIMIENTO" Relationship="Self.FK__T_PLAN_MA__idTec__182C9B23" FromRole="T_PLAN_MANTENIMIENTO" ToRole="T_TECNICO_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="T_RESERVA_SERVICIO">
+    <Key>
+      <PropertyRef Name="idReserva" />
+    </Key>
+    <Property Name="idReserva" Type="Int32" Nullable="false" />
+    <Property Name="fecReserva" Type="DateTime" Precision="3" />
+    <Property Name="tipoAtencion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipoCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <Property Name="idPaciente" Type="Int32" />
+    <Property Name="idServicio" Type="Int32" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_RESERVA__idEmp__656C112C" FromRole="T_RESERVA_SERVICIO" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_ORDEN_ATENCION" Relationship="Self.FK__T_ORDEN_A__idRes__6A30C649" FromRole="T_RESERVA_SERVICIO" ToRole="T_ORDEN_ATENCION" />
+    <NavigationProperty Name="T_PACIENTE" Relationship="Self.FK__T_RESERVA__idPac__66603565" FromRole="T_RESERVA_SERVICIO" ToRole="T_PACIENTE" />
+    <NavigationProperty Name="T_SERVICIO_SALUD" Relationship="Self.FK__T_RESERVA__idSer__6754599E" FromRole="T_RESERVA_SERVICIO" ToRole="T_SERVICIO_SALUD" />
+  </EntityType>
+  <EntityType Name="T_RESULTADO_ATENCION">
+    <Key>
+      <PropertyRef Name="idResultado" />
+    </Key>
+    <Property Name="idResultado" Type="Int32" Nullable="false" />
+    <Property Name="valorResultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="diagnostico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="conclusion" Type="DateTime" Precision="3" />
+    <Property Name="fecResultado" Type="DateTime" Precision="3" />
+    <Property Name="estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="idAtencion" Type="Int32" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <NavigationProperty Name="T_DETALLE_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__idRes__72C60C4A" FromRole="T_RESULTADO_ATENCION" ToRole="T_DETALLE_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_RESULTA__idEmp__6E01572D" FromRole="T_RESULTADO_ATENCION" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_ORDEN_ATENCION" Relationship="Self.FK__T_RESULTA__idAte__6D0D32F4" FromRole="T_RESULTADO_ATENCION" ToRole="T_ORDEN_ATENCION" />
+  </EntityType>
+  <EntityType Name="T_ROL">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreRol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipoRol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estRol" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="T_USUARIO" Relationship="TP3Model.T_USUARIO_ROL" FromRole="T_ROL" ToRole="T_USUARIO" />
+  </EntityType>
+  <EntityType Name="T_SERVICIO_SALUD">
+    <Key>
+      <PropertyRef Name="idServicio" />
+    </Key>
+    <Property Name="idServicio" Type="Int32" Nullable="false" />
+    <Property Name="tipoServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nomServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idEspecialidad" Type="Int32" />
+    <NavigationProperty Name="T_ESPECIALIDAD_MEDICA" Relationship="Self.FK__T_SERVICI__idEsp__628FA481" FromRole="T_SERVICIO_SALUD" ToRole="T_ESPECIALIDAD_MEDICA" />
+    <NavigationProperty Name="T_RESERVA_SERVICIO" Relationship="Self.FK__T_RESERVA__idSer__6754599E" FromRole="T_SERVICIO_SALUD" ToRole="T_RESERVA_SERVICIO" />
+  </EntityType>
+  <EntityType Name="T_SOLICITUD_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="idSolicitud" />
+    </Key>
+    <Property Name="idSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecSolicitud" Type="DateTime" Precision="3" />
+    <Property Name="estSolicitud" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="fecAtencion" Type="DateTime" Precision="3" />
+    <Property Name="fecAsigTecnico" Type="DateTime" Precision="3" />
+    <Property Name="dscObsTecnico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="dscObsMedico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="idTecnicoMant" Type="Int32" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <Property Name="idEquipoMedico" Type="Int32" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_SOLICIT__idEmp__38996AB5" FromRole="T_SOLICITUD_MANTENIMIENTO" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="Self.FK__T_SOLICIT__idEqu__398D8EEE" FromRole="T_SOLICITUD_MANTENIMIENTO" ToRole="T_EQUIPO_MEDICO" />
+    <NavigationProperty Name="T_MANTENIMIENTO_EQUIPO" Relationship="Self.FK__T_MANTENI__idSol__3E52440B" FromRole="T_SOLICITUD_MANTENIMIENTO" ToRole="T_MANTENIMIENTO_EQUIPO" />
+    <NavigationProperty Name="T_TECNICO_MANTENIMIENTO" Relationship="Self.FK__T_SOLICIT__idTec__37A5467C" FromRole="T_SOLICITUD_MANTENIMIENTO" ToRole="T_TECNICO_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="T_SOLICITUD_UCI">
+    <Key>
+      <PropertyRef Name="idSolicitud" />
+    </Key>
+    <Property Name="idSolicitud" Type="Int32" Nullable="false" />
+    <Property Name="fechSolicitud" Type="DateTime" Precision="3" />
+    <Property Name="estPaciente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="medSolicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gravedad" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="motDesaprobacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="obsDesaprobacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idPaciente" Type="Int32" />
+    <NavigationProperty Name="T_DETALLE_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__idSol__71D1E811" FromRole="T_SOLICITUD_UCI" ToRole="T_DETALLE_HISTORIA_CLINICA" />
+    <NavigationProperty Name="T_PACIENTE" Relationship="Self.FK__T_SOLICIT__idPac__5CD6CB2B" FromRole="T_SOLICITUD_UCI" ToRole="T_PACIENTE" />
+  </EntityType>
+  <EntityType Name="T_TAREA_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="idTareaMant" />
+    </Key>
+    <Property Name="idTareaMant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descTareaMant" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="descTipoTareaMant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estTareaMant" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="T_ACTA_EJEC_MANTENIMIENTO_DET" Relationship="Self.FK__T_ACTA_EJ__idTar__4CA06362" FromRole="T_TAREA_MANTENIMIENTO" ToRole="T_ACTA_EJEC_MANTENIMIENTO_DET" />
+  </EntityType>
+  <EntityType Name="T_TECNICO_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="idTecnicoMant" />
+    </Key>
+    <Property Name="idTecnicoMant" Type="Int32" Nullable="false" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <Property Name="experienciaTrabajoRiesgo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="seguroRiesgo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vigenciaEPP" Type="DateTime" Precision="3" />
+    <Property Name="vigenciaExamenMedicoOcup" Type="DateTime" Precision="3" />
+    <Property Name="habilidades" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_TECNICO__idEmp__15502E78" FromRole="T_TECNICO_MANTENIMIENTO" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_PLAN_MANTENIMIENTO" Relationship="Self.FK__T_PLAN_MA__idTec__182C9B23" FromRole="T_TECNICO_MANTENIMIENTO" ToRole="T_PLAN_MANTENIMIENTO" />
+    <NavigationProperty Name="T_SOLICITUD_MANTENIMIENTO" Relationship="Self.FK__T_SOLICIT__idTec__37A5467C" FromRole="T_TECNICO_MANTENIMIENTO" ToRole="T_SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="T_USUARIO">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <Property Name="codEmpresa" Type="Int32" />
+    <Property Name="EstUsuario" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="T_EMPLEADO" Relationship="Self.FK__T_USUARIO__idEmp__21B6055D" FromRole="T_USUARIO" ToRole="T_EMPLEADO" />
+    <NavigationProperty Name="T_EMPRESA" Relationship="Self.FK__T_USUARIO__codEm__22AA2996" FromRole="T_USUARIO" ToRole="T_EMPRESA" />
+    <NavigationProperty Name="T_ROL" Relationship="TP3Model.T_USUARIO_ROL" FromRole="T_USUARIO" ToRole="T_ROL" />
+  </EntityType>
+  <Association Name="FK__T_ACTA_EJ__codEm__44FF419A">
+    <End Role="T_EMPRESA" Type="Self.T_EMPRESA" Multiplicity="0..1" />
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO" Type="Self.T_ACTA_EJEC_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPRESA">
+        <PropertyRef Name="codEmpresa" />
+      </Principal>
+      <Dependent Role="T_ACTA_EJEC_MANTENIMIENTO">
+        <PropertyRef Name="codEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ACTA_EJ__idAct__4BAC3F29">
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO" Type="Self.T_ACTA_EJEC_MANTENIMIENTO" Multiplicity="1" />
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO_DET" Type="Self.T_ACTA_EJEC_MANTENIMIENTO_DET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ACTA_EJEC_MANTENIMIENTO">
+        <PropertyRef Name="idActaEjecMant" />
+      </Principal>
+      <Dependent Role="T_ACTA_EJEC_MANTENIMIENTO_DET">
+        <PropertyRef Name="idActaEjecMant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ACTA_EJ__idEqu__46E78A0C">
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="0..1" />
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO" Type="Self.T_ACTA_EJEC_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Principal>
+      <Dependent Role="T_ACTA_EJEC_MANTENIMIENTO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ACTA_EJ__idMan__45F365D3">
+    <End Role="T_MANTENIMIENTO_EQUIPO" Type="Self.T_MANTENIMIENTO_EQUIPO" Multiplicity="0..1" />
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO" Type="Self.T_ACTA_EJEC_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MANTENIMIENTO_EQUIPO">
+        <PropertyRef Name="idMantEquipo" />
+      </Principal>
+      <Dependent Role="T_ACTA_EJEC_MANTENIMIENTO">
+        <PropertyRef Name="idMantEquipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ACTA_EJ__idTar__4CA06362">
+    <End Role="T_TAREA_MANTENIMIENTO" Type="Self.T_TAREA_MANTENIMIENTO" Multiplicity="1" />
+    <End Role="T_ACTA_EJEC_MANTENIMIENTO_DET" Type="Self.T_ACTA_EJEC_MANTENIMIENTO_DET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TAREA_MANTENIMIENTO">
+        <PropertyRef Name="idTareaMant" />
+      </Principal>
+      <Dependent Role="T_ACTA_EJEC_MANTENIMIENTO_DET">
+        <PropertyRef Name="idTareaMant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MUEBLE__codBie__2C3393D0">
+    <End Role="T_BIEN" Type="Self.T_BIEN" Multiplicity="0..1" />
+    <End Role="T_MUEBLE" Type="Self.T_MUEBLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_BIEN">
+        <PropertyRef Name="codBien" />
+      </Principal>
+      <Dependent Role="T_MUEBLE">
+        <PropertyRef Name="codBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_DETALLE__idEmp__73BA3083">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_DETALLE_HISTORIA_CLINICA" Type="Self.T_DETALLE_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_DETALLE_HISTORIA_CLINICA">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_DETALLE__idEva__70DDC3D8">
+    <End Role="T_EVALUACION_SIGNOS_VITALES" Type="Self.T_EVALUACION_SIGNOS_VITALES" Multiplicity="0..1" />
+    <End Role="T_DETALLE_HISTORIA_CLINICA" Type="Self.T_DETALLE_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EVALUACION_SIGNOS_VITALES">
+        <PropertyRef Name="idEvaluacionSignosVitales" />
+      </Principal>
+      <Dependent Role="T_DETALLE_HISTORIA_CLINICA">
+        <PropertyRef Name="idEvaluacionSignosVitales" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_DETALLE__idRes__72C60C4A">
+    <End Role="T_RESULTADO_ATENCION" Type="Self.T_RESULTADO_ATENCION" Multiplicity="0..1" />
+    <End Role="T_DETALLE_HISTORIA_CLINICA" Type="Self.T_DETALLE_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RESULTADO_ATENCION">
+        <PropertyRef Name="idResultado" />
+      </Principal>
+      <Dependent Role="T_DETALLE_HISTORIA_CLINICA">
+        <PropertyRef Name="idResultado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_DETALLE__idSol__71D1E811">
+    <End Role="T_SOLICITUD_UCI" Type="Self.T_SOLICITUD_UCI" Multiplicity="0..1" />
+    <End Role="T_DETALLE_HISTORIA_CLINICA" Type="Self.T_DETALLE_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SOLICITUD_UCI">
+        <PropertyRef Name="idSolicitud" />
+      </Principal>
+      <Dependent Role="T_DETALLE_HISTORIA_CLINICA">
+        <PropertyRef Name="idSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_DETALLE__nroHi__6FE99F9F">
+    <End Role="T_HISTORIA_CLINICA" Type="Self.T_HISTORIA_CLINICA" Multiplicity="1" />
+    <End Role="T_DETALLE_HISTORIA_CLINICA" Type="Self.T_DETALLE_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_HISTORIA_CLINICA">
+        <PropertyRef Name="nroHistoriaClinica" />
+      </Principal>
+      <Dependent Role="T_DETALLE_HISTORIA_CLINICA">
+        <PropertyRef Name="nroHistoriaClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EMPLEAD__codPe__1273C1CD">
+    <End Role="T_PERSONA" Type="Self.T_PERSONA" Multiplicity="0..1" />
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONA">
+        <PropertyRef Name="codPersona" />
+      </Principal>
+      <Dependent Role="T_EMPLEADO">
+        <PropertyRef Name="codPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EVALUAC__idEmp__5070F446">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_EVALUACION_SIGNOS_VITALES" Type="Self.T_EVALUACION_SIGNOS_VITALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_EVALUACION_SIGNOS_VITALES">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RESERVA__idEmp__656C112C">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_RESERVA_SERVICIO" Type="Self.T_RESERVA_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_RESERVA_SERVICIO">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RESULTA__idEmp__6E01572D">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_RESULTADO_ATENCION" Type="Self.T_RESULTADO_ATENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_RESULTADO_ATENCION">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SOLICIT__idEmp__38996AB5">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_SOLICITUD_MANTENIMIENTO" Type="Self.T_SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_TECNICO__idEmp__15502E78">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_TECNICO_MANTENIMIENTO" Type="Self.T_TECNICO_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_TECNICO_MANTENIMIENTO">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_USUARIO__idEmp__21B6055D">
+    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
+    <End Role="T_USUARIO" Type="Self.T_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="T_USUARIO">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EMPRESA__codPe__1ED998B2">
+    <End Role="T_PERSONA" Type="Self.T_PERSONA" Multiplicity="0..1" />
+    <End Role="T_EMPRESA" Type="Self.T_EMPRESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONA">
+        <PropertyRef Name="codPersona" />
+      </Principal>
+      <Dependent Role="T_EMPRESA">
+        <PropertyRef Name="codPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MANTENI__codEm__3F466844">
+    <End Role="T_EMPRESA" Type="Self.T_EMPRESA" Multiplicity="0..1" />
+    <End Role="T_MANTENIMIENTO_EQUIPO" Type="Self.T_MANTENIMIENTO_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPRESA">
+        <PropertyRef Name="codEmpresa" />
+      </Principal>
+      <Dependent Role="T_MANTENIMIENTO_EQUIPO">
+        <PropertyRef Name="codEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MUEBLE__codEmp__2D27B809">
+    <End Role="T_EMPRESA" Type="Self.T_EMPRESA" Multiplicity="0..1" />
+    <End Role="T_MUEBLE" Type="Self.T_MUEBLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPRESA">
+        <PropertyRef Name="codEmpresa" />
+      </Principal>
+      <Dependent Role="T_MUEBLE">
+        <PropertyRef Name="codEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_USUARIO__codEm__22AA2996">
+    <End Role="T_EMPRESA" Type="Self.T_EMPRESA" Multiplicity="0..1" />
+    <End Role="T_USUARIO" Type="Self.T_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EMPRESA">
+        <PropertyRef Name="codEmpresa" />
+      </Principal>
+      <Dependent Role="T_USUARIO">
+        <PropertyRef Name="codEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EQUIPO___codIn__34C8D9D1">
+    <End Role="T_INMUEBLE" Type="Self.T_INMUEBLE" Multiplicity="0..1" />
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_INMUEBLE">
+        <PropertyRef Name="codInmueble" />
+      </Principal>
+      <Dependent Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="codInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EQUIPO___codMu__32E0915F">
+    <End Role="T_MUEBLE" Type="Self.T_MUEBLE" Multiplicity="0..1" />
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUEBLE">
+        <PropertyRef Name="codMueble" />
+      </Principal>
+      <Dependent Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="codMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_EQUIPO___idEsp__33D4B598">
+    <End Role="T_ESPECIALIDAD_MEDICA" Type="Self.T_ESPECIALIDAD_MEDICA" Multiplicity="0..1" />
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ESPECIALIDAD_MEDICA">
+        <PropertyRef Name="idEspecialidad" />
+      </Principal>
+      <Dependent Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="idEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MANTENI__idEqu__3D5E1FD2">
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="0..1" />
+    <End Role="T_MANTENIMIENTO_EQUIPO" Type="Self.T_MANTENIMIENTO_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Principal>
+      <Dependent Role="T_MANTENIMIENTO_EQUIPO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SOLICIT__idEqu__398D8EEE">
+    <End Role="T_EQUIPO_MEDICO" Type="Self.T_EQUIPO_MEDICO" Multiplicity="0..1" />
+    <End Role="T_SOLICITUD_MANTENIMIENTO" Type="Self.T_SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Principal>
+      <Dependent Role="T_SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SERVICI__idEsp__628FA481">
+    <End Role="T_ESPECIALIDAD_MEDICA" Type="Self.T_ESPECIALIDAD_MEDICA" Multiplicity="0..1" />
+    <End Role="T_SERVICIO_SALUD" Type="Self.T_SERVICIO_SALUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ESPECIALIDAD_MEDICA">
+        <PropertyRef Name="idEspecialidad" />
+      </Principal>
+      <Dependent Role="T_SERVICIO_SALUD">
+        <PropertyRef Name="idEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_HISTORI__idPac__5FB337D6">
+    <End Role="T_PACIENTE" Type="Self.T_PACIENTE" Multiplicity="0..1" />
+    <End Role="T_HISTORIA_CLINICA" Type="Self.T_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PACIENTE">
+        <PropertyRef Name="idPaciente" />
+      </Principal>
+      <Dependent Role="T_HISTORIA_CLINICA">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MANTENI__codPl__3C69FB99">
+    <End Role="T_PLAN_MANTENIMIENTO" Type="Self.T_PLAN_MANTENIMIENTO" Multiplicity="0..1" />
+    <End Role="T_MANTENIMIENTO_EQUIPO" Type="Self.T_MANTENIMIENTO_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PLAN_MANTENIMIENTO">
+        <PropertyRef Name="codPlan" />
+      </Principal>
+      <Dependent Role="T_MANTENIMIENTO_EQUIPO">
+        <PropertyRef Name="codPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MANTENI__idSol__3E52440B">
+    <End Role="T_SOLICITUD_MANTENIMIENTO" Type="Self.T_SOLICITUD_MANTENIMIENTO" Multiplicity="0..1" />
+    <End Role="T_MANTENIMIENTO_EQUIPO" Type="Self.T_MANTENIMIENTO_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="idSolicitud" />
+      </Principal>
+      <Dependent Role="T_MANTENIMIENTO_EQUIPO">
+        <PropertyRef Name="idSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_MUEBLE__codMod__2E1BDC42">
+    <End Role="T_MODELO" Type="Self.T_MODELO" Multiplicity="0..1" />
+    <End Role="T_MUEBLE" Type="Self.T_MUEBLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MODELO">
+        <PropertyRef Name="codModelo" />
+      </Principal>
+      <Dependent Role="T_MUEBLE">
+        <PropertyRef Name="codModelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ORDEN_A__idRes__6A30C649">
+    <End Role="T_RESERVA_SERVICIO" Type="Self.T_RESERVA_SERVICIO" Multiplicity="0..1" />
+    <End Role="T_ORDEN_ATENCION" Type="Self.T_ORDEN_ATENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RESERVA_SERVICIO">
+        <PropertyRef Name="idReserva" />
+      </Principal>
+      <Dependent Role="T_ORDEN_ATENCION">
+        <PropertyRef Name="idReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RESULTA__idAte__6D0D32F4">
+    <End Role="T_ORDEN_ATENCION" Type="Self.T_ORDEN_ATENCION" Multiplicity="0..1" />
+    <End Role="T_RESULTADO_ATENCION" Type="Self.T_RESULTADO_ATENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ORDEN_ATENCION">
+        <PropertyRef Name="idAtencion" />
+      </Principal>
+      <Dependent Role="T_RESULTADO_ATENCION">
+        <PropertyRef Name="idAtencion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_PACIENT__codPe__59FA5E80">
+    <End Role="T_PERSONA" Type="Self.T_PERSONA" Multiplicity="0..1" />
+    <End Role="T_PACIENTE" Type="Self.T_PACIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONA">
+        <PropertyRef Name="codPersona" />
+      </Principal>
+      <Dependent Role="T_PACIENTE">
+        <PropertyRef Name="codPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RESERVA__idPac__66603565">
+    <End Role="T_PACIENTE" Type="Self.T_PACIENTE" Multiplicity="0..1" />
+    <End Role="T_RESERVA_SERVICIO" Type="Self.T_RESERVA_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PACIENTE">
+        <PropertyRef Name="idPaciente" />
+      </Principal>
+      <Dependent Role="T_RESERVA_SERVICIO">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SOLICIT__idPac__5CD6CB2B">
+    <End Role="T_PACIENTE" Type="Self.T_PACIENTE" Multiplicity="0..1" />
+    <End Role="T_SOLICITUD_UCI" Type="Self.T_SOLICITUD_UCI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PACIENTE">
+        <PropertyRef Name="idPaciente" />
+      </Principal>
+      <Dependent Role="T_SOLICITUD_UCI">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_PLAN_MA__idTec__182C9B23">
+    <End Role="T_TECNICO_MANTENIMIENTO" Type="Self.T_TECNICO_MANTENIMIENTO" Multiplicity="0..1" />
+    <End Role="T_PLAN_MANTENIMIENTO" Type="Self.T_PLAN_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TECNICO_MANTENIMIENTO">
+        <PropertyRef Name="idTecnicoMant" />
+      </Principal>
+      <Dependent Role="T_PLAN_MANTENIMIENTO">
+        <PropertyRef Name="idTecnicoMant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RESERVA__idSer__6754599E">
+    <End Role="T_SERVICIO_SALUD" Type="Self.T_SERVICIO_SALUD" Multiplicity="0..1" />
+    <End Role="T_RESERVA_SERVICIO" Type="Self.T_RESERVA_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SERVICIO_SALUD">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="T_RESERVA_SERVICIO">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SOLICIT__idTec__37A5467C">
+    <End Role="T_TECNICO_MANTENIMIENTO" Type="Self.T_TECNICO_MANTENIMIENTO" Multiplicity="0..1" />
+    <End Role="T_SOLICITUD_MANTENIMIENTO" Type="Self.T_SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TECNICO_MANTENIMIENTO">
+        <PropertyRef Name="idTecnicoMant" />
+      </Principal>
+      <Dependent Role="T_SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="idTecnicoMant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_CLINICA_RPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_ACTA_EJEC_MANTENIMIENTO" EntityType="Self.T_ACTA_EJEC_MANTENIMIENTO" />
+    <EntitySet Name="T_ACTA_EJEC_MANTENIMIENTO_DET" EntityType="Self.T_ACTA_EJEC_MANTENIMIENTO_DET" />
+    <EntitySet Name="T_BIEN" EntityType="Self.T_BIEN" />
+    <EntitySet Name="T_DETALLE_HISTORIA_CLINICA" EntityType="Self.T_DETALLE_HISTORIA_CLINICA" />
+    <EntitySet Name="T_EMPLEADO" EntityType="Self.T_EMPLEADO" />
+    <EntitySet Name="T_EMPRESA" EntityType="Self.T_EMPRESA" />
+    <EntitySet Name="T_EQUIPO_MEDICO" EntityType="Self.T_EQUIPO_MEDICO" />
+    <EntitySet Name="T_ESPECIALIDAD_MEDICA" EntityType="Self.T_ESPECIALIDAD_MEDICA" />
+    <EntitySet Name="T_EVALUACION_SIGNOS_VITALES" EntityType="Self.T_EVALUACION_SIGNOS_VITALES" />
+    <EntitySet Name="T_HISTORIA_CLINICA" EntityType="Self.T_HISTORIA_CLINICA" />
+    <EntitySet Name="T_INMUEBLE" EntityType="Self.T_INMUEBLE" />
+    <EntitySet Name="T_MANTENIMIENTO_EQUIPO" EntityType="Self.T_MANTENIMIENTO_EQUIPO" />
+    <EntitySet Name="T_MODELO" EntityType="Self.T_MODELO" />
+    <EntitySet Name="T_MUEBLE" EntityType="Self.T_MUEBLE" />
+    <EntitySet Name="T_ORDEN_ATENCION" EntityType="Self.T_ORDEN_ATENCION" />
+    <EntitySet Name="T_PACIENTE" EntityType="Self.T_PACIENTE" />
+    <EntitySet Name="T_PERSONA" EntityType="Self.T_PERSONA" />
+    <EntitySet Name="T_PLAN_MANTENIMIENTO" EntityType="Self.T_PLAN_MANTENIMIENTO" />
+    <EntitySet Name="T_RESERVA_SERVICIO" EntityType="Self.T_RESERVA_SERVICIO" />
+    <EntitySet Name="T_RESULTADO_ATENCION" EntityType="Self.T_RESULTADO_ATENCION" />
+    <EntitySet Name="T_ROL" EntityType="Self.T_ROL" />
+    <EntitySet Name="T_SERVICIO_SALUD" EntityType="Self.T_SERVICIO_SALUD" />
+    <EntitySet Name="T_SOLICITUD_MANTENIMIENTO" EntityType="Self.T_SOLICITUD_MANTENIMIENTO" />
+    <EntitySet Name="T_SOLICITUD_UCI" EntityType="Self.T_SOLICITUD_UCI" />
+    <EntitySet Name="T_TAREA_MANTENIMIENTO" EntityType="Self.T_TAREA_MANTENIMIENTO" />
+    <EntitySet Name="T_TECNICO_MANTENIMIENTO" EntityType="Self.T_TECNICO_MANTENIMIENTO" />
+    <EntitySet Name="T_USUARIO" EntityType="Self.T_USUARIO" />
+    <AssociationSet Name="FK__T_ACTA_EJ__codEm__44FF419A" Association="Self.FK__T_ACTA_EJ__codEm__44FF419A">
+      <End Role="T_EMPRESA" EntitySet="T_EMPRESA" />
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO" EntitySet="T_ACTA_EJEC_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ACTA_EJ__idAct__4BAC3F29" Association="Self.FK__T_ACTA_EJ__idAct__4BAC3F29">
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO" EntitySet="T_ACTA_EJEC_MANTENIMIENTO" />
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO_DET" EntitySet="T_ACTA_EJEC_MANTENIMIENTO_DET" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ACTA_EJ__idEqu__46E78A0C" Association="Self.FK__T_ACTA_EJ__idEqu__46E78A0C">
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO" EntitySet="T_ACTA_EJEC_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ACTA_EJ__idMan__45F365D3" Association="Self.FK__T_ACTA_EJ__idMan__45F365D3">
+      <End Role="T_MANTENIMIENTO_EQUIPO" EntitySet="T_MANTENIMIENTO_EQUIPO" />
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO" EntitySet="T_ACTA_EJEC_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ACTA_EJ__idTar__4CA06362" Association="Self.FK__T_ACTA_EJ__idTar__4CA06362">
+      <End Role="T_TAREA_MANTENIMIENTO" EntitySet="T_TAREA_MANTENIMIENTO" />
+      <End Role="T_ACTA_EJEC_MANTENIMIENTO_DET" EntitySet="T_ACTA_EJEC_MANTENIMIENTO_DET" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MUEBLE__codBie__2C3393D0" Association="Self.FK__T_MUEBLE__codBie__2C3393D0">
+      <End Role="T_BIEN" EntitySet="T_BIEN" />
+      <End Role="T_MUEBLE" EntitySet="T_MUEBLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_DETALLE__idEmp__73BA3083" Association="Self.FK__T_DETALLE__idEmp__73BA3083">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_DETALLE_HISTORIA_CLINICA" EntitySet="T_DETALLE_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_DETALLE__idEva__70DDC3D8" Association="Self.FK__T_DETALLE__idEva__70DDC3D8">
+      <End Role="T_EVALUACION_SIGNOS_VITALES" EntitySet="T_EVALUACION_SIGNOS_VITALES" />
+      <End Role="T_DETALLE_HISTORIA_CLINICA" EntitySet="T_DETALLE_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_DETALLE__idRes__72C60C4A" Association="Self.FK__T_DETALLE__idRes__72C60C4A">
+      <End Role="T_RESULTADO_ATENCION" EntitySet="T_RESULTADO_ATENCION" />
+      <End Role="T_DETALLE_HISTORIA_CLINICA" EntitySet="T_DETALLE_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_DETALLE__idSol__71D1E811" Association="Self.FK__T_DETALLE__idSol__71D1E811">
+      <End Role="T_SOLICITUD_UCI" EntitySet="T_SOLICITUD_UCI" />
+      <End Role="T_DETALLE_HISTORIA_CLINICA" EntitySet="T_DETALLE_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_DETALLE__nroHi__6FE99F9F" Association="Self.FK__T_DETALLE__nroHi__6FE99F9F">
+      <End Role="T_HISTORIA_CLINICA" EntitySet="T_HISTORIA_CLINICA" />
+      <End Role="T_DETALLE_HISTORIA_CLINICA" EntitySet="T_DETALLE_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EMPLEAD__codPe__1273C1CD" Association="Self.FK__T_EMPLEAD__codPe__1273C1CD">
+      <End Role="T_PERSONA" EntitySet="T_PERSONA" />
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EVALUAC__idEmp__5070F446" Association="Self.FK__T_EVALUAC__idEmp__5070F446">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_EVALUACION_SIGNOS_VITALES" EntitySet="T_EVALUACION_SIGNOS_VITALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RESERVA__idEmp__656C112C" Association="Self.FK__T_RESERVA__idEmp__656C112C">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_RESERVA_SERVICIO" EntitySet="T_RESERVA_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RESULTA__idEmp__6E01572D" Association="Self.FK__T_RESULTA__idEmp__6E01572D">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_RESULTADO_ATENCION" EntitySet="T_RESULTADO_ATENCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SOLICIT__idEmp__38996AB5" Association="Self.FK__T_SOLICIT__idEmp__38996AB5">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_SOLICITUD_MANTENIMIENTO" EntitySet="T_SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_TECNICO__idEmp__15502E78" Association="Self.FK__T_TECNICO__idEmp__15502E78">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_TECNICO_MANTENIMIENTO" EntitySet="T_TECNICO_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_USUARIO__idEmp__21B6055D" Association="Self.FK__T_USUARIO__idEmp__21B6055D">
+      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
+      <End Role="T_USUARIO" EntitySet="T_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EMPRESA__codPe__1ED998B2" Association="Self.FK__T_EMPRESA__codPe__1ED998B2">
+      <End Role="T_PERSONA" EntitySet="T_PERSONA" />
+      <End Role="T_EMPRESA" EntitySet="T_EMPRESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MANTENI__codEm__3F466844" Association="Self.FK__T_MANTENI__codEm__3F466844">
+      <End Role="T_EMPRESA" EntitySet="T_EMPRESA" />
+      <End Role="T_MANTENIMIENTO_EQUIPO" EntitySet="T_MANTENIMIENTO_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MUEBLE__codEmp__2D27B809" Association="Self.FK__T_MUEBLE__codEmp__2D27B809">
+      <End Role="T_EMPRESA" EntitySet="T_EMPRESA" />
+      <End Role="T_MUEBLE" EntitySet="T_MUEBLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_USUARIO__codEm__22AA2996" Association="Self.FK__T_USUARIO__codEm__22AA2996">
+      <End Role="T_EMPRESA" EntitySet="T_EMPRESA" />
+      <End Role="T_USUARIO" EntitySet="T_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EQUIPO___codIn__34C8D9D1" Association="Self.FK__T_EQUIPO___codIn__34C8D9D1">
+      <End Role="T_INMUEBLE" EntitySet="T_INMUEBLE" />
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EQUIPO___codMu__32E0915F" Association="Self.FK__T_EQUIPO___codMu__32E0915F">
+      <End Role="T_MUEBLE" EntitySet="T_MUEBLE" />
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_EQUIPO___idEsp__33D4B598" Association="Self.FK__T_EQUIPO___idEsp__33D4B598">
+      <End Role="T_ESPECIALIDAD_MEDICA" EntitySet="T_ESPECIALIDAD_MEDICA" />
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MANTENI__idEqu__3D5E1FD2" Association="Self.FK__T_MANTENI__idEqu__3D5E1FD2">
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+      <End Role="T_MANTENIMIENTO_EQUIPO" EntitySet="T_MANTENIMIENTO_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SOLICIT__idEqu__398D8EEE" Association="Self.FK__T_SOLICIT__idEqu__398D8EEE">
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+      <End Role="T_SOLICITUD_MANTENIMIENTO" EntitySet="T_SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SERVICI__idEsp__628FA481" Association="Self.FK__T_SERVICI__idEsp__628FA481">
+      <End Role="T_ESPECIALIDAD_MEDICA" EntitySet="T_ESPECIALIDAD_MEDICA" />
+      <End Role="T_SERVICIO_SALUD" EntitySet="T_SERVICIO_SALUD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_HISTORI__idPac__5FB337D6" Association="Self.FK__T_HISTORI__idPac__5FB337D6">
+      <End Role="T_PACIENTE" EntitySet="T_PACIENTE" />
+      <End Role="T_HISTORIA_CLINICA" EntitySet="T_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MANTENI__codPl__3C69FB99" Association="Self.FK__T_MANTENI__codPl__3C69FB99">
+      <End Role="T_PLAN_MANTENIMIENTO" EntitySet="T_PLAN_MANTENIMIENTO" />
+      <End Role="T_MANTENIMIENTO_EQUIPO" EntitySet="T_MANTENIMIENTO_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MANTENI__idSol__3E52440B" Association="Self.FK__T_MANTENI__idSol__3E52440B">
+      <End Role="T_SOLICITUD_MANTENIMIENTO" EntitySet="T_SOLICITUD_MANTENIMIENTO" />
+      <End Role="T_MANTENIMIENTO_EQUIPO" EntitySet="T_MANTENIMIENTO_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_MUEBLE__codMod__2E1BDC42" Association="Self.FK__T_MUEBLE__codMod__2E1BDC42">
+      <End Role="T_MODELO" EntitySet="T_MODELO" />
+      <End Role="T_MUEBLE" EntitySet="T_MUEBLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ORDEN_A__idRes__6A30C649" Association="Self.FK__T_ORDEN_A__idRes__6A30C649">
+      <End Role="T_RESERVA_SERVICIO" EntitySet="T_RESERVA_SERVICIO" />
+      <End Role="T_ORDEN_ATENCION" EntitySet="T_ORDEN_ATENCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RESULTA__idAte__6D0D32F4" Association="Self.FK__T_RESULTA__idAte__6D0D32F4">
+      <End Role="T_ORDEN_ATENCION" EntitySet="T_ORDEN_ATENCION" />
+      <End Role="T_RESULTADO_ATENCION" EntitySet="T_RESULTADO_ATENCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_PACIENT__codPe__59FA5E80" Association="Self.FK__T_PACIENT__codPe__59FA5E80">
+      <End Role="T_PERSONA" EntitySet="T_PERSONA" />
+      <End Role="T_PACIENTE" EntitySet="T_PACIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RESERVA__idPac__66603565" Association="Self.FK__T_RESERVA__idPac__66603565">
+      <End Role="T_PACIENTE" EntitySet="T_PACIENTE" />
+      <End Role="T_RESERVA_SERVICIO" EntitySet="T_RESERVA_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SOLICIT__idPac__5CD6CB2B" Association="Self.FK__T_SOLICIT__idPac__5CD6CB2B">
+      <End Role="T_PACIENTE" EntitySet="T_PACIENTE" />
+      <End Role="T_SOLICITUD_UCI" EntitySet="T_SOLICITUD_UCI" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_PLAN_MA__idTec__182C9B23" Association="Self.FK__T_PLAN_MA__idTec__182C9B23">
+      <End Role="T_TECNICO_MANTENIMIENTO" EntitySet="T_TECNICO_MANTENIMIENTO" />
+      <End Role="T_PLAN_MANTENIMIENTO" EntitySet="T_PLAN_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RESERVA__idSer__6754599E" Association="Self.FK__T_RESERVA__idSer__6754599E">
+      <End Role="T_SERVICIO_SALUD" EntitySet="T_SERVICIO_SALUD" />
+      <End Role="T_RESERVA_SERVICIO" EntitySet="T_RESERVA_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SOLICIT__idTec__37A5467C" Association="Self.FK__T_SOLICIT__idTec__37A5467C">
+      <End Role="T_TECNICO_MANTENIMIENTO" EntitySet="T_TECNICO_MANTENIMIENTO" />
+      <End Role="T_SOLICITUD_MANTENIMIENTO" EntitySet="T_SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <FunctionImport Name="InsertarSolicitudUCI">
+      <Parameter Name="fechaSolicitud" Mode="In" Type="DateTime" />
+      <Parameter Name="estPaciente" Mode="In" Type="String" />
+      <Parameter Name="medSolicitante" Mode="In" Type="String" />
+      <Parameter Name="gravedad" Mode="In" Type="String" />
+      <Parameter Name="motDesaprobacion" Mode="In" Type="String" />
+      <Parameter Name="obsDesaprobacion" Mode="In" Type="String" />
+      <Parameter Name="idPaciente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ListarPacientes" EntitySet="T_PACIENTE" ReturnType="Collection(TP3Model.T_PACIENTE)">
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="T_EQUIPO_USO" EntityType="TP3Model.T_EQUIPO_USO" />
+    <AssociationSet Name="FK__T_EQUIPO___idEqu__412EB0B6" Association="TP3Model.FK__T_EQUIPO___idEqu__412EB0B6">
+      <End Role="T_EQUIPO_MEDICO" EntitySet="T_EQUIPO_MEDICO" />
+      <End Role="T_EQUIPO_USO" EntitySet="T_EQUIPO_USO" />
+    </AssociationSet>
+    <FunctionImport Name="obtenerPaciente" EntitySet="T_PACIENTE" ReturnType="Collection(TP3Model.T_PACIENTE)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <AssociationSet Name="T_USUARIO_ROL" Association="TP3Model.T_USUARIO_ROL">
+      <End Role="T_ROL" EntitySet="T_ROL" />
+      <End Role="T_USUARIO" EntitySet="T_USUARIO" />
+    </AssociationSet>
+    <FunctionImport Name="ActualizarPaciente">
+      <Parameter Name="idPaciente" Mode="In" Type="Int32" />
+      <Parameter Name="dniPaciente" Mode="In" Type="String" />
+      <Parameter Name="fechNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="segmentacion" Mode="In" Type="String" />
+      <Parameter Name="codPersona" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ListarPacientes_Result">
+    <Property Type="Int32" Name="idPaciente" Nullable="false" />
+    <Property Type="String" Name="dniPaciente" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="fechNacimiento" Nullable="true" Precision="23" />
+    <Property Type="String" Name="segmentacion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="codPersona" Nullable="true" />
+    <Property Type="String" Name="estado" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="T_EQUIPO_USO">
+    <Key>
+      <PropertyRef Name="idEquipoMedico" />
+    </Key>
+    <Property Name="idEquipoMedico" Type="Int32" Nullable="false" />
+    <Property Name="fecUso" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="T_EQUIPO_MEDICO" Relationship="TP3Model.FK__T_EQUIPO___idEqu__412EB0B6" FromRole="T_EQUIPO_USO" ToRole="T_EQUIPO_MEDICO" />
+  </EntityType>
+  <Association Name="FK__T_EQUIPO___idEqu__412EB0B6">
+    <End Type="TP3Model.T_EQUIPO_MEDICO" Role="T_EQUIPO_MEDICO" Multiplicity="1" />
+    <End Type="TP3Model.T_EQUIPO_USO" Role="T_EQUIPO_USO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="T_EQUIPO_MEDICO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Principal>
+      <Dependent Role="T_EQUIPO_USO">
+        <PropertyRef Name="idEquipoMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="obtenerPaciente_Result">
+    <Property Type="Int32" Name="idPaciente" Nullable="false" />
+    <Property Type="String" Name="dniPaciente" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="fechNacimiento" Nullable="true" Precision="23" />
+    <Property Type="String" Name="segmentacion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="codPersona" Nullable="true" />
+    <Property Type="String" Name="estado" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <Association Name="T_USUARIO_ROL">
+    <End Type="TP3Model.T_ROL" Role="T_ROL" Multiplicity="*" />
+    <End Type="TP3Model.T_USUARIO" Role="T_USUARIO" Multiplicity="*" />
+  </Association>
+</Schema>

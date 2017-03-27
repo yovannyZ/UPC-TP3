@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TP3.Entidades.EF.T_PACIENTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div>
+    <h2 style="text-align:center" class="text-success">Aprobacion / Desaprobacion de pacientes UCI</h2>
+</div>
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+           Paciente
+        </th>
+        <th>
+            DNI
+        </th>
+        <th>
+            Historia Clinica
+        </th>
+        <th>
+           Estado
+        </th>
+        <th>
+          Seleccionar opción
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.T_PERSONA.nompersona)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.dniPaciente)
+        </td>
+
+        <td>
+         
+            @foreach (var HistoriaClinica in item.T_HISTORIA_CLINICA)
+            {
+               <a href="#">@HistoriaClinica.nroHistoriaClinica</a> 
+            }
+           
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+
+        <td>
+            @Html.ActionLink("Aprobar Paciente", "Aprobar", new { id=item.idPaciente  }) |
+            @Html.ActionLink("Desaprobar Paciente", "Desaprobar", new { id = item.idPaciente }) 
+        </td>
+    </tr>
+}
+
+</table>
