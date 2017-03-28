@@ -8,7 +8,7 @@ namespace TP3.Negocio
 {
     public class Util
     {
-        public static bool mandarNotificacion(string emails, string paciente, string gravedad, string medico, string estado, string historia)
+        public static bool mandarNotificacion(string emails, string paciente, string gravedad, string medico, string estado, string historia,string motivo)
         {
             bool enviado = false;
             System.Net.Mail.MailMessage msj = new System.Net.Mail.MailMessage();
@@ -31,6 +31,7 @@ namespace TP3.Negocio
             "Paciente: <b> " + paciente + " </b><br />" +
             "Historia Clínica: <b> " + historia + " </b><br />" +
             "Gravedad: <b> " + gravedad + " </b><br />" +
+            "Motivo desaprobacion: <b> " + motivo + " </b><br />" +
             "Medico: <b> " + medico + " </b><br />" +
              "Fecha y hora de:  <b>" + DateTime.Now.ToString() + " </b>";
             msj.BodyEncoding = System.Text.Encoding.UTF8;

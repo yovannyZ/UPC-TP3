@@ -2084,6 +2084,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SolicitudUCI\HistoriaClinica.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2096,11 +2097,11 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Visual Studio 2015\Projects\UPC.TP3\TP3.Entidades.EF\TP3.Entidades.EF.csproj">
+    <ProjectReference Include="..\TP3.Entidades.EF\TP3.Entidades.EF.csproj">
       <Project>{59d6b7df-37a7-41d5-b349-37737f008160}</Project>
       <Name>TP3.Entidades.EF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Visual Studio 2015\Projects\UPC.TP3\TP3.Negocio\TP3.Negocio.csproj">
+    <ProjectReference Include="..\TP3.Negocio\TP3.Negocio.csproj">
       <Project>{d1d9d6ef-61ef-447f-8135-86e13f7ecd00}</Project>
       <Name>TP3.Negocio</Name>
     </ProjectReference>

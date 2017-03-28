@@ -47,7 +47,7 @@ namespace TP2.Web.Controllers
 
             if (esValido)
             {
-                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia);
+                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia,Solicitud.motDesaprobacion);
 
                 if (correoenviado)
                 {
@@ -70,7 +70,7 @@ namespace TP2.Web.Controllers
         }
 
         [HttpPost]
-        public string Desaprobar(int idPaciente, string observacion, string gravedad , string  Historia)
+        public string Desaprobar(int idPaciente, string observacion, string  Historia,string motDesaprobacion)
         {
             string mensaje = "Error al grabar los datos";
 
@@ -80,8 +80,8 @@ namespace TP2.Web.Controllers
             T_SOLICITUD_UCI Solicitud = new T_SOLICITUD_UCI();
             Solicitud.estPaciente = paciente.estado;
             Solicitud.medSolicitante = "OTOYA ZAPATA MARIA FERNANDA";
-            Solicitud.gravedad = gravedad;
-            Solicitud.motDesaprobacion = "";
+            Solicitud.gravedad = "";
+            Solicitud.motDesaprobacion = motDesaprobacion;
             Solicitud.obsDesaprobacion = observacion;
             Solicitud.idPaciente = paciente.idPaciente;
             Solicitud.T_PACIENTE = paciente;
@@ -92,7 +92,7 @@ namespace TP2.Web.Controllers
 
             if (esValido)
             {
-                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia);
+                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia,Solicitud.motDesaprobacion);
 
                 if (correoenviado)
                 {
@@ -106,6 +106,12 @@ namespace TP2.Web.Controllers
 
             return mensaje;
 
+        }
+
+        public ActionResult HistoriaClinica(int id)
+        {
+            var Historia = THistoriaClinica.Obtener(id);
+            return View(Historia);
         }
 
     }

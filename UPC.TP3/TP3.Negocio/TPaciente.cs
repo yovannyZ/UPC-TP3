@@ -18,7 +18,7 @@ namespace TP3.Negocio
             List<T_PACIENTE> lista = new List<T_PACIENTE>();
             try
             {
-                lista = (from x in context.T_PACIENTE select x).ToList(); 
+                lista = context.T_PACIENTE.Where(c => c.estado == "En Evaluación").ToList();
             }
             catch (Exception)
             {

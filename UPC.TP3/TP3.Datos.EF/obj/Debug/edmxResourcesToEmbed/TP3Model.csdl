@@ -55,6 +55,7 @@
     <NavigationProperty Name="T_RESULTADO_ATENCION" Relationship="Self.FK__T_DETALLE__idRes__72C60C4A" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_RESULTADO_ATENCION" />
     <NavigationProperty Name="T_SOLICITUD_UCI" Relationship="Self.FK__T_DETALLE__idSol__71D1E811" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_SOLICITUD_UCI" />
     <NavigationProperty Name="T_HISTORIA_CLINICA" Relationship="Self.FK__T_DETALLE__nroHi__6FE99F9F" FromRole="T_DETALLE_HISTORIA_CLINICA" ToRole="T_HISTORIA_CLINICA" />
+    <Property Name="fecRegistro" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="T_EMPLEADO">
     <Key>
@@ -277,7 +278,7 @@
     <Property Name="idResultado" Type="Int32" Nullable="false" />
     <Property Name="valorResultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="diagnostico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="conclusion" Type="DateTime" Precision="3" />
+    <Property Name="conclusion" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="fecResultado" Type="DateTime" Precision="3" />
     <Property Name="estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
     <Property Name="idAtencion" Type="Int32" />

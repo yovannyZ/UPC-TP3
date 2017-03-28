@@ -21,6 +21,7 @@ namespace TP3.Entidades.EF
         public Nullable<int> idSolicitud { get; set; }
         public Nullable<int> idResultado { get; set; }
         public Nullable<int> idEmpleado { get; set; }
+        public Nullable<System.DateTime> fecRegistro { get; set; }
     
         public virtual T_EMPLEADO T_EMPLEADO { get; set; }
         public virtual T_EVALUACION_SIGNOS_VITALES T_EVALUACION_SIGNOS_VITALES { get; set; }

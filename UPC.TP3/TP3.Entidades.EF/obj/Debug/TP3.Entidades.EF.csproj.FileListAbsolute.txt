@@ -6,3 +6,11 @@ C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Entidades.EF\
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.csprojResolveAssemblyReference.cache
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.dll
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\bin\Debug\TP3.Entidades.EF.dll.config
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\bin\Debug\TP3.Entidades.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\bin\Debug\TP3.Entidades.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\bin\Debug\EntityFramework.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\bin\Debug\EntityFramework.xml
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.csprojResolveAssemblyReference.cache
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Entidades.EF\obj\Debug\TP3.Entidades.EF.pdb

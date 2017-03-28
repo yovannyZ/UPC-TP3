@@ -9,15 +9,16 @@
     $(document).ready(function () {
 
         $("#btnDesaprobar").click(function () {
-            var gravedad = $('#gravedad').val();
+           
             var observacion = $('#observacion').val();
             var idPaciente = $('#idPaciente').val();
+            var motDesaprobacion = $('#motDesaprobacion').val();
             var Historia = $("#Historia").text();
             $.ajax({
                 url: "/SolicitudUCI/Desaprobar",
                 type: 'POST',
                 data: {
-                    idPaciente: idPaciente, observacion: observacion, gravedad: gravedad, Historia: Historia
+                    idPaciente: idPaciente, observacion: observacion, Historia: Historia, motDesaprobacion: motDesaprobacion
                 },
                 success: function (data) {
                     alert(data);
@@ -72,14 +73,12 @@
     </tr>
     <tr></tr>
     <tr>
-        <td>&nbsp; &nbsp; Gravedad</td>
+        <td>&nbsp; &nbsp; Motivo desaprobacion </td>
         <td>
             &nbsp; &nbsp;
-            <select id="gravedad" name="gravedad" class="form-control">
-                <option value="0">Por Defecto</option>
-                <option value="1">Prioritario</option>
-                <option value="2">Grave</option>
-                <option value="3">Muy grave</option>
+            <select id="motDesaprobacion" name="motDesaprobacion" class="form-control">
+                <option value="Estable">Estable</option>
+                <option value="Gravedad baja">Gravedad baja</option>
             </select>
         </td>
         <td>&nbsp; &nbsp; Observacion</td>
@@ -87,8 +86,8 @@
             &nbsp; &nbsp;
             <textarea rows="4" cols="50" id="observacion" name="observacion"></textarea>
         </td>
-        <td></td>
-        <td></td>
+       
+       
     </tr>
 </table>
 

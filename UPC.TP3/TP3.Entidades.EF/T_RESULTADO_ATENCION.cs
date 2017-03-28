@@ -22,7 +22,7 @@ namespace TP3.Entidades.EF
         public int idResultado { get; set; }
         public string valorResultado { get; set; }
         public string diagnostico { get; set; }
-        public Nullable<System.DateTime> conclusion { get; set; }
+        public string conclusion { get; set; }
         public Nullable<System.DateTime> fecResultado { get; set; }
         public string estado { get; set; }
         public Nullable<int> idAtencion { get; set; }

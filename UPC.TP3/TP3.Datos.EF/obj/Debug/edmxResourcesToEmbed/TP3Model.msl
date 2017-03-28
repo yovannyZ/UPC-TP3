@@ -37,6 +37,7 @@
     <EntitySetMapping Name="T_DETALLE_HISTORIA_CLINICA">
       <EntityTypeMapping TypeName="TP3Model.T_DETALLE_HISTORIA_CLINICA">
         <MappingFragment StoreEntitySet="T_DETALLE_HISTORIA_CLINICA">
+          <ScalarProperty Name="fecRegistro" ColumnName="fecRegistro" />
           <ScalarProperty Name="idDetalleHC" ColumnName="idDetalleHC" />
           <ScalarProperty Name="nroHistoriaClinica" ColumnName="nroHistoriaClinica" />
           <ScalarProperty Name="diagnóstico" ColumnName="diagnóstico" />

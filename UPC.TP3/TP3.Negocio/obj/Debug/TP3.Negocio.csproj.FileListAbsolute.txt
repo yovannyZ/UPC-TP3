@@ -14,3 +14,19 @@ C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Negocio\bin\D
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.csprojResolveAssemblyReference.cache
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.dll
 C:\Users\Yovanny\documents\visual studio 2015\Projects\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Negocio.dll.config
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Negocio.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Negocio.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\EntityFramework.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Datos.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Entidades.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Datos.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\TP3.Entidades.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\EntityFramework.xml
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.csprojResolveAssemblyReference.cache
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Negocio\obj\Debug\TP3.Negocio.pdb

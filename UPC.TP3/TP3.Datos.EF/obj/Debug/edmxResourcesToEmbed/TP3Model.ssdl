@@ -43,6 +43,7 @@
     <Property Name="idSolicitud" Type="int" />
     <Property Name="idResultado" Type="int" />
     <Property Name="idEmpleado" Type="int" />
+    <Property Name="fecRegistro" Type="datetime" />
   </EntityType>
   <EntityType Name="T_EMPLEADO">
     <Key>
@@ -220,7 +221,7 @@
     <Property Name="idResultado" Type="int" Nullable="false" />
     <Property Name="valorResultado" Type="varchar" MaxLength="100" />
     <Property Name="diagnostico" Type="varchar" MaxLength="100" />
-    <Property Name="conclusion" Type="datetime" />
+    <Property Name="conclusion" Type="varchar" MaxLength="100" />
     <Property Name="fecResultado" Type="datetime" />
     <Property Name="estado" Type="char" MaxLength="3" />
     <Property Name="idAtencion" Type="int" />

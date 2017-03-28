@@ -46,7 +46,7 @@
          
             @foreach (var HistoriaClinica in item.T_HISTORIA_CLINICA)
             {
-               <a href="#">@HistoriaClinica.nroHistoriaClinica</a> 
+               <a href="@Url.Action("HistoriaClinica","SolicitudUCI",new {id = @HistoriaClinica.nroHistoriaClinica })">@HistoriaClinica.nroHistoriaClinica - Ver Historia</a> 
             }
            
         </td>

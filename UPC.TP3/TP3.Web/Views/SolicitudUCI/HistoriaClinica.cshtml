@@ -1,0 +1,44 @@
+﻿@model TP3.Entidades.EF.T_HISTORIA_CLINICA
+
+@{
+    ViewBag.Title = "Historia Clinica";
+}
+
+
+
+<div>
+    <h2 style="text-align:center" class="text-success">Historia Clinica</h2>
+</div>
+
+<table class="table table-striped">
+
+    <tr>
+        <td> Paciente: &nbsp; &nbsp; <b>@Model.T_PACIENTE.T_PERSONA.nompersona</b></td>
+        <td> DNI: &nbsp; &nbsp; <b> @Model.T_PACIENTE.dniPaciente</b> </td>
+        <td>Numero de Historia:&nbsp; &nbsp;<b>@Model.nroHistoriaClinica</b></td>
+    </tr>
+</table>
+
+    @foreach (var item in Model.T_DETALLE_HISTORIA_CLINICA)
+    {
+        <h4>Historia Clinica fecha: @item.fecRegistro </h4>
+        <br />
+        <table class="table ">
+            <tr>
+                <td>Medico Tratante:&nbsp; &nbsp;<b>@item.T_EMPLEADO.nomEmpleado</b></td>
+                <td>Especialidad: &nbsp; &nbsp;<b>Anatomía Patológica</b>  </td>
+                <td>Diagnostico:&nbsp; &nbsp;<b> @item.T_RESULTADO_ATENCION.diagnostico</b> </td>
+            </tr>
+            <tr>
+                <td>Conclusiones:&nbsp; &nbsp;<b>@item.T_RESULTADO_ATENCION.conclusion</b></td>
+                <td>Fecha y Hora Diagnistico: &nbsp; &nbsp;<b>@item.T_RESULTADO_ATENCION.fecResultado</b>  </td>
+                <td></td>
+            </tr>
+        </table>
+    }
+        
+
+<div>
+    @Html.ActionLink("Regresar atras", "Index")
+</div>
+
