@@ -8,14 +8,16 @@ namespace TP3.Negocio
 {
     public class Util
     {
-        public static bool mandarNotificacion(string emails, string paciente, string gravedad, string medico, string estado, string historia,string motivo)
+        public static bool mandarNotificacion(string emails, string paciente, string gravedad, string medico, 
+            string estado, string historia,string medicinaTraslado,string numSolicitud,string tipoQuipoMedico,
+            string tipoTraslado,DateTime? fechaAprobacion,string observacion)
         {
             bool enviado = false;
             System.Net.Mail.MailMessage msj = new System.Net.Mail.MailMessage();
             msj.To.Add(emails);
 
             //Asunto
-            if (estado == "Aprobado")
+            if (estado == "APR")
             {
                 msj.Subject = "Aprobación de Paciente UCI";
             }
@@ -27,13 +29,17 @@ namespace TP3.Negocio
             msj.SubjectEncoding = System.Text.Encoding.UTF8;
 
             msj.Body = "<br /> <h2 style='color:#04B404'>Notificación automática - Sistema Integrado Clinica Ricardo Palma</h2> <br />" +
-            "Ingreso de paciente a UCI : <b style='color:blue'>" + estado + " </b> <br />" +
+            "Ingreso de paciente a UCI : <b style='color:blue'>" + (estado == "APR" ? "AProbado":"Desaprobado") + " </b> <br />" +
+            "Solicitud: <b> " + numSolicitud + " </b><br />" +
             "Paciente: <b> " + paciente + " </b><br />" +
             "Historia Clínica: <b> " + historia + " </b><br />" +
             "Gravedad: <b> " + gravedad + " </b><br />" +
-            "Motivo desaprobacion: <b> " + motivo + " </b><br />" +
+            "Tipo de traslado: <b> " + tipoTraslado + " </b><br />" +
+            "Equipo médico: <b> " + tipoQuipoMedico  + " </b><br />" +
+            "Medicina de traslado: <b> " + medicinaTraslado + " </b><br />" +
+             "Observaciones: <b> " + observacion + " </b><br />" +
             "Medico: <b> " + medico + " </b><br />" +
-             "Fecha y hora de:  <b>" + DateTime.Now.ToString() + " </b>";
+             "Fecha y hora :  <b>" + fechaAprobacion + " </b>";
             msj.BodyEncoding = System.Text.Encoding.UTF8;
             msj.IsBodyHtml = true;
             msj.From = new System.Net.Mail.MailAddress("modulouci@gmail.com");

@@ -16,10 +16,7 @@ namespace TP3.Entidades.EF
     {
         public T_EMPRESA()
         {
-            this.T_ACTA_EJEC_MANTENIMIENTO = new HashSet<T_ACTA_EJEC_MANTENIMIENTO>();
-            this.T_MANTENIMIENTO_EQUIPO = new HashSet<T_MANTENIMIENTO_EQUIPO>();
             this.T_MUEBLE = new HashSet<T_MUEBLE>();
-            this.T_USUARIO = new HashSet<T_USUARIO>();
         }
     
         public int codEmpresa { get; set; }
@@ -29,10 +26,6 @@ namespace TP3.Entidades.EF
         public string telefono { get; set; }
         public Nullable<int> codPersona { get; set; }
     
-        public virtual ICollection<T_ACTA_EJEC_MANTENIMIENTO> T_ACTA_EJEC_MANTENIMIENTO { get; set; }
-        public virtual T_PERSONA T_PERSONA { get; set; }
-        public virtual ICollection<T_MANTENIMIENTO_EQUIPO> T_MANTENIMIENTO_EQUIPO { get; set; }
         public virtual ICollection<T_MUEBLE> T_MUEBLE { get; set; }
-        public virtual ICollection<T_USUARIO> T_USUARIO { get; set; }
     }
 }

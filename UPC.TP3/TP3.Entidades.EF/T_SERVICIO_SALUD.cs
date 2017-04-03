@@ -24,7 +24,6 @@ namespace TP3.Entidades.EF
         public string nomServicio { get; set; }
         public Nullable<int> idEspecialidad { get; set; }
     
-        public virtual T_ESPECIALIDAD_MEDICA T_ESPECIALIDAD_MEDICA { get; set; }
         public virtual ICollection<T_RESERVA_SERVICIO> T_RESERVA_SERVICIO { get; set; }
     }
 }

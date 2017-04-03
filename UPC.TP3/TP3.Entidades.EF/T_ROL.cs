@@ -21,7 +21,6 @@ namespace TP3.Entidades.EF
     
         public int idRol { get; set; }
         public string nombreRol { get; set; }
-        public string tipoRol { get; set; }
         public string estRol { get; set; }
     
         public virtual ICollection<T_USUARIO> T_USUARIO { get; set; }

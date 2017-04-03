@@ -12,27 +12,27 @@ namespace TP3.Negocio
     public class TPaciente
     {
        static  BD_CLINICA_RPEntities context = new BD_CLINICA_RPEntities();
-        public static List<T_PACIENTE> Listar(string estado)
-        {
+        //public static List<T_PACIENTE> Listar(string estado)
+        //{
 
-            List<T_PACIENTE> lista = new List<T_PACIENTE>();
-            try
-            {
-                lista = context.T_PACIENTE.Where(c => c.estado == "En Evaluación").ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return lista;
-        }
+        //    List<T_PACIENTE> lista = new List<T_PACIENTE>();
+        //    try
+        //    {
+        //        lista = context.T_PACIENTE.Where(c => c.estado == "En Evaluación").ToList();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    return lista;
+        //}
 
         public static T_PACIENTE Obtener(int id)
         {
             T_PACIENTE Paciente = null;
             try
             {
-                Paciente = context.obtenerPaciente(id).FirstOrDefault();
+                Paciente = context.T_PACIENTE.Find(id);
             }
             catch (Exception)
             {
@@ -42,26 +42,26 @@ namespace TP3.Negocio
             return Paciente;
         }
 
-        public static bool Actualizar(T_PACIENTE paciente)
-        {
-            bool exito = false;
+        //public static bool Actualizar(T_PACIENTE paciente)
+        //{
+        //    bool exito = false;
 
-            try
-            {
-                context.ActualizarPaciente(paciente.idPaciente, paciente.dniPaciente,
-                    paciente.fechNacimiento, paciente.segmentacion, paciente.T_PERSONA.
-                    codPersona, paciente.estado);
+        //    try
+        //    {
+        //        context.ActualizarPaciente(paciente.idPaciente, paciente.dniPaciente,
+        //            paciente.fechNacimiento, paciente.segmentacion, paciente.T_PERSONA.
+        //            codPersona, paciente.estado);
 
-                context.SaveChanges();
-                exito = true;
+        //        context.SaveChanges();
+        //        exito = true;
 
-            }
-            catch (Exception)
-            {
-                exito = false;
-            }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        exito = false;
+        //    }
 
-            return exito;
-        }
+        //    return exito;
+        //}
     }
 }

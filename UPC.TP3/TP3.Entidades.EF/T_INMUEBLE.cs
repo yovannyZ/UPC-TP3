@@ -14,15 +14,8 @@ namespace TP3.Entidades.EF
     
     public partial class T_INMUEBLE
     {
-        public T_INMUEBLE()
-        {
-            this.T_EQUIPO_MEDICO = new HashSet<T_EQUIPO_MEDICO>();
-        }
-    
         public int codInmueble { get; set; }
         public string dscTipoEstado { get; set; }
         public Nullable<bool> estado { get; set; }
-    
-        public virtual ICollection<T_EQUIPO_MEDICO> T_EQUIPO_MEDICO { get; set; }
     }
 }

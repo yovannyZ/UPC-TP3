@@ -47,7 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListarPacientes1_Result.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ListarPacientes_Result.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obtenerPaciente1_Result.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="obtenerPaciente_Result.cs">
@@ -59,16 +65,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_ACTA_EJEC_MANTENIMIENTO.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_ACTA_EJEC_MANTENIMIENTO_DET.cs">
+    <Compile Include="T_ANTECEDENTES.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_BIEN.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_DETALLE_HISTORIA_CLINICA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_EMPLEADO.cs">
@@ -77,25 +77,25 @@
     <Compile Include="T_EMPRESA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_EQUIPO_MEDICO.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_EQUIPO_USO.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="T_ESPECIALIDAD_MEDICA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_EVALUACION_SIGNOS_VITALES.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_EVALUACION_TISS.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EVENTO_HISTORIA_CLINICA.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_EXAMEN_TRATAMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_HISTORIA_CLINICA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_INMUEBLE.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_MANTENIMIENTO_EQUIPO.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_MODELO.cs">
@@ -113,7 +113,7 @@
     <Compile Include="T_PERSONA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_PLAN_MANTENIMIENTO.cs">
+    <Compile Include="T_REGISTRO_UCI.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_RESERVA_SERVICIO.cs">
@@ -122,22 +122,19 @@
     <Compile Include="T_RESULTADO_ATENCION.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_RESULTADO_EXAMEN.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_ROL.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_SERVICIO_SALUD.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_SOLICITUD_MANTENIMIENTO.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="T_SOLICITUD_UCI.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_TAREA_MANTENIMIENTO.cs">
-      <DependentUpon>TP3Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_TECNICO_MANTENIMIENTO.cs">
+    <Compile Include="T_TRATAMIENTO_UCI.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
     <Compile Include="T_USUARIO.cs">

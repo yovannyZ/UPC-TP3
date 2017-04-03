@@ -16,13 +16,10 @@ namespace TP3.Entidades.EF
     {
         public T_EMPLEADO()
         {
-            this.T_DETALLE_HISTORIA_CLINICA = new HashSet<T_DETALLE_HISTORIA_CLINICA>();
-            this.T_EVALUACION_SIGNOS_VITALES = new HashSet<T_EVALUACION_SIGNOS_VITALES>();
-            this.T_RESERVA_SERVICIO = new HashSet<T_RESERVA_SERVICIO>();
-            this.T_RESULTADO_ATENCION = new HashSet<T_RESULTADO_ATENCION>();
-            this.T_SOLICITUD_MANTENIMIENTO = new HashSet<T_SOLICITUD_MANTENIMIENTO>();
-            this.T_TECNICO_MANTENIMIENTO = new HashSet<T_TECNICO_MANTENIMIENTO>();
             this.T_USUARIO = new HashSet<T_USUARIO>();
+            this.T_RESULTADO_ATENCION = new HashSet<T_RESULTADO_ATENCION>();
+            this.T_RESERVA_SERVICIO = new HashSet<T_RESERVA_SERVICIO>();
+            this.T_SOLICITUD_UCI = new HashSet<T_SOLICITUD_UCI>();
         }
     
         public int idEmpleado { get; set; }
@@ -34,15 +31,14 @@ namespace TP3.Entidades.EF
         public string dscProfesion { get; set; }
         public string dscArea { get; set; }
         public string dscCorreo { get; set; }
+        public Nullable<int> idEspecialidad { get; set; }
         public Nullable<int> codPersona { get; set; }
     
-        public virtual ICollection<T_DETALLE_HISTORIA_CLINICA> T_DETALLE_HISTORIA_CLINICA { get; set; }
-        public virtual T_PERSONA T_PERSONA { get; set; }
-        public virtual ICollection<T_EVALUACION_SIGNOS_VITALES> T_EVALUACION_SIGNOS_VITALES { get; set; }
-        public virtual ICollection<T_RESERVA_SERVICIO> T_RESERVA_SERVICIO { get; set; }
-        public virtual ICollection<T_RESULTADO_ATENCION> T_RESULTADO_ATENCION { get; set; }
-        public virtual ICollection<T_SOLICITUD_MANTENIMIENTO> T_SOLICITUD_MANTENIMIENTO { get; set; }
-        public virtual ICollection<T_TECNICO_MANTENIMIENTO> T_TECNICO_MANTENIMIENTO { get; set; }
         public virtual ICollection<T_USUARIO> T_USUARIO { get; set; }
+        public virtual T_ESPECIALIDAD_MEDICA T_ESPECIALIDAD_MEDICA { get; set; }
+        public virtual T_PERSONA T_PERSONA { get; set; }
+        public virtual ICollection<T_RESULTADO_ATENCION> T_RESULTADO_ATENCION { get; set; }
+        public virtual ICollection<T_RESERVA_SERVICIO> T_RESERVA_SERVICIO { get; set; }
+        public virtual ICollection<T_SOLICITUD_UCI> T_SOLICITUD_UCI { get; set; }
     }
 }

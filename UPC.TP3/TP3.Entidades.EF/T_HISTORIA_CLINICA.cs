@@ -16,13 +16,18 @@ namespace TP3.Entidades.EF
     {
         public T_HISTORIA_CLINICA()
         {
-            this.T_DETALLE_HISTORIA_CLINICA = new HashSet<T_DETALLE_HISTORIA_CLINICA>();
+            this.T_ANTECEDENTES = new HashSet<T_ANTECEDENTES>();
+            this.T_EVENTO_HISTORIA_CLINICA = new HashSet<T_EVENTO_HISTORIA_CLINICA>();
         }
     
-        public int nroHistoriaClinica { get; set; }
-        public Nullable<int> idPaciente { get; set; }
+        public int idHistoriaClinica { get; set; }
+        public string nroHistoriaClinica { get; set; }
+        public Nullable<System.DateTime> fechaCreacion { get; set; }
+        public string tipoEvento { get; set; }
+        public int idPaciente { get; set; }
     
-        public virtual ICollection<T_DETALLE_HISTORIA_CLINICA> T_DETALLE_HISTORIA_CLINICA { get; set; }
+        public virtual ICollection<T_ANTECEDENTES> T_ANTECEDENTES { get; set; }
+        public virtual ICollection<T_EVENTO_HISTORIA_CLINICA> T_EVENTO_HISTORIA_CLINICA { get; set; }
         public virtual T_PACIENTE T_PACIENTE { get; set; }
     }
 }

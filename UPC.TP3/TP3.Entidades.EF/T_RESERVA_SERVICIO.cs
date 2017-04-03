@@ -25,8 +25,8 @@ namespace TP3.Entidades.EF
         public string tipoCliente { get; set; }
         public string estado { get; set; }
         public Nullable<int> idEmpleado { get; set; }
-        public Nullable<int> idPaciente { get; set; }
         public Nullable<int> idServicio { get; set; }
+        public Nullable<int> idPaciente { get; set; }
     
         public virtual T_EMPLEADO T_EMPLEADO { get; set; }
         public virtual ICollection<T_ORDEN_ATENCION> T_ORDEN_ATENCION { get; set; }

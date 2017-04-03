@@ -24,11 +24,9 @@ namespace TP3.Entidades.EF
         public string email { get; set; }
         public string contrasena { get; set; }
         public Nullable<int> idEmpleado { get; set; }
-        public Nullable<int> codEmpresa { get; set; }
         public string EstUsuario { get; set; }
     
         public virtual T_EMPLEADO T_EMPLEADO { get; set; }
-        public virtual T_EMPRESA T_EMPRESA { get; set; }
         public virtual ICollection<T_ROL> T_ROL { get; set; }
     }
 }

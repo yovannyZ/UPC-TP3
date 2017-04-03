@@ -14,11 +14,6 @@ namespace TP3.Entidades.EF
     
     public partial class T_MUEBLE
     {
-        public T_MUEBLE()
-        {
-            this.T_EQUIPO_MEDICO = new HashSet<T_EQUIPO_MEDICO>();
-        }
-    
         public int codMueble { get; set; }
         public string dscFuncion { get; set; }
         public string dscAplicacionMedica { get; set; }
@@ -30,7 +25,6 @@ namespace TP3.Entidades.EF
     
         public virtual T_BIEN T_BIEN { get; set; }
         public virtual T_EMPRESA T_EMPRESA { get; set; }
-        public virtual ICollection<T_EQUIPO_MEDICO> T_EQUIPO_MEDICO { get; set; }
         public virtual T_MODELO T_MODELO { get; set; }
     }
 }

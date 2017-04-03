@@ -1,0 +1,187 @@
+﻿@model TP3.Entidades.EF.T_SOLICITUD_UCI
+
+@{
+    ViewBag.Title = "Evaluar";
+}
+
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+
+        $("#btnAprobar").click(function () {
+            //idSolicitud, fechaSolicitud, observacion, estadoSolicitud, gravedadPaciente, idPaciente, numeroSolicitud, fechaEvaluacion, tipoTraslado, dscMedicinaTraslado, tipoEquipoMedico, idEmpleado, idResultado, idRegistro
+            var tipoEquipoMedico = $('#tipoEquipoMedico').val();
+            var tipoTraslado = $('#tipoTraslado').val();
+            var dscMedicinaTraslado = $('#dscMedicinaTraslado').val();
+            var idSolicitud = $("#idSolicitud").val();
+            var observacion = $("#observacion").val();
+          
+            var estado = "APR"
+            $.ajax({
+                url: "/SolicitudUCI/Evaluar",
+                type: 'POST',
+                data: {
+                    idSolicitud: idSolicitud, tipoEquipoMedico: tipoEquipoMedico, dscMedicinaTraslado: dscMedicinaTraslado, tipoTraslado: tipoTraslado, estado: estado, observacion: observacion
+                },
+                success: function (data) {
+                    alert(data);
+                    if (data.indexOf("Error") == -1) {
+                        window.location.href = '/SolicitudUCI';
+                    }
+                },
+                error: function (error) {
+                    alert("Error: Intente de nuevo.");
+                }
+            });
+        });
+
+        $("#btnDesaprobar").click(function () {
+            //idSolicitud, fechaSolicitud, observacion, estadoSolicitud, gravedadPaciente, idPaciente, numeroSolicitud, fechaEvaluacion, tipoTraslado, dscMedicinaTraslado, tipoEquipoMedico, idEmpleado, idResultado, idRegistro
+            var tipoEquipoMedico = $('#tipoEquipoMedico').val();
+            var tipoTraslado = $('#tipoTraslado').val();
+            var dscMedicinaTraslado = $('#dscMedicinaTraslado').val();
+            var idSolicitud = $("#idSolicitud").val();
+            var observacion = $("#observacion").val();
+
+            var estado = "DES"
+            $.ajax({
+                url: "/SolicitudUCI/Evaluar",
+                type: 'POST',
+                data: {
+                    idSolicitud: idSolicitud, tipoEquipoMedico: tipoEquipoMedico, dscMedicinaTraslado: dscMedicinaTraslado, tipoTraslado: tipoTraslado, estado: estado, observacion: observacion
+                },
+                success: function (data) {
+                    alert(data);
+                    if (data.indexOf("Error") == -1) {
+                        window.location.href = '/SolicitudUCI';
+                    }
+                },
+                error: function (error) {
+                    alert("Error: Intente de nuevo.");
+                }
+            });
+        });
+    });
+    </script>
+
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Evaluar Paciente</h2>
+</div>
+
+<br />
+<br />
+
+
+@Html.HiddenFor(model => model.idSolicitud, new { htmlAttributes = new { @class = "form-control" } })
+
+
+<table class="table">
+    <tr>
+        <td>&nbsp; &nbsp; Solicitud:</td>
+        <td>&nbsp; &nbsp; <b>@Model.numeroSolicitud</b></td>
+        <td>&nbsp; &nbsp; Fecha: </td>
+        <td>&nbsp; &nbsp;<b>@Model.fechaSolicitud</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>&nbsp; &nbsp; Estado:</td>
+        <td>&nbsp; &nbsp; <b>Pendiente:</b></td>
+        <td>&nbsp; &nbsp; Paciente</td>
+        <td>&nbsp; &nbsp;<b>@Model.T_PACIENTE.T_PERSONA.nompersona</b></td>
+        <td>&nbsp; &nbsp; DNI:</td>
+        <td>&nbsp; &nbsp;<b>@Model.T_PACIENTE.dniPaciente</b></td>
+        <td>&nbsp; &nbsp; @Html.ActionLink("Ver Historia clínica", "HistoriaClinica", new { id = Model.idPaciente})</td>
+    </tr>
+
+
+    <tr>
+        <td>&nbsp; &nbsp; Grado complejidad:</td>
+        <td>&nbsp; &nbsp; <b>@Model.gravedadPaciente</b></td>
+        <td>&nbsp; &nbsp; Diagnóstico:</td>
+        <td>&nbsp; &nbsp;<b>@Model.T_RESULTADO_ATENCION.diagnostico</b></td>
+        <td>&nbsp; &nbsp; Observaciones</td>
+        <td>:&nbsp; &nbsp;<b>@Model.observacion</b></td>
+        <td>&nbsp; &nbsp;@Html.ActionLink("Exámenes realizados", "Examenes", new { id = Model.idResultado })</td>
+    </tr>
+
+    <tr>
+        <td>&nbsp; &nbsp; Médico solicitante:</td>
+        <td>&nbsp; &nbsp; <b>@Model.T_EMPLEADO.T_PERSONA.nompersona</b></td>
+        <td>&nbsp; &nbsp; Especialidad:</td>
+        <td>&nbsp; &nbsp;<b>@Model.T_EMPLEADO.T_ESPECIALIDAD_MEDICA.nomEspecialidad</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+
+<table class="table">
+
+    <tr>
+        <td>&nbsp; &nbsp; Tipo traslado</td>
+        <td>
+            &nbsp; &nbsp;
+            <select id="tipoTraslado" name="tipoTraslado" class="form-control">
+                <option value="CAMILLA RIGIDA (CAMILLA NORMAL)">CAMILLA RIGIDA (CAMILLA NORMAL)</option>
+                <option value="CAMILLA DE METAL SCOOP-STRICHER (TIPO CUCHARA PARA NO MOVER MUCHO AL PACIENTE)">CAMILLA DE METAL SCOOP-STRICHER (TIPO CUCHARA PARA NO MOVER MUCHO AL PACIENTE)</option>
+            </select>
+        </td>
+
+        <td>&nbsp; &nbsp; Equipo médico</td>
+        <td>
+            &nbsp; &nbsp;
+            <select id="tipoEquipoMedico" name="tipoEquipoMedico" class="form-control">
+                <option value="VENTILADOR DE TRANSPORTE">VENTILADOR DE TRANSPORTE</option>
+                <option value="TUBO O BALON CON OXIGENO">TUBO O BALON CON OXIGENO</option>
+                <option value="FLUJOMETRO">FLUJOMETRO</option>
+                <option value="MONITOR TRANSPORTE">MONITOR TRANSPORTE</option>
+                <option value="MALETIN DE EMERGENCIA">MALETIN DE EMERGENCIA</option>
+                <option value="BOLSA INSUFLADORA O AMBÙ + NIPLE">BOLSA INSUFLADORA O AMBÙ + NIPLE</option>
+                <option value="ATRIL DE CAMA CON BIC">ATRIL DE CAMA CON BIC</option>
+            </select>
+        </td>
+
+        <td>&nbsp; &nbsp; Medicina traslado</td>
+        <td>
+            &nbsp; &nbsp;
+            <select id="dscMedicinaTraslado" name="dscMedicinaTraslado" class="form-control">
+              
+                <option value="SUERO FISIOLÒGICO MANTENIMIENTO">SUERO FISIOLÒGICO MANTENIMIENTO</option>
+                <option value="SEDANTE MIDAZOLAN">SEDANTE MIDAZOLAN</option>
+                <option value="SEDANTE PROPOFOL">SEDANTE PROPOFOL</option>
+                <option value="ANALGÈSICO FENTANEST">ANALGÈSICO FENTANEST</option>
+                <option value="RELAJANTE NIMBEX">RELAJANTE NIMBEX</option>
+                <option value="OTROS">OTROS</option>
+            </select>
+        </td>
+
+    </tr>
+    <tr>
+        <td>&nbsp; &nbsp; Observación</td>
+        <td>
+            &nbsp; &nbsp;
+            <textarea rows="4" cols="50" id="observacion" name="observacion"></textarea>
+        </td>
+        <td> </td>
+        <td> </td>
+        <td></td>
+        <td>
+            <input type="button" value="Aprobar" id="btnAprobar" class="btn btn-success" />
+            <input type="button" value="Desaprobar" id="btnDesaprobar" class="btn btn-danger" />
+        </td>
+    </tr>
+</table>
+   
+
+
+
+<div>
+    @Html.ActionLink("Regresar atrás", "Index")
+</div>
+

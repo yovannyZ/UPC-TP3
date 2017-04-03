@@ -17,7 +17,6 @@ namespace TP3.Entidades.EF
         public T_PERSONA()
         {
             this.T_EMPLEADO = new HashSet<T_EMPLEADO>();
-            this.T_EMPRESA = new HashSet<T_EMPRESA>();
             this.T_PACIENTE = new HashSet<T_PACIENTE>();
         }
     
@@ -25,7 +24,6 @@ namespace TP3.Entidades.EF
         public string nompersona { get; set; }
     
         public virtual ICollection<T_EMPLEADO> T_EMPLEADO { get; set; }
-        public virtual ICollection<T_EMPRESA> T_EMPRESA { get; set; }
         public virtual ICollection<T_PACIENTE> T_PACIENTE { get; set; }
     }
 }

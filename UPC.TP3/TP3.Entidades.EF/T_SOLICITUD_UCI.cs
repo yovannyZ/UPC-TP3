@@ -16,19 +16,28 @@ namespace TP3.Entidades.EF
     {
         public T_SOLICITUD_UCI()
         {
-            this.T_DETALLE_HISTORIA_CLINICA = new HashSet<T_DETALLE_HISTORIA_CLINICA>();
+            this.T_TRATAMIENTO_UCI = new HashSet<T_TRATAMIENTO_UCI>();
         }
     
         public int idSolicitud { get; set; }
-        public Nullable<System.DateTime> fechSolicitud { get; set; }
-        public string estPaciente { get; set; }
-        public string medSolicitante { get; set; }
-        public string gravedad { get; set; }
-        public string motDesaprobacion { get; set; }
-        public string obsDesaprobacion { get; set; }
+        public Nullable<System.DateTime> fechaSolicitud { get; set; }
+        public string observacion { get; set; }
+        public string estadoSolicitud { get; set; }
+        public string gravedadPaciente { get; set; }
         public Nullable<int> idPaciente { get; set; }
+        public string numeroSolicitud { get; set; }
+        public Nullable<System.DateTime> fechaEvaluacion { get; set; }
+        public string tipoTraslado { get; set; }
+        public string dscMedicinaTraslado { get; set; }
+        public string tipoEquipoMedico { get; set; }
+        public Nullable<int> idEmpleado { get; set; }
+        public Nullable<int> idResultado { get; set; }
+        public Nullable<int> idRegistro { get; set; }
     
-        public virtual ICollection<T_DETALLE_HISTORIA_CLINICA> T_DETALLE_HISTORIA_CLINICA { get; set; }
+        public virtual T_EMPLEADO T_EMPLEADO { get; set; }
         public virtual T_PACIENTE T_PACIENTE { get; set; }
+        public virtual T_REGISTRO_UCI T_REGISTRO_UCI { get; set; }
+        public virtual T_RESULTADO_ATENCION T_RESULTADO_ATENCION { get; set; }
+        public virtual ICollection<T_TRATAMIENTO_UCI> T_TRATAMIENTO_UCI { get; set; }
     }
 }

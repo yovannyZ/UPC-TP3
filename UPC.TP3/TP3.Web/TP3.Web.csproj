@@ -265,6 +265,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\rodilla_derecha.jpg" />
     <Content Include="lib\antiscroll\antiscroll.css" />
     <Content Include="lib\antiscroll\antiscroll.js" />
     <Content Include="lib\antiscroll\antiscroll.min.js" />
@@ -2059,6 +2060,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SolicitudUCIController.cs" />
+    <Compile Include="Controllers\TratamientoMedicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2085,6 +2087,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SolicitudUCI\HistoriaClinica.cshtml" />
+    <Content Include="Views\SolicitudUCI\Evaluar.cshtml" />
+    <Content Include="Views\SolicitudUCI\DetalleHistoria.cshtml" />
+    <Content Include="Views\SolicitudUCI\Examenes.cshtml" />
+    <Content Include="Views\TratamientoMedico\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2095,6 +2101,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\TratamiendoMedico\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TP3.Entidades.EF\TP3.Entidades.EF.csproj">

@@ -13,86 +13,42 @@ namespace TP2.Web.Controllers
         // GET: PacienteEstado
         public ActionResult Index()
         {
-            var listado = TPaciente.Listar("En Evaluación");
+            var listado = TSolicitudUCI.Listar("PEN");
             return View(listado);
         }
 
-
-        public ActionResult Aprobar(int id)
+        public ActionResult Evaluar(int id)
         {
-            var paciente = TPaciente.Obtener(id);
-            return View(paciente);
+            var solicitud = TSolicitudUCI.Obtener(id);
+            return View(solicitud);
         }
 
         [HttpPost]
-        public string Aprobar(int idPaciente, string observacion, string gravedad,string Historia)
+        public string Evaluar(int idSolicitud, string tipoEquipoMedico, string dscMedicinaTraslado, 
+            string tipoTraslado, string estado ,string observacion)
         {
             string mensaje = "Error al grabar los datos";
 
-            var paciente = TPaciente.Obtener(idPaciente);
-            paciente.estado = "Aprobado";
+            var solicitud = TSolicitudUCI.Obtener(idSolicitud);
+            solicitud.tipoEquipoMedico = tipoEquipoMedico;
+            solicitud.dscMedicinaTraslado = dscMedicinaTraslado;
+            solicitud.tipoTraslado = tipoTraslado;
+            solicitud.estadoSolicitud = estado;
+            solicitud.fechaEvaluacion = DateTime.Now;
 
-            T_SOLICITUD_UCI Solicitud = new T_SOLICITUD_UCI();
-            Solicitud.estPaciente = paciente.estado;
-            Solicitud.medSolicitante = "OTOYA ZAPATA MARIA FERNANDA";
-            Solicitud.gravedad = gravedad;
-            Solicitud.motDesaprobacion = "";
-            Solicitud.obsDesaprobacion = observacion;
-            Solicitud.idPaciente = paciente.idPaciente;
-            Solicitud.T_PACIENTE = paciente;
+            bool esValido= TSolicitudUCI.Actualizar(solicitud);
 
-            TPaciente.Actualizar(paciente);
-
-            bool esValido = TSolicitudUCI.Insertar(Solicitud);
+            T_TRATAMIENTO_UCI tratamiento = new T_TRATAMIENTO_UCI();
+            tratamiento.fechaTratamiento = DateTime.Now;
+            tratamiento.observacion = observacion;
+            TTratamientoUCI.Insertar(tratamiento);
 
             if (esValido)
             {
-                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia,Solicitud.motDesaprobacion);
-
-                if (correoenviado)
-                {
-                    mensaje = "Datos grabadas correctamente y notificaciones enviadas";
-                }
-                else
-                {
-                    mensaje = "Datos grabadas correctamente y notificaciones NO enviadas";
-                }
-            }
-          
-            return mensaje;
-
-        }
-
-        public ActionResult Desaprobar(int id)
-        {
-            var paciente = TPaciente.Obtener(id);
-            return View(paciente);
-        }
-
-        [HttpPost]
-        public string Desaprobar(int idPaciente, string observacion, string  Historia,string motDesaprobacion)
-        {
-            string mensaje = "Error al grabar los datos";
-
-            var paciente = TPaciente.Obtener(idPaciente);
-            paciente.estado = "Desaprobado";
-
-            T_SOLICITUD_UCI Solicitud = new T_SOLICITUD_UCI();
-            Solicitud.estPaciente = paciente.estado;
-            Solicitud.medSolicitante = "OTOYA ZAPATA MARIA FERNANDA";
-            Solicitud.gravedad = "";
-            Solicitud.motDesaprobacion = motDesaprobacion;
-            Solicitud.obsDesaprobacion = observacion;
-            Solicitud.idPaciente = paciente.idPaciente;
-            Solicitud.T_PACIENTE = paciente;
-
-            TPaciente.Actualizar(paciente);
-
-            bool esValido = TSolicitudUCI.Insertar(Solicitud);
-
-            if (esValido)
-            {
-                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", Solicitud.T_PACIENTE.T_PERSONA.nompersona, Solicitud.gravedad, Solicitud.medSolicitante, Solicitud.estPaciente, Historia,Solicitud.motDesaprobacion);
+                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", solicitud.T_PACIENTE.T_PERSONA.nompersona,
+                    solicitud.gravedadPaciente, solicitud.T_EMPLEADO.T_PERSONA.nompersona, solicitud.estadoSolicitud,
+                    solicitud.T_PACIENTE.T_HISTORIA_CLINICA.FirstOrDefault().nroHistoriaClinica, solicitud.dscMedicinaTraslado,solicitud.numeroSolicitud,solicitud.tipoEquipoMedico,solicitud.tipoTraslado,
+                    solicitud.fechaEvaluacion,observacion);
 
                 if (correoenviado)
                 {
@@ -104,15 +60,28 @@ namespace TP2.Web.Controllers
                 }
             }
 
-            return mensaje;
 
+            return mensaje;
         }
 
         public ActionResult HistoriaClinica(int id)
         {
-            var Historia = THistoriaClinica.Obtener(id);
-            return View(Historia);
+            var paciente = TPaciente.Obtener(id);
+            return View(paciente);
         }
+
+        public ActionResult DetalleHistoria(int id)
+        {
+            var resultado = TResultadoAtencion.Obtener(id);
+            return View(resultado);
+        }
+
+        public ActionResult Examenes(int id)
+        {
+            var resultado = TResultadoAtencion.Obtener(id);
+            return View(resultado);
+        }
+       
 
     }
 }

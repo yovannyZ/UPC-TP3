@@ -1,0 +1,186 @@
+﻿@model TP3.Entidades.EF.T_RESULTADO_ATENCION
+
+@{
+    ViewBag.Title = "HistoriaClinica";
+}
+
+@section Scripts {
+@Scripts.Render("~/Script/jqueryui")
+@Styles.Render("~/Content/cssjqryUi")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnImagen").click(function () {
+            $('#modalImagen').modal('show');
+        });
+    });
+</script>
+}
+<div>
+    <h2 style="text-align:center" class="text-success">Número de atención: @Model.idAtencion</h2>
+</div>
+
+<table class="table">
+    <tr>
+        <td>Paciente:&nbsp;&nbsp;<b>@Model.T_ORDEN_ATENCION.T_RESERVA_SERVICIO.T_PACIENTE.T_PERSONA.nompersona</b></td>
+
+        <td>DNI:&nbsp;&nbsp;<b>@Model.T_ORDEN_ATENCION.T_RESERVA_SERVICIO.T_PACIENTE.dniPaciente</b></td>
+
+    </tr>
+ </table>
+
+    @{
+        List<string> listaLab = new List<string>();
+        List<string> listaRayos = new List<string>();
+        List<string> listaEco = new List<string>();
+
+
+        foreach (var item in Model.T_RESULTADO_EXAMEN)
+        {
+            if (item.tipoExamen.Equals("Laboratorio"))
+            {
+                listaLab.Add("Laboratorio");
+                listaLab.Add(item.diagnostico);
+                listaLab.Add(item.fechaExamen.ToString());
+            }
+            else if (item.tipoExamen.Equals("RX"))
+            {
+                listaRayos.Add("Rayos X");
+                listaRayos.Add(item.diagnostico);
+                listaRayos.Add(item.fechaExamen.ToString());
+                // listaRayos.Add(item.imagenResultado);
+            }
+            else if (item.tipoExamen.Equals("Ecografía"))
+            {
+                listaEco.Add("Ecografía");
+                listaEco.Add(item.diagnostico);
+                listaEco.Add(item.fechaExamen.ToString());
+            }
+        }
+
+
+
+                if (listaLab.Count > 0)
+                {
+                      <table>
+                        <tr>
+                            <td>Laboratorio:</td>
+                            <td>Fecha Examen:&nbsp;&nbsp; <b>@listaLab[2]</b></td>
+                        </tr>
+                        <tr>
+                            <td>Tipo Examen: &nbsp;&nbsp; <b>@listaLab[0]</b></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><textarea>@listaLab[1]</textarea></td>
+                        </tr>
+                    </table>
+                    <hr />
+                }
+                else
+                {
+                    <table>
+                        <tr>
+                            <td>Laboratorio:</td>
+                        </tr>
+                        <tr>
+                            <td><b>No se realizaron</b></td>
+                        </tr>
+                    </table>
+                    <hr />
+                }
+
+        if (listaRayos.Count > 0)
+        {
+            <table>
+                <tr>
+                    <td>Radiología:</td>
+                    <td>Fecha Examen:&nbsp;&nbsp; <b>@listaRayos[2]</b></td>
+                </tr>
+                <tr>
+                    <td>Tipo Examen: &nbsp;&nbsp; <b>@listaRayos[0]</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><textarea rows="4" cols="100">@listaRayos[1]</textarea></td>
+                </tr>
+                <tr>
+                    <td><button  id="btnImagen" class="btn btn-success">Ver Imagén</button></td>
+                </tr>
+               
+            </table>
+             <!-- Modal -->
+            <div id="modalImagen" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Tipo Examen : Rayos X</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="~/Images/rodilla_derecha.jpg" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <td>Radiología:</td>
+                </tr>
+                <tr>
+                    <td><b>No se realizaron</b></td>
+                </tr>
+            </table>
+            <hr />
+        }
+
+
+        if (listaEco.Count > 0)
+        {
+            <table>
+                <tr>
+                    <td>Ecografía:</td>
+                    <td>Fecha Examen:&nbsp;&nbsp; <b>@listaEco[2]</b></td>
+                </tr>
+                <tr>
+                    <td>Tipo Examen: &nbsp;&nbsp; <b>@listaEco[0]</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><textarea>@listaEco[1]</textarea></td>
+                </tr>
+
+            </table>
+            <hr />
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <td>Radiología:</td>
+                </tr>
+                <tr>
+                    <td><b>No se realizaron</b></td>
+                </tr>
+            </table>
+            <hr />
+        }
+
+    }
+
+
+
+
+
+
+<a href="javascript:history.back(1)">Volver Atrás</a>
+

@@ -14,9 +14,35 @@ namespace TP3.Negocio
 
         public static T_HISTORIA_CLINICA Obtener( int id)
         {
-            var HistoriaClinica = context.T_HISTORIA_CLINICA.Find(id);
+            T_HISTORIA_CLINICA HistoriaClinica = null;
+            try
+            {
+                HistoriaClinica = context.T_HISTORIA_CLINICA.Find(id);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+          
             return HistoriaClinica;
+        }
 
+        public static List<T_HISTORIA_CLINICA> Listar()
+        {
+            List<T_HISTORIA_CLINICA> lista = new List<T_HISTORIA_CLINICA>();
+
+            try
+            {
+                lista = context.T_HISTORIA_CLINICA.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
+
+            return lista;
+          
         }
     }
 }

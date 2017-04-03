@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TP2.Entidades.EF.T_GDA_PACIENTE>
+﻿@model IEnumerable<TP3.Entidades.EF.T_PACIENTE>
 
 @{
     ViewBag.Title = "Index";
@@ -35,18 +35,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.nomPaciente)
+            @Html.DisplayFor(modelItem => item.T_PERSONA.nompersona)
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.numDNI)
+            @Html.DisplayFor(modelItem => item.dniPaciente)
         </td>
 
         <td>
          
-            @foreach (var HistoriaClinica in item.T_GDA_HISTORIA_CLINICA)
+            @foreach (var HistoriaClinica in item.T_HISTORIA_CLINICA)
             {
-               <a href="#">@HistoriaClinica.nroHistoriaClinica</a> 
+               <a href="@Url.Action("HistoriaClinica","SolicitudUCI",new {id = @HistoriaClinica.nroHistoriaClinica })">@HistoriaClinica.nroHistoriaClinica - Ver Historia</a> 
             }
            
         </td>

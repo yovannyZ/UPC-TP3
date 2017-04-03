@@ -1,0 +1,42 @@
+﻿@model TP3.Entidades.EF.T_RESULTADO_ATENCION
+
+@{
+    ViewBag.Title = "HistoriaClinica";
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Número de atención: @Model.idAtencion</h2>
+</div>
+
+<table class="table">
+
+    <tr>
+        <td>Paciente:</td>
+        <td>@Model.T_ORDEN_ATENCION.T_RESERVA_SERVICIO.T_PACIENTE.T_PERSONA.nompersona</td>
+        <td>DNI:</td>
+        <td>@Model.T_ORDEN_ATENCION.T_RESERVA_SERVICIO.T_PACIENTE.dniPaciente</td>
+        <td>Fecha</td>
+        <td>@Model.fecResultado</td>
+    </tr>
+
+    <tr>
+        <td>Estado:</td>
+        <td>@Model.estado</td>
+        <td>Médico tratante:</td>
+        <td>@Model.T_EMPLEADO.T_PERSONA.nompersona</td>
+        <td>Especialidad</td>
+        <td>@Model.T_EMPLEADO.T_ESPECIALIDAD_MEDICA.nomEspecialidad</td>
+    </tr>
+
+    <tr>
+        <td>Diagnóstico</td>
+        <td><textarea>@Model.diagnostico</textarea></td>
+        <td>Tratamiento</td>
+        <td><textarea>@Model.tratamiento</textarea></td>
+        <td></td>
+        <td>@Html.ActionLink("Exámenes realizados", "Examenes", new {id = Model.idResultado})</td>
+    </tr>
+</table>
+
+<a href="javascript:history.back(1)">Volver Atrás</a>
+

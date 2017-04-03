@@ -17,20 +17,21 @@ namespace TP3.Entidades.EF
         public T_PACIENTE()
         {
             this.T_HISTORIA_CLINICA = new HashSet<T_HISTORIA_CLINICA>();
-            this.T_RESERVA_SERVICIO = new HashSet<T_RESERVA_SERVICIO>();
             this.T_SOLICITUD_UCI = new HashSet<T_SOLICITUD_UCI>();
+            this.T_RESERVA_SERVICIO = new HashSet<T_RESERVA_SERVICIO>();
         }
     
         public int idPaciente { get; set; }
         public string dniPaciente { get; set; }
         public Nullable<System.DateTime> fechNacimiento { get; set; }
         public string segmentacion { get; set; }
-        public Nullable<int> codPersona { get; set; }
         public string estado { get; set; }
+        public Nullable<int> codPersona { get; set; }
+        public string dscCorreoFamiliar { get; set; }
     
         public virtual ICollection<T_HISTORIA_CLINICA> T_HISTORIA_CLINICA { get; set; }
+        public virtual ICollection<T_SOLICITUD_UCI> T_SOLICITUD_UCI { get; set; }
         public virtual T_PERSONA T_PERSONA { get; set; }
         public virtual ICollection<T_RESERVA_SERVICIO> T_RESERVA_SERVICIO { get; set; }
-        public virtual ICollection<T_SOLICITUD_UCI> T_SOLICITUD_UCI { get; set; }
     }
 }

@@ -14,19 +14,13 @@ namespace TP3.Entidades.EF
     
     public partial class T_EVALUACION_SIGNOS_VITALES
     {
-        public T_EVALUACION_SIGNOS_VITALES()
-        {
-            this.T_DETALLE_HISTORIA_CLINICA = new HashSet<T_DETALLE_HISTORIA_CLINICA>();
-        }
-    
         public int idEvaluacionSignosVitales { get; set; }
         public Nullable<int> pulso { get; set; }
         public Nullable<decimal> temperatura { get; set; }
         public Nullable<decimal> presionSistolica { get; set; }
         public Nullable<decimal> presionDiastolica { get; set; }
-        public Nullable<int> idEmpleado { get; set; }
+        public Nullable<int> idResultadoExamen { get; set; }
     
-        public virtual ICollection<T_DETALLE_HISTORIA_CLINICA> T_DETALLE_HISTORIA_CLINICA { get; set; }
-        public virtual T_EMPLEADO T_EMPLEADO { get; set; }
+        public virtual T_RESULTADO_EXAMEN T_RESULTADO_EXAMEN { get; set; }
     }
 }

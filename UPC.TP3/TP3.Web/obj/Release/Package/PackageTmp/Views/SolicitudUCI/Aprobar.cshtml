@@ -1,4 +1,4 @@
-﻿@model TP2.Entidades.EF.T_GDA_PACIENTE
+﻿@model TP3.Entidades.EF.T_PACIENTE
 
 @{
     ViewBag.Title = "Aprobar";
@@ -55,14 +55,14 @@
         </tr>
         <tr>
             <td>&nbsp; &nbsp; Paciente</td>
-            <td>&nbsp; &nbsp; <b>@Model.nomPaciente</b></td>
+            <td>&nbsp; &nbsp; <b>@Model.T_PERSONA.nompersona</b></td>
             <td>&nbsp; &nbsp; DNI</td>
-            <td>&nbsp; &nbsp;<b>@Model.numDNI</b></td>
+            <td>&nbsp; &nbsp;<b>@Model.dniPaciente</b></td>
             <td>&nbsp; &nbsp; Medico</td>
             <td>&nbsp; &nbsp;<b>OTOYA ZAPATA MARIA FERNANDA</b></td>
             <td>&nbsp; &nbsp; Historia Clinica</td>
             <td>&nbsp; &nbsp; 
-                    @foreach (var item in Model.T_GDA_HISTORIA_CLINICA)
+                    @foreach (var item in Model.T_HISTORIA_CLINICA)
                     {
                         <b id="Historia">@item.nroHistoriaClinica</b>
                     }

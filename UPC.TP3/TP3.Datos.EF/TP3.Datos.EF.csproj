@@ -71,7 +71,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="TP3Model.edmx.diagram">
       <DependentUpon>TP3Model.edmx</DependentUpon>

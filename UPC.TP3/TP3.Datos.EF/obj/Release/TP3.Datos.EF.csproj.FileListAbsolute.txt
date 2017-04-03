@@ -1,0 +1,14 @@
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\TP3.Datos.EF.dll.config
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\TP3.Datos.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\TP3.Datos.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\EntityFramework.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\TP3.Entidades.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\TP3.Entidades.EF.pdb
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\EntityFramework.xml
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\es\EntityFramework.resources.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Release\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Release\TP3.Datos.EF.csprojResolveAssemblyReference.cache
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Release\TP3.Datos.EF.dll
+C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Release\TP3.Datos.EF.pdb

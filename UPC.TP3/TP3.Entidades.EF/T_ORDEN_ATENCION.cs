@@ -20,11 +20,8 @@ namespace TP3.Entidades.EF
         }
     
         public int idAtencion { get; set; }
-        public string tipoAtencion { get; set; }
-        public string tipoCliente { get; set; }
-        public Nullable<System.DateTime> fecAtencion { get; set; }
-        public Nullable<System.DateTime> horInicio { get; set; }
-        public Nullable<System.DateTime> horFin { get; set; }
+        public Nullable<System.DateTime> fechaInicio { get; set; }
+        public Nullable<System.DateTime> fechaFin { get; set; }
         public string tipoEntregaResultado { get; set; }
         public string estado { get; set; }
         public Nullable<int> idReserva { get; set; }

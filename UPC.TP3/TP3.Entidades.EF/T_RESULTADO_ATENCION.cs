@@ -16,20 +16,23 @@ namespace TP3.Entidades.EF
     {
         public T_RESULTADO_ATENCION()
         {
-            this.T_DETALLE_HISTORIA_CLINICA = new HashSet<T_DETALLE_HISTORIA_CLINICA>();
+            this.T_EVENTO_HISTORIA_CLINICA = new HashSet<T_EVENTO_HISTORIA_CLINICA>();
+            this.T_SOLICITUD_UCI = new HashSet<T_SOLICITUD_UCI>();
+            this.T_RESULTADO_EXAMEN = new HashSet<T_RESULTADO_EXAMEN>();
         }
     
         public int idResultado { get; set; }
-        public string valorResultado { get; set; }
         public string diagnostico { get; set; }
-        public string conclusion { get; set; }
+        public string tratamiento { get; set; }
         public Nullable<System.DateTime> fecResultado { get; set; }
         public string estado { get; set; }
         public Nullable<int> idAtencion { get; set; }
         public Nullable<int> idEmpleado { get; set; }
     
-        public virtual ICollection<T_DETALLE_HISTORIA_CLINICA> T_DETALLE_HISTORIA_CLINICA { get; set; }
         public virtual T_EMPLEADO T_EMPLEADO { get; set; }
+        public virtual ICollection<T_EVENTO_HISTORIA_CLINICA> T_EVENTO_HISTORIA_CLINICA { get; set; }
         public virtual T_ORDEN_ATENCION T_ORDEN_ATENCION { get; set; }
+        public virtual ICollection<T_SOLICITUD_UCI> T_SOLICITUD_UCI { get; set; }
+        public virtual ICollection<T_RESULTADO_EXAMEN> T_RESULTADO_EXAMEN { get; set; }
     }
 }

@@ -16,14 +16,12 @@ namespace TP3.Entidades.EF
     {
         public T_ESPECIALIDAD_MEDICA()
         {
-            this.T_EQUIPO_MEDICO = new HashSet<T_EQUIPO_MEDICO>();
-            this.T_SERVICIO_SALUD = new HashSet<T_SERVICIO_SALUD>();
+            this.T_EMPLEADO = new HashSet<T_EMPLEADO>();
         }
     
         public int idEspecialidad { get; set; }
         public string nomEspecialidad { get; set; }
     
-        public virtual ICollection<T_EQUIPO_MEDICO> T_EQUIPO_MEDICO { get; set; }
-        public virtual ICollection<T_SERVICIO_SALUD> T_SERVICIO_SALUD { get; set; }
+        public virtual ICollection<T_EMPLEADO> T_EMPLEADO { get; set; }
     }
 }
