@@ -172,6 +172,17 @@
           <Property Name="codPersona" Type="int" Nullable="false" />
           <Property Name="nompersona" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="T_RECOMENDACION_TRATAMIENTO">
+          <Key>
+            <PropertyRef Name="idRecomendacionTrat" />
+          </Key>
+          <Property Name="idRecomendacionTrat" Type="int" Nullable="false" />
+          <Property Name="definicionReco" Type="varchar" MaxLength="200" />
+          <Property Name="puntuacionTotal" Type="int" />
+          <Property Name="gradoMedico" Type="varchar" MaxLength="40" />
+          <Property Name="clasificacionTiss" Type="varchar" MaxLength="40" />
+          <Property Name="relacionCamaEnfer" Type="varchar" MaxLength="40" />
+        </EntityType>
         <EntityType Name="T_REGISTRO_UCI">
           <Key>
             <PropertyRef Name="idRegistro" />
@@ -209,13 +220,15 @@
           <Key>
             <PropertyRef Name="idResultadoExamen" />
           </Key>
-          <Property Name="idResultadoExamen" Type="int" Nullable="false" />
+          <Property Name="idResultadoExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fechaExamen" Type="datetime" />
           <Property Name="fechaResultado" Type="datetime" />
           <Property Name="diagnostico" Type="varchar" MaxLength="200" />
           <Property Name="tipoExamen" Type="varchar" MaxLength="100" />
           <Property Name="imagenResultado" Type="image" />
           <Property Name="idResultado" Type="int" />
+          <Property Name="idTratamenito" Type="int" />
+          <Property Name="idRecomendacion" Type="int" />
         </EntityType>
         <EntityType Name="T_ROL">
           <Key>
@@ -284,18 +297,6 @@
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="idRol" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__T_USUARIO__idEmp__3F466844">
-          <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
-          <End Role="T_USUARIO" Type="Self.T_USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_EMPLEADO">
-              <PropertyRef Name="idEmpleado" />
-            </Principal>
-            <Dependent Role="T_USUARIO">
-              <PropertyRef Name="idEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__T_USUARIO__idRol__440B1D61">
           <End Role="T_ROL" Type="Self.T_ROL" Multiplicity="1" />
           <End Role="T_USUARIO_ROL" Type="Self.T_USUARIO_ROL" Multiplicity="*" />
@@ -317,6 +318,30 @@
             </Principal>
             <Dependent Role="T_USUARIO_ROL">
               <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+          <End Role="T_RECOMENDACION_TRATAMIENTO" Type="Self.T_RECOMENDACION_TRATAMIENTO" Multiplicity="0..1" />
+          <End Role="T_RESULTADO_EXAMEN" Type="Self.T_RESULTADO_EXAMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_RECOMENDACION_TRATAMIENTO">
+              <PropertyRef Name="idRecomendacionTrat" />
+            </Principal>
+            <Dependent Role="T_RESULTADO_EXAMEN">
+              <PropertyRef Name="idRecomendacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+          <End Role="T_TRATAMIENTO_UCI" Type="Self.T_TRATAMIENTO_UCI" Multiplicity="0..1" />
+          <End Role="T_RESULTADO_EXAMEN" Type="Self.T_RESULTADO_EXAMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRATAMIENTO_UCI">
+              <PropertyRef Name="idTratamiento" />
+            </Principal>
+            <Dependent Role="T_RESULTADO_EXAMEN">
+              <PropertyRef Name="idTratamenito" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -660,6 +685,15 @@
           <Parameter Name="idResultado" Type="int" Mode="In" />
           <Parameter Name="idRegistro" Type="int" Mode="In" />
         </Function>
+        <Function Name="InsertarResultadoExamen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaExamen" Type="datetime" Mode="In" />
+          <Parameter Name="fechaResultado" Type="datetime" Mode="In" />
+          <Parameter Name="diagnostico" Type="varchar" Mode="In" />
+          <Parameter Name="tipoExamen" Type="varchar" Mode="In" />
+          <Parameter Name="idResultado" Type="int" Mode="In" />
+          <Parameter Name="idTratamenito" Type="int" Mode="In" />
+          <Parameter Name="idRecomendacion" Type="int" Mode="In" />
+        </Function>
         <Function Name="InsertarTratamientoUCI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fechaTratamiento" Type="datetime" Mode="In" />
           <Parameter Name="resultado" Type="varchar" Mode="In" />
@@ -685,6 +719,7 @@
           <EntitySet Name="T_ORDEN_ATENCION" EntityType="Self.T_ORDEN_ATENCION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_PACIENTE" EntityType="Self.T_PACIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_PERSONA" EntityType="Self.T_PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_RECOMENDACION_TRATAMIENTO" EntityType="Self.T_RECOMENDACION_TRATAMIENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_REGISTRO_UCI" EntityType="Self.T_REGISTRO_UCI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_RESERVA_SERVICIO" EntityType="Self.T_RESERVA_SERVICIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_RESULTADO_ATENCION" EntityType="Self.T_RESULTADO_ATENCION" Schema="dbo" store:Type="Tables" />
@@ -695,10 +730,6 @@
           <EntitySet Name="T_TRATAMIENTO_UCI" EntityType="Self.T_TRATAMIENTO_UCI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_USUARIO" EntityType="Self.T_USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_USUARIO_ROL" EntityType="Self.T_USUARIO_ROL" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__T_USUARIO__idEmp__3F466844" Association="Self.FK__T_USUARIO__idEmp__3F466844">
-            <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
-            <End Role="T_USUARIO" EntitySet="T_USUARIO" />
-          </AssociationSet>
           <AssociationSet Name="FK__T_USUARIO__idRol__440B1D61" Association="Self.FK__T_USUARIO__idRol__440B1D61">
             <End Role="T_ROL" EntitySet="T_ROL" />
             <End Role="T_USUARIO_ROL" EntitySet="T_USUARIO_ROL" />
@@ -706,6 +737,14 @@
           <AssociationSet Name="FK__T_USUARIO__idUsu__4316F928" Association="Self.FK__T_USUARIO__idUsu__4316F928">
             <End Role="T_USUARIO" EntitySet="T_USUARIO" />
             <End Role="T_USUARIO_ROL" EntitySet="T_USUARIO_ROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" Association="Self.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+            <End Role="T_RECOMENDACION_TRATAMIENTO" EntitySet="T_RECOMENDACION_TRATAMIENTO" />
+            <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" Association="Self.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+            <End Role="T_TRATAMIENTO_UCI" EntitySet="T_TRATAMIENTO_UCI" />
+            <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
           </AssociationSet>
           <AssociationSet Name="R_11" Association="Self.R_11">
             <End Role="T_ESPECIALIDAD_MEDICA" EntitySet="T_ESPECIALIDAD_MEDICA" />
@@ -1023,6 +1062,24 @@
             <Parameter Name="frecuencia" Mode="In" Type="String" />
             <Parameter Name="idSolicitud" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="T_RECOMENDACION_TRATAMIENTO" EntityType="TP3Model.T_RECOMENDACION_TRATAMIENTO" />
+          <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" Association="TP3Model.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+            <End Role="T_TRATAMIENTO_UCI" EntitySet="T_TRATAMIENTO_UCI" />
+            <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
+          </AssociationSet>
+          <FunctionImport Name="InsertarResultadoExamen">
+            <Parameter Name="fechaExamen" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaResultado" Mode="In" Type="DateTime" />
+            <Parameter Name="diagnostico" Mode="In" Type="String" />
+            <Parameter Name="tipoExamen" Mode="In" Type="String" />
+            <Parameter Name="idResultado" Mode="In" Type="Int32" />
+            <Parameter Name="idTratamenito" Mode="In" Type="Int32" />
+            <Parameter Name="idRecomendacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" Association="TP3Model.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+            <End Role="T_RECOMENDACION_TRATAMIENTO" EntitySet="T_RECOMENDACION_TRATAMIENTO" />
+            <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="ListarPacientes_Result">
           <Property Type="Int32" Name="idPaciente" Nullable="false" />
@@ -1316,6 +1373,10 @@
           <NavigationProperty Name="T_EVENTO_HISTORIA_CLINICA" Relationship="TP3Model.R_76" FromRole="T_RESULTADO_EXAMEN" ToRole="T_EVENTO_HISTORIA_CLINICA" />
           <NavigationProperty Name="T_EXAMEN_TRATAMIENTO" Relationship="TP3Model.R_88" FromRole="T_RESULTADO_EXAMEN" ToRole="T_EXAMEN_TRATAMIENTO" />
           <NavigationProperty Name="T_RESULTADO_ATENCION" Relationship="TP3Model.R_89" FromRole="T_RESULTADO_EXAMEN" ToRole="T_RESULTADO_ATENCION" />
+          <Property Name="idTratamenito" Type="Int32" />
+          <NavigationProperty Name="T_TRATAMIENTO_UCI" Relationship="TP3Model.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" FromRole="T_RESULTADO_EXAMEN" ToRole="T_TRATAMIENTO_UCI" />
+          <Property Name="idRecomendacion" Type="Int32" />
+          <NavigationProperty Name="T_RECOMENDACION_TRATAMIENTO" Relationship="TP3Model.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" FromRole="T_RESULTADO_EXAMEN" ToRole="T_RECOMENDACION_TRATAMIENTO" />
         </EntityType>
         <EntityType Name="T_ROL">
           <Key>
@@ -1373,6 +1434,7 @@
           <Property Name="idSolicitud" Type="Int32" />
           <NavigationProperty Name="T_EXAMEN_TRATAMIENTO" Relationship="TP3Model.R_87" FromRole="T_TRATAMIENTO_UCI" ToRole="T_EXAMEN_TRATAMIENTO" />
           <NavigationProperty Name="T_SOLICITUD_UCI" Relationship="TP3Model.R_86" FromRole="T_TRATAMIENTO_UCI" ToRole="T_SOLICITUD_UCI" />
+          <NavigationProperty Name="T_RESULTADO_EXAMEN" Relationship="TP3Model.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" FromRole="T_TRATAMIENTO_UCI" ToRole="T_RESULTADO_EXAMEN" />
         </EntityType>
         <EntityType Name="T_USUARIO">
           <Key>
@@ -1727,6 +1789,42 @@
           <End Type="TP3Model.T_ROL" Role="T_ROL" Multiplicity="*" />
           <End Type="TP3Model.T_USUARIO" Role="T_USUARIO" Multiplicity="*" />
         </Association>
+        <EntityType Name="T_RECOMENDACION_TRATAMIENTO">
+          <Key>
+            <PropertyRef Name="idRecomendacionTrat" />
+          </Key>
+          <Property Name="idRecomendacionTrat" Type="Int32" Nullable="false" />
+          <Property Name="definicionReco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="puntuacionTotal" Type="Int32" />
+          <Property Name="gradoMedico" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="clasificacionTiss" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="relacionCamaEnfer" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_RESULTADO_EXAMEN" Relationship="TP3Model.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" FromRole="T_RECOMENDACION_TRATAMIENTO" ToRole="T_RESULTADO_EXAMEN" />
+        </EntityType>
+        <Association Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+          <End Type="TP3Model.T_TRATAMIENTO_UCI" Role="T_TRATAMIENTO_UCI" Multiplicity="0..1" />
+          <End Type="TP3Model.T_RESULTADO_EXAMEN" Role="T_RESULTADO_EXAMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRATAMIENTO_UCI">
+              <PropertyRef Name="idTratamiento" />
+            </Principal>
+            <Dependent Role="T_RESULTADO_EXAMEN">
+              <PropertyRef Name="idTratamenito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+          <End Type="TP3Model.T_RECOMENDACION_TRATAMIENTO" Role="T_RECOMENDACION_TRATAMIENTO" Multiplicity="0..1" />
+          <End Type="TP3Model.T_RESULTADO_EXAMEN" Role="T_RESULTADO_EXAMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_RECOMENDACION_TRATAMIENTO">
+              <PropertyRef Name="idRecomendacionTrat" />
+            </Principal>
+            <Dependent Role="T_RESULTADO_EXAMEN">
+              <PropertyRef Name="idRecomendacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1950,6 +2048,8 @@
           <EntitySetMapping Name="T_RESULTADO_EXAMEN">
             <EntityTypeMapping TypeName="TP3Model.T_RESULTADO_EXAMEN">
               <MappingFragment StoreEntitySet="T_RESULTADO_EXAMEN">
+                <ScalarProperty Name="idRecomendacion" ColumnName="idRecomendacion" />
+                <ScalarProperty Name="idTratamenito" ColumnName="idTratamenito" />
                 <ScalarProperty Name="idResultado" ColumnName="idResultado" />
                 <ScalarProperty Name="imagenResultado" ColumnName="imagenResultado" />
                 <ScalarProperty Name="tipoExamen" ColumnName="tipoExamen" />
@@ -2034,6 +2134,19 @@
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="ActualizarSolicitudUCI" FunctionName="TP3Model.Store.ActualizarSolicitudUCI" />
           <FunctionImportMapping FunctionImportName="InsertarTratamientoUCI" FunctionName="TP3Model.Store.InsertarTratamientoUCI" />
+          <EntitySetMapping Name="T_RECOMENDACION_TRATAMIENTO">
+            <EntityTypeMapping TypeName="TP3Model.T_RECOMENDACION_TRATAMIENTO">
+              <MappingFragment StoreEntitySet="T_RECOMENDACION_TRATAMIENTO">
+                <ScalarProperty Name="relacionCamaEnfer" ColumnName="relacionCamaEnfer" />
+                <ScalarProperty Name="clasificacionTiss" ColumnName="clasificacionTiss" />
+                <ScalarProperty Name="gradoMedico" ColumnName="gradoMedico" />
+                <ScalarProperty Name="puntuacionTotal" ColumnName="puntuacionTotal" />
+                <ScalarProperty Name="definicionReco" ColumnName="definicionReco" />
+                <ScalarProperty Name="idRecomendacionTrat" ColumnName="idRecomendacionTrat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertarResultadoExamen" FunctionName="TP3Model.Store.InsertarResultadoExamen" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

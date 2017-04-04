@@ -2091,6 +2091,7 @@
     <Content Include="Views\SolicitudUCI\DetalleHistoria.cshtml" />
     <Content Include="Views\SolicitudUCI\Examenes.cshtml" />
     <Content Include="Views\TratamientoMedico\Index.cshtml" />
+    <Content Include="Views\TratamientoMedico\Generar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2101,7 +2102,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\TratamiendoMedico\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TP3.Entidades.EF\TP3.Entidades.EF.csproj">

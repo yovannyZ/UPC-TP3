@@ -29,11 +29,15 @@ namespace TP3.Entidades.EF
         public string tipoExamen { get; set; }
         public byte[] imagenResultado { get; set; }
         public Nullable<int> idResultado { get; set; }
+        public Nullable<int> idTratamenito { get; set; }
+        public Nullable<int> idRecomendacion { get; set; }
     
         public virtual ICollection<T_EVALUACION_SIGNOS_VITALES> T_EVALUACION_SIGNOS_VITALES { get; set; }
         public virtual ICollection<T_EVALUACION_TISS> T_EVALUACION_TISS { get; set; }
         public virtual ICollection<T_EVENTO_HISTORIA_CLINICA> T_EVENTO_HISTORIA_CLINICA { get; set; }
         public virtual ICollection<T_EXAMEN_TRATAMIENTO> T_EXAMEN_TRATAMIENTO { get; set; }
         public virtual T_RESULTADO_ATENCION T_RESULTADO_ATENCION { get; set; }
+        public virtual T_TRATAMIENTO_UCI T_TRATAMIENTO_UCI { get; set; }
+        public virtual T_RECOMENDACION_TRATAMIENTO T_RECOMENDACION_TRATAMIENTO { get; set; }
     }
 }

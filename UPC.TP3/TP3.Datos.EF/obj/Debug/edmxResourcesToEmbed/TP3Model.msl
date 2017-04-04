@@ -218,6 +218,8 @@
     <EntitySetMapping Name="T_RESULTADO_EXAMEN">
       <EntityTypeMapping TypeName="TP3Model.T_RESULTADO_EXAMEN">
         <MappingFragment StoreEntitySet="T_RESULTADO_EXAMEN">
+          <ScalarProperty Name="idRecomendacion" ColumnName="idRecomendacion" />
+          <ScalarProperty Name="idTratamenito" ColumnName="idTratamenito" />
           <ScalarProperty Name="idResultado" ColumnName="idResultado" />
           <ScalarProperty Name="imagenResultado" ColumnName="imagenResultado" />
           <ScalarProperty Name="tipoExamen" ColumnName="tipoExamen" />
@@ -302,5 +304,18 @@
     </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="ActualizarSolicitudUCI" FunctionName="TP3Model.Store.ActualizarSolicitudUCI" />
     <FunctionImportMapping FunctionImportName="InsertarTratamientoUCI" FunctionName="TP3Model.Store.InsertarTratamientoUCI" />
+    <EntitySetMapping Name="T_RECOMENDACION_TRATAMIENTO">
+      <EntityTypeMapping TypeName="TP3Model.T_RECOMENDACION_TRATAMIENTO">
+        <MappingFragment StoreEntitySet="T_RECOMENDACION_TRATAMIENTO">
+          <ScalarProperty Name="relacionCamaEnfer" ColumnName="relacionCamaEnfer" />
+          <ScalarProperty Name="clasificacionTiss" ColumnName="clasificacionTiss" />
+          <ScalarProperty Name="gradoMedico" ColumnName="gradoMedico" />
+          <ScalarProperty Name="puntuacionTotal" ColumnName="puntuacionTotal" />
+          <ScalarProperty Name="definicionReco" ColumnName="definicionReco" />
+          <ScalarProperty Name="idRecomendacionTrat" ColumnName="idRecomendacionTrat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertarResultadoExamen" FunctionName="TP3Model.Store.InsertarResultadoExamen" />
   </EntityContainerMapping>
 </Mapping>

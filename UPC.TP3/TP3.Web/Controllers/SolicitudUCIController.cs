@@ -41,6 +41,7 @@ namespace TP2.Web.Controllers
             T_TRATAMIENTO_UCI tratamiento = new T_TRATAMIENTO_UCI();
             tratamiento.fechaTratamiento = DateTime.Now;
             tratamiento.observacion = observacion;
+            tratamiento.idSolicitud = solicitud.idSolicitud;
             TTratamientoUCI.Insertar(tratamiento);
 
             if (esValido)

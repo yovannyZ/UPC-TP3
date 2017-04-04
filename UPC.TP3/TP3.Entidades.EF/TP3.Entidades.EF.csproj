@@ -113,6 +113,9 @@
     <Compile Include="T_PERSONA.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_RECOMENDACION_TRATAMIENTO.cs">
+      <DependentUpon>TP3Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_REGISTRO_UCI.cs">
       <DependentUpon>TP3Model.tt</DependentUpon>
     </Compile>

@@ -167,6 +167,17 @@
     <Property Name="codPersona" Type="int" Nullable="false" />
     <Property Name="nompersona" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="T_RECOMENDACION_TRATAMIENTO">
+    <Key>
+      <PropertyRef Name="idRecomendacionTrat" />
+    </Key>
+    <Property Name="idRecomendacionTrat" Type="int" Nullable="false" />
+    <Property Name="definicionReco" Type="varchar" MaxLength="200" />
+    <Property Name="puntuacionTotal" Type="int" />
+    <Property Name="gradoMedico" Type="varchar" MaxLength="40" />
+    <Property Name="clasificacionTiss" Type="varchar" MaxLength="40" />
+    <Property Name="relacionCamaEnfer" Type="varchar" MaxLength="40" />
+  </EntityType>
   <EntityType Name="T_REGISTRO_UCI">
     <Key>
       <PropertyRef Name="idRegistro" />
@@ -204,13 +215,15 @@
     <Key>
       <PropertyRef Name="idResultadoExamen" />
     </Key>
-    <Property Name="idResultadoExamen" Type="int" Nullable="false" />
+    <Property Name="idResultadoExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fechaExamen" Type="datetime" />
     <Property Name="fechaResultado" Type="datetime" />
     <Property Name="diagnostico" Type="varchar" MaxLength="200" />
     <Property Name="tipoExamen" Type="varchar" MaxLength="100" />
     <Property Name="imagenResultado" Type="image" />
     <Property Name="idResultado" Type="int" />
+    <Property Name="idTratamenito" Type="int" />
+    <Property Name="idRecomendacion" Type="int" />
   </EntityType>
   <EntityType Name="T_ROL">
     <Key>
@@ -279,18 +292,6 @@
     <Property Name="idUsuario" Type="int" Nullable="false" />
     <Property Name="idRol" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__T_USUARIO__idEmp__3F466844">
-    <End Role="T_EMPLEADO" Type="Self.T_EMPLEADO" Multiplicity="0..1" />
-    <End Role="T_USUARIO" Type="Self.T_USUARIO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="T_EMPLEADO">
-        <PropertyRef Name="idEmpleado" />
-      </Principal>
-      <Dependent Role="T_USUARIO">
-        <PropertyRef Name="idEmpleado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__T_USUARIO__idRol__440B1D61">
     <End Role="T_ROL" Type="Self.T_ROL" Multiplicity="1" />
     <End Role="T_USUARIO_ROL" Type="Self.T_USUARIO_ROL" Multiplicity="*" />
@@ -312,6 +313,30 @@
       </Principal>
       <Dependent Role="T_USUARIO_ROL">
         <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+    <End Role="T_RECOMENDACION_TRATAMIENTO" Type="Self.T_RECOMENDACION_TRATAMIENTO" Multiplicity="0..1" />
+    <End Role="T_RESULTADO_EXAMEN" Type="Self.T_RESULTADO_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RECOMENDACION_TRATAMIENTO">
+        <PropertyRef Name="idRecomendacionTrat" />
+      </Principal>
+      <Dependent Role="T_RESULTADO_EXAMEN">
+        <PropertyRef Name="idRecomendacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+    <End Role="T_TRATAMIENTO_UCI" Type="Self.T_TRATAMIENTO_UCI" Multiplicity="0..1" />
+    <End Role="T_RESULTADO_EXAMEN" Type="Self.T_RESULTADO_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TRATAMIENTO_UCI">
+        <PropertyRef Name="idTratamiento" />
+      </Principal>
+      <Dependent Role="T_RESULTADO_EXAMEN">
+        <PropertyRef Name="idTratamenito" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -655,6 +680,15 @@
     <Parameter Name="idResultado" Type="int" Mode="In" />
     <Parameter Name="idRegistro" Type="int" Mode="In" />
   </Function>
+  <Function Name="InsertarResultadoExamen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fechaExamen" Type="datetime" Mode="In" />
+    <Parameter Name="fechaResultado" Type="datetime" Mode="In" />
+    <Parameter Name="diagnostico" Type="varchar" Mode="In" />
+    <Parameter Name="tipoExamen" Type="varchar" Mode="In" />
+    <Parameter Name="idResultado" Type="int" Mode="In" />
+    <Parameter Name="idTratamenito" Type="int" Mode="In" />
+    <Parameter Name="idRecomendacion" Type="int" Mode="In" />
+  </Function>
   <Function Name="InsertarTratamientoUCI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fechaTratamiento" Type="datetime" Mode="In" />
     <Parameter Name="resultado" Type="varchar" Mode="In" />
@@ -680,6 +714,7 @@
     <EntitySet Name="T_ORDEN_ATENCION" EntityType="Self.T_ORDEN_ATENCION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_PACIENTE" EntityType="Self.T_PACIENTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_PERSONA" EntityType="Self.T_PERSONA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_RECOMENDACION_TRATAMIENTO" EntityType="Self.T_RECOMENDACION_TRATAMIENTO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_REGISTRO_UCI" EntityType="Self.T_REGISTRO_UCI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_RESERVA_SERVICIO" EntityType="Self.T_RESERVA_SERVICIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_RESULTADO_ATENCION" EntityType="Self.T_RESULTADO_ATENCION" Schema="dbo" store:Type="Tables" />
@@ -690,10 +725,6 @@
     <EntitySet Name="T_TRATAMIENTO_UCI" EntityType="Self.T_TRATAMIENTO_UCI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_USUARIO" EntityType="Self.T_USUARIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_USUARIO_ROL" EntityType="Self.T_USUARIO_ROL" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__T_USUARIO__idEmp__3F466844" Association="Self.FK__T_USUARIO__idEmp__3F466844">
-      <End Role="T_EMPLEADO" EntitySet="T_EMPLEADO" />
-      <End Role="T_USUARIO" EntitySet="T_USUARIO" />
-    </AssociationSet>
     <AssociationSet Name="FK__T_USUARIO__idRol__440B1D61" Association="Self.FK__T_USUARIO__idRol__440B1D61">
       <End Role="T_ROL" EntitySet="T_ROL" />
       <End Role="T_USUARIO_ROL" EntitySet="T_USUARIO_ROL" />
@@ -701,6 +732,14 @@
     <AssociationSet Name="FK__T_USUARIO__idUsu__4316F928" Association="Self.FK__T_USUARIO__idUsu__4316F928">
       <End Role="T_USUARIO" EntitySet="T_USUARIO" />
       <End Role="T_USUARIO_ROL" EntitySet="T_USUARIO_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" Association="Self.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO">
+      <End Role="T_RECOMENDACION_TRATAMIENTO" EntitySet="T_RECOMENDACION_TRATAMIENTO" />
+      <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" Association="Self.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI">
+      <End Role="T_TRATAMIENTO_UCI" EntitySet="T_TRATAMIENTO_UCI" />
+      <End Role="T_RESULTADO_EXAMEN" EntitySet="T_RESULTADO_EXAMEN" />
     </AssociationSet>
     <AssociationSet Name="R_11" Association="Self.R_11">
       <End Role="T_ESPECIALIDAD_MEDICA" EntitySet="T_ESPECIALIDAD_MEDICA" />

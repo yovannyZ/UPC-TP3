@@ -53,6 +53,7 @@ namespace TP3.Datos.EF
         public virtual DbSet<T_SOLICITUD_UCI> T_SOLICITUD_UCI { get; set; }
         public virtual DbSet<T_TRATAMIENTO_UCI> T_TRATAMIENTO_UCI { get; set; }
         public virtual DbSet<T_USUARIO> T_USUARIO { get; set; }
+        public virtual DbSet<T_RECOMENDACION_TRATAMIENTO> T_RECOMENDACION_TRATAMIENTO { get; set; }
     
         public virtual int InsertarSolicitudUCI(Nullable<System.DateTime> fechaSolicitud, string estPaciente, string medSolicitante, string gravedad, string motDesaprobacion, string obsDesaprobacion, Nullable<int> idPaciente)
         {
@@ -269,6 +270,39 @@ namespace TP3.Datos.EF
                 new ObjectParameter("idSolicitud", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarTratamientoUCI", fechaTratamientoParameter, resultadoParameter, observacionParameter, medicinaTratamientoParameter, frecuenciaParameter, idSolicitudParameter);
+        }
+    
+        public virtual int InsertarResultadoExamen(Nullable<System.DateTime> fechaExamen, Nullable<System.DateTime> fechaResultado, string diagnostico, string tipoExamen, Nullable<int> idResultado, Nullable<int> idTratamenito, Nullable<int> idRecomendacion)
+        {
+            var fechaExamenParameter = fechaExamen.HasValue ?
+                new ObjectParameter("fechaExamen", fechaExamen) :
+                new ObjectParameter("fechaExamen", typeof(System.DateTime));
+    
+            var fechaResultadoParameter = fechaResultado.HasValue ?
+                new ObjectParameter("fechaResultado", fechaResultado) :
+                new ObjectParameter("fechaResultado", typeof(System.DateTime));
+    
+            var diagnosticoParameter = diagnostico != null ?
+                new ObjectParameter("diagnostico", diagnostico) :
+                new ObjectParameter("diagnostico", typeof(string));
+    
+            var tipoExamenParameter = tipoExamen != null ?
+                new ObjectParameter("tipoExamen", tipoExamen) :
+                new ObjectParameter("tipoExamen", typeof(string));
+    
+            var idResultadoParameter = idResultado.HasValue ?
+                new ObjectParameter("idResultado", idResultado) :
+                new ObjectParameter("idResultado", typeof(int));
+    
+            var idTratamenitoParameter = idTratamenito.HasValue ?
+                new ObjectParameter("idTratamenito", idTratamenito) :
+                new ObjectParameter("idTratamenito", typeof(int));
+    
+            var idRecomendacionParameter = idRecomendacion.HasValue ?
+                new ObjectParameter("idRecomendacion", idRecomendacion) :
+                new ObjectParameter("idRecomendacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarResultadoExamen", fechaExamenParameter, fechaResultadoParameter, diagnosticoParameter, tipoExamenParameter, idResultadoParameter, idTratamenitoParameter, idRecomendacionParameter);
         }
     }
 }

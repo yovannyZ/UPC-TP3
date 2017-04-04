@@ -12,24 +12,20 @@ namespace TP3.Entidades.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class T_TRATAMIENTO_UCI
+    public partial class T_RECOMENDACION_TRATAMIENTO
     {
-        public T_TRATAMIENTO_UCI()
+        public T_RECOMENDACION_TRATAMIENTO()
         {
-            this.T_EXAMEN_TRATAMIENTO = new HashSet<T_EXAMEN_TRATAMIENTO>();
             this.T_RESULTADO_EXAMEN = new HashSet<T_RESULTADO_EXAMEN>();
         }
     
-        public int idTratamiento { get; set; }
-        public Nullable<System.DateTime> fechaTratamiento { get; set; }
-        public string resultado { get; set; }
-        public string observacion { get; set; }
-        public string medicinaTratamiento { get; set; }
-        public string frecuencia { get; set; }
-        public Nullable<int> idSolicitud { get; set; }
+        public int idRecomendacionTrat { get; set; }
+        public string definicionReco { get; set; }
+        public Nullable<int> puntuacionTotal { get; set; }
+        public string gradoMedico { get; set; }
+        public string clasificacionTiss { get; set; }
+        public string relacionCamaEnfer { get; set; }
     
-        public virtual ICollection<T_EXAMEN_TRATAMIENTO> T_EXAMEN_TRATAMIENTO { get; set; }
-        public virtual T_SOLICITUD_UCI T_SOLICITUD_UCI { get; set; }
         public virtual ICollection<T_RESULTADO_EXAMEN> T_RESULTADO_EXAMEN { get; set; }
     }
 }

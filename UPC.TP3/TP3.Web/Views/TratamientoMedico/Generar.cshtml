@@ -1,0 +1,146 @@
+﻿@model TP3.Entidades.EF.T_RECOMENDACION_TRATAMIENTO
+
+@{
+    ViewBag.Title = "Aprobar";
+    TP3.Entidades.EF.T_PACIENTE paciente = ViewBag.paciente;
+    List<TP3.Entidades.EF.T_RESULTADO_EXAMEN> resultados = ViewBag.resultado;
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/Script/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnGuardar").click(function () {
+                var idRecomendacion = $('#idRecomendacion').val();
+                var obsEnfermera = $('#obsEnfermera').val();
+                var idPaciente = $('#idPaciente').val();
+                
+                $.ajax({
+                    url: "/TratamientoMedico/Generar",
+                    type: 'POST',
+                    data: {
+                        idRecomendacion: idRecomendacion, obsEnfermera: obsEnfermera, idPaciente: idPaciente
+                    },
+                    success: function (data) {
+                        alert(data);
+                        if (data.indexOf("Error") == -1) {
+                            window.location.href = '/TratamientoMedico';
+                        }
+                    },
+                    error: function (error) {
+                        alert("Error: Intente de nuevo.");
+                    }
+                });
+            });
+
+            $(".Ver").click(function () {
+                var idRecomendacion = $(".Ver").val();
+                $.ajax({
+                    url: "/TratamientoMedico/VerDetalleExamenResultado",
+                    type: 'POST',
+                    data: {
+                        idRecomendacion: idRecomendacion
+                    },
+                    success: function (data) {
+                      
+                        $('#modalEditarPartida').modal('show');
+                    },
+                    error: function (error) {
+                        alert("Error: Intente de nuevo.");
+                    }
+                });
+            });
+        });
+    </script>
+}
+<div>
+    <h2 style="text-align:center" class="text-success">Tratamiento de Pacientes UCI</h2>
+</div>
+
+<input  type="hidden" id="idRecomendacion" value="@Model.idRecomendacionTrat"/>
+<input type="hidden" id="idPaciente" value="@paciente.idPaciente" />
+<table class="table">
+    <tr>
+        <td>Paciente:&nbsp;&nbsp;&nbsp;@paciente.T_PERSONA.nompersona </td>
+        <td>Tratamiento Recomendado</td>
+        <td><textarea cols="200" rows="5" readonly>@Model.definicionReco&nbsp;&nbsp; @Model.relacionCamaEnfer</textarea></td>
+        <td>Observaciones de enfermería</td>
+        <td><textarea cols="200" rows="3" id="obsEnfermera"></textarea></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success" id="btnGuardar">Guardar</button></td>
+     </tr>
+
+
+</table>
+
+<br />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>Resultado TISS</td>
+        <td>Horario</td>
+        <td>Tratmiento</td>
+    </tr>
+    @foreach (var item in resultados)
+    {
+        <tr>
+            <td>@item.T_RECOMENDACION_TRATAMIENTO.gradoMedico &nbsp;&nbsp;@item.T_RECOMENDACION_TRATAMIENTO.puntuacionTotal &nbsp;&nbsp; puntos </td>
+            <td>@item.fechaResultado</td>
+            <td><button class="btn btn-link Ver"  value="@item.idResultadoExamen">Ver</button></td>
+        </tr>
+    }
+
+</table>
+<div><button>Imprimir</button></div>
+
+<!-- Modal -->
+<div id="modalEditarPartida" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Editar Partida</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="id">Paciente:</label>
+                        <input type="text" class="form-control" id="nomPaciente" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Tratamiendo Recomendado</label>
+                        <input type="text" class="form-control" id="tratamiento" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Grado</label>
+                        <input type="text" class="form-control" id="grado" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Puntuación</label>
+                        <input type="text" class="form-control" id="puntuacion" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Fecha</label>
+                        <input type="text" class="form-control" id="fecha" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pwd">Enfermera</label>
+                        <input type="text" class="form-control" id="enfermera" readonly >
+                    </div>
+
+                    <button type="button" class="btn btn-default" id="btnActualizar">Actualizar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -54,7 +54,9 @@
     <Compile Include="TEvaluacionTISS.cs" />
     <Compile Include="THistoriaClinica.cs" />
     <Compile Include="TPaciente.cs" />
+    <Compile Include="TRecomendacionTratamiento.cs" />
     <Compile Include="TResultadoAtencion.cs" />
+    <Compile Include="TResultadoExamen.cs" />
     <Compile Include="TSolicitudUCI.cs" />
     <Compile Include="TTratamientoUCI.cs" />
     <Compile Include="Util.cs" />

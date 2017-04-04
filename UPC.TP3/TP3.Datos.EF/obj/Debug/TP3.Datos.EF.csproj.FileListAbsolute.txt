@@ -26,3 +26,17 @@ C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\es\Enti
 C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.csprojResolveAssemblyReference.cache
 C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.dll
 C:\Users\Yovanny\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.pdb
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\TP3.Datos.EF.dll.config
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\TP3.Datos.EF.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\TP3.Datos.EF.pdb
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\EntityFramework.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\TP3.Entidades.EF.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\TP3.Entidades.EF.pdb
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\EntityFramework.xml
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.csprojResolveAssemblyReference.cache
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.dll
+C:\Users\yzeballos.YOZEBALLOS\Documents\GitHub\UPC-TP3\UPC.TP3\TP3.Datos.EF\obj\Debug\TP3.Datos.EF.pdb

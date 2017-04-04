@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="TP3Model.T_EMPRESA" Width="1.5" PointX="0.75" PointY="5.625" />
         <EntityTypeShape EntityType="TP3Model.T_ESPECIALIDAD_MEDICA" Width="1.5" PointX="0.75" PointY="11.125" />
         <EntityTypeShape EntityType="TP3Model.T_EVALUACION_SIGNOS_VITALES" Width="1.5" PointX="9.75" PointY="11.25" />
-        <EntityTypeShape EntityType="TP3Model.T_EVALUACION_TISS" Width="1.5" PointX="9.75" PointY="8.25" />
+        <EntityTypeShape EntityType="TP3Model.T_EVALUACION_TISS" Width="1.5" PointX="12.625" PointY="7.625" />
         <EntityTypeShape EntityType="TP3Model.T_EVENTO_HISTORIA_CLINICA" Width="1.5" PointX="12.75" PointY="13.75" />
         <EntityTypeShape EntityType="TP3Model.T_EXAMEN_TRATAMIENTO" Width="1.5" PointX="15" PointY="14.875" />
         <EntityTypeShape EntityType="TP3Model.T_HISTORIA_CLINICA" Width="1.5" PointX="5.25" PointY="18.75" />
@@ -23,8 +23,8 @@
         <EntityTypeShape EntityType="TP3Model.T_PERSONA" Width="1.5" PointX="0.75" PointY="14" />
         <EntityTypeShape EntityType="TP3Model.T_REGISTRO_UCI" Width="1.5" PointX="8.25" PointY="22.25" />
         <EntityTypeShape EntityType="TP3Model.T_RESERVA_SERVICIO" Width="1.5" PointX="8.25" PointY="14.5" />
-        <EntityTypeShape EntityType="TP3Model.T_RESULTADO_ATENCION" Width="1.5" PointX="5.25" PointY="13.25" />
-        <EntityTypeShape EntityType="TP3Model.T_RESULTADO_EXAMEN" Width="1.5" PointX="7.5" PointY="9.25" />
+        <EntityTypeShape EntityType="TP3Model.T_RESULTADO_ATENCION" Width="2.125" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="TP3Model.T_RESULTADO_EXAMEN" Width="2.25" PointX="7.5" PointY="9.25" />
         <EntityTypeShape EntityType="TP3Model.T_ROL" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="TP3Model.T_SERVICIO_SALUD" Width="1.5" PointX="6" PointY="6.125" />
         <EntityTypeShape EntityType="TP3Model.T_SOLICITUD_UCI" Width="1.5" PointX="10.5" PointY="18.875" />
@@ -59,6 +59,9 @@
         <AssociationConnector Association="TP3Model.R_89" />
         <AssociationConnector Association="TP3Model.R_86" />
         <AssociationConnector Association="TP3Model.T_USUARIO_ROL" />
+        <EntityTypeShape EntityType="TP3Model.T_RECOMENDACION_TRATAMIENTO" Width="1.5" PointX="8.375" PointY="0.75" />
+        <AssociationConnector Association="TP3Model.FK_T_RESULTADO_EXAMEN_T_TRATAMIENTO_UCI" />
+        <AssociationConnector Association="TP3Model.FK_T_RESULTADO_EXAMEN_T_RECOMENDACION_TRATAMIENTO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
