@@ -1886,6 +1886,7 @@
     <Content Include="lib\stepy\__README.markdown" />
     <Content Include="lib\uniform\README.textile" />
     <None Include="Properties\PublishProfiles\yovanny.pubxml" />
+    <None Include="Properties\PublishProfiles\YOVANNYS.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
@@ -2092,6 +2093,7 @@
     <Content Include="Views\SolicitudUCI\Examenes.cshtml" />
     <Content Include="Views\TratamientoMedico\Index.cshtml" />
     <Content Include="Views\TratamientoMedico\Generar.cshtml" />
+    <Content Include="Views\TratamientoMedico\Detalle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

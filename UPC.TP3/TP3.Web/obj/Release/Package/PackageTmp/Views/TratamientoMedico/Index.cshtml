@@ -1,0 +1,114 @@
+﻿@model IEnumerable<TP3.Entidades.EF.T_EVALUACION_TISS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section Scripts {
+
+    @Scripts.Render("~/Script/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        $(".rbtSi").click(function () {
+            var puntuacion = 0;
+            $("input[class='rbtSi']:radio").each(function (index) {
+                if ($(this).is(':checked')) {
+                    puntuacion = puntuacion +parseInt ($(this).val());
+                }
+            });
+            $("#puntuacion").val(puntuacion);
+
+            if (puntuacion < 10) {
+                $("#clase").val("I");
+            } else if (puntuacion >= 10 && puntuacion <= 19) {
+                $("#clase").val("II");
+            } else if (puntuacion >= 20 && puntuacion <= 39) {
+                $("#clase").val("III");
+            } else if (puntuacion >= 40 ) {
+                $("#clase").val("IV");
+            }
+
+        });
+
+        $(".rbtNo").click(function () {
+            var puntuacion = 0;
+            $("input[class='rbtSi']:radio").each(function (index) {
+                if ($(this).is(':checked')) {
+                    puntuacion = puntuacion + parseInt($(this).val());
+                }
+            });
+            $("#puntuacion").val(puntuacion);
+
+            if (puntuacion < 10) {
+                $("#clase").val("I");
+            } else if (puntuacion >= 10 && puntuacion <= 19) {
+                $("#clase").val("II");
+            } else if (puntuacion >= 20 && puntuacion <= 39) {
+                $("#clase").val("III");
+            } else if (puntuacion >= 40) {
+                $("#clase").val("IV");
+            }
+
+        });
+
+        $("#btnGenerar").click(function () {
+            var puntuacion = $('#puntuacion').val();
+            var clase = $('#clase').val();
+            var idPaciente = $('#listaPacientes').val();
+            window.location.href = '/TratamientoMedico/Generar?puntuacion=' + puntuacion + "&clase=" + clase + "&idPaciente=" + idPaciente
+        });
+
+    });
+    </script>
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Tratamiento de Pacientes UCI</h2>
+</div>
+
+
+<table>
+    <tr>
+        <td>Pacientes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("listaPacientes", null, htmlAttributes: new { @class = "form-control" })</td>
+       
+    </tr>
+    <tr>
+        <td>Puntuación: &nbsp;&nbsp;<input type="text" readonly  id="puntuacion"/></td>
+        <td>&nbsp;&nbsp;Clase: &nbsp;&nbsp;<input type="text" readonly id="clase" /></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success" id="btnGenerar">Generar</button></td>
+    </tr>
+</table>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+       
+        <th>
+            Descripción
+        </th>
+        <th>Si</th>
+        <th>No</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.definicion)
+        </td>
+       
+        <td>
+            <input type="radio" name="@item.idEvaluacionTiss" value="@item.puntuacion" class="rbtSi"/>
+        </td>
+        <td>
+            <input type="radio"  name="@item.idEvaluacionTiss" value="@item.puntuacion"  class="rbtNo"/>
+        </td>
+    </tr>
+}
+
+</table>

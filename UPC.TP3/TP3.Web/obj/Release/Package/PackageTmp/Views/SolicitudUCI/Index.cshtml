@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TP3.Entidades.EF.T_PACIENTE>
+﻿@model IEnumerable<TP3.Entidades.EF.T_SOLICITUD_UCI>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 
 
 <div>
-    <h2 style="text-align:center" class="text-success">Aprobacion / Desaprobacion de pacientes UCI</h2>
+    <h2 style="text-align:center" class="text-success">Evaluación del ingreso de pacientes a UCI</h2>
 </div>
 
 <br />
@@ -15,19 +15,19 @@
 <table class="table">
     <tr>
         <th>
-           Paciente
+           Solicitud
+        </th>
+        <th>
+            Paciente
         </th>
         <th>
             DNI
         </th>
         <th>
-            Historia Clinica
+           Fecha Solicitud
         </th>
         <th>
-           Estado
-        </th>
-        <th>
-          Seleccionar opción
+          Grado complejidad
         </th>
         <th></th>
     </tr>
@@ -35,29 +35,28 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.T_PERSONA.nompersona)
+            @Html.DisplayFor(modelItem => item.numeroSolicitud)
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.dniPaciente)
+            @Html.DisplayFor(modelItem => item.T_PACIENTE.T_PERSONA.nompersona)
         </td>
 
         <td>
-         
-            @foreach (var HistoriaClinica in item.T_HISTORIA_CLINICA)
-            {
-               <a href="@Url.Action("HistoriaClinica","SolicitudUCI",new {id = @HistoriaClinica.nroHistoriaClinica })">@HistoriaClinica.nroHistoriaClinica - Ver Historia</a> 
-            }
-           
+            @Html.DisplayFor(modelItem => item.T_PACIENTE.dniPaciente)
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.estado)
+            @Html.DisplayFor(modelItem => item.fechaSolicitud)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.gravedadPaciente)
         </td>
 
         <td>
-            @Html.ActionLink("Aprobar Paciente", "Aprobar", new { id=item.idPaciente  }) |
-            @Html.ActionLink("Desaprobar Paciente", "Desaprobar", new { id = item.idPaciente }) 
+            @Html.ActionLink("Evaluar", "Evaluar", new { id=  item.idSolicitud})
         </td>
     </tr>
 }

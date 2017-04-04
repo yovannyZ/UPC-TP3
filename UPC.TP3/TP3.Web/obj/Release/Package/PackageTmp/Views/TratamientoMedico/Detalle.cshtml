@@ -1,0 +1,30 @@
+﻿@model TP3.Entidades.EF.T_RESULTADO_EXAMEN
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Tratamiento de Pacientes UCI</h2>
+</div>
+
+<table class="table">
+    <tr>
+        <td>Paciente: &nbsp;&nbsp;</td>
+        <td><input type="text" readonly value="@Model.T_TRATAMIENTO_UCI.T_SOLICITUD_UCI.T_PACIENTE.T_PERSONA.nompersona" /> </td>
+        <td>Tratmiento Recomendado: &nbsp;&nbsp; </td>
+        <td> <textarea cols="200" rows="5" >@Model.T_RECOMENDACION_TRATAMIENTO.definicionReco</textarea></td>
+        <td>Gtado: &nbsp;&nbsp; </td>
+        <td><input type="text" readonly value="@Model.T_RECOMENDACION_TRATAMIENTO.gradoMedico " /></td>
+    </tr>
+    <tr>
+        <td>Puntuación: &nbsp;&nbsp; </td>
+        <td><input type="text" readonly value="@Model.T_RECOMENDACION_TRATAMIENTO.puntuacionTotal " /></td>
+        <td>Fecha: &nbsp;&nbsp;</td>
+        <td><input type="text" readonly value="@Model.fechaResultado " /> </td>
+        <td>Enfermera: &nbsp;&nbsp; </td>
+        <td><input type="text" readonly value="@Model.T_TRATAMIENTO_UCI.T_SOLICITUD_UCI.T_EMPLEADO.T_PERSONA.nompersona " /></td>
+     </tr>
+</table>
+<hr />
+<a href="javascript:history.back(1)">Salir</a>
+

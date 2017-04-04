@@ -42,25 +42,16 @@
 <br />
 <br />
     
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <table class="table">
+   
         <tr>
             <td>&nbsp; &nbsp; Paciente</td>
             <td>&nbsp; &nbsp; <b>@Model.T_PERSONA.nompersona</b></td>
             <td>&nbsp; &nbsp; DNI</td>
             <td>&nbsp; &nbsp;<b>@Model.dniPaciente</b></td>
-            <td>&nbsp; &nbsp; Medico</td>
+            <td>&nbsp; &nbsp; Médico</td>
             <td>&nbsp; &nbsp;<b>OTOYA ZAPATA MARIA FERNANDA</b></td>
-            <td>&nbsp; &nbsp; Historia Clinica</td>
+            <td>&nbsp; &nbsp; Historia Clínica</td>
             <td>&nbsp; &nbsp; 
                     @foreach (var item in Model.T_HISTORIA_CLINICA)
                     {
@@ -81,10 +72,12 @@
                     <option value="3">Muy grave</option>
                 </select>
             </td>
-            <td>&nbsp; &nbsp; Observacion</td>
+            <td>&nbsp; &nbsp; Observación</td>
             <td>&nbsp; &nbsp; 
                 <textarea rows="4" cols="50" id="observacion"  name="observacion"></textarea>
             </td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
         </tr>
@@ -105,6 +98,6 @@
 
 
 <div>
-    @Html.ActionLink("Regresar atras", "Index")
+    @Html.ActionLink("Regresar atrás", "Index")
 </div>
 
