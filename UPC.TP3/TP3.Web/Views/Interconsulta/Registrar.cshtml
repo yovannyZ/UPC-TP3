@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Registrar";
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $("#btnGenerar").click(function () {
+                alert("Interconsulta generada, Notificaciones Enviadas.");
+                window.location.href = '/Home';  
+            });
+        });
+    </script>
+}
+
+
+
+
+<div>
+    <h2 style="text-align:center" class="text-success">Generar Interconsulta</h2>
+</div>
+<div style="width:100%">
+    <textarea style="width:100% ; height:200px"> En esta ventana se ingresa la interconsulta</textarea>
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+        <td><a href="@Url.Action("Index","Interconsulta")" class="btn btn-success">Cerrar</a></td>
+        <td><a href="#" class="btn btn-success">Adjuntar Archivo</a></td>
+        <td><a href="#" class="btn btn-success">Revisar HC</a></td>
+        <td><button class="btn btn-success" id="btnGenerar">Generar interconsulta</button></td>
+    </tr>
+</table>

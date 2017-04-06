@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .InVisible{
+        display : none
+    }
+
+     .Visible{
+        display : block
+    }
+</style>
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $('#especialidad').on('change', function () {
+            var valor = this.value;
+           
+            switch(valor) {
+                case "1":
+                    $("#especialidad1").removeAttr("class");
+                    $("#especialidad1").attr("class", "Visible");
+                    $("#especialidad2").removeAttr("class");
+                    $("#especialidad2").attr("class","InVisible");
+                    $("#especialidad3").removeAttr("class");
+                    $("#especialidad3").attr("class","InVisible");
+                    $("#especialidad4").removeAttr("class");
+                    $("#especialidad4").attr("class","InVisible");
+                    $("#especialidad5").removeAttr("class");
+                    $("#especialidad5").attr("class","InVisible");
+                    break;
+                case "2":
+                    $("#especialidad1").removeAttr("class");
+                    $("#especialidad1").attr("class", "InVisible");
+                    $("#especialidad2").removeAttr("class");
+                    $("#especialidad2").attr("class","Visible");
+                    $("#especialidad3").removeAttr("class");
+                    $("#especialidad3").attr("class","InVisible");
+                    $("#especialidad4").removeAttr("class");
+                    $("#especialidad4").attr("class","InVisible");
+                    $("#especialidad5").removeAttr("class");
+                    $("#especialidad5").attr("class","InVisible");
+                    break;
+                case "3":
+                    $("#especialidad1").removeAttr("class");
+                    $("#especialidad1").attr("class", "InVisible");
+                    $("#especialidad2").removeAttr("class");
+                    $("#especialidad2").attr("class","InVisible");
+                    $("#especialidad3").removeAttr("class");
+                    $("#especialidad3").attr("class","Visible");
+                    $("#especialidad4").removeAttr("class");
+                    $("#especialidad4").attr("class","InVisible");
+                    $("#especialidad5").removeAttr("class");
+                    $("#especialidad5").attr("class","InVisible");
+                    break;
+                case "4":
+                    $("#especialidad1").removeAttr("class");
+                    $("#especialidad1").attr("class", "InVisible");
+                    $("#especialidad2").removeAttr("class");
+                    $("#especialidad2").attr("class","InVisible");
+                    $("#especialidad3").removeAttr("class");
+                    $("#especialidad3").attr("class","InVisible");
+                    $("#especialidad4").removeAttr("class");
+                    $("#especialidad4").attr("class","Visible");
+                    $("#especialidad5").removeAttr("class");
+                    $("#especialidad5").attr("class","InVisible");
+                    break;
+                case "5":
+                    $("#especialidad1").removeAttr("class");
+                    $("#especialidad1").attr("class", "InVisible");
+                    $("#especialidad2").removeAttr("class");
+                    $("#especialidad2").attr("class", "InVisible");
+                    $("#especialidad3").removeAttr("class");
+                    $("#especialidad3").attr("class", "InVisible");
+                    $("#especialidad4").removeAttr("class");
+                    $("#especialidad4").attr("class", "InVisible");
+                    $("#especialidad5").removeAttr("class");
+                    $("#especialidad5").attr("class", "Visible");
+                    break;
+            }
+        })
+
+
+    });
+</script>
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Generar Interconsulta</h2>
+</div>
+
+<table class="table">
+    <tr>
+        <td>Seleccione la especialidad donde desea realizar la interconsulta </td>
+        <td>Los siguientes médicos especialistas están disponibles</td>
+    </tr>
+    <tr>
+        <td>
+            <select id="especialidad">
+                <option value="1">Cardiología</option>
+                <option value="2">Oncológia</option>
+                <option value="3">Pediatría</option>
+                <option value="4">Maternidad</option>
+                <option value="5">Odontológia</option>
+            </select>
+        </td>
+        <td>
+            <select id="especialidad1" class="Visible">
+                <option value="1">Juan Carmona</option>
+                <option value="2">José Osório</option>
+                <option value="3">william Ayala</option>
+            </select>
+            <select id="especialidad2" class="InVisible">
+                <option value="1">Anrew Marcapura</option>
+                <option value="2">Brayan Alvino</option>
+                <option value="3">John Herrera</option>
+                <option value="4">Miky Honorio</option>
+            </select>
+            <select id="especialidad3" class="InVisible">
+                <option value="1">Luis Zeballos</option>
+                <option value="2">Miguel Galindo</option>
+                <option value="3">Franklin Isidro</option>
+            </select>
+            <select id="especialidad4" class="InVisible">
+                <option value="1">Juan Porras</option>
+                <option value="2">Julio Bryson</option>
+                <option value="3">Deisy Rodriguez</option>
+                <option value="4">Juana Perez</option>
+            </select>
+            <select id="especialidad5" class="InVisible">
+                <option value="1">Ricardo Huamani</option>
+                <option value="2">Luciana Jimenez</option>
+                <option value="3">Joselyn Rojas</option>
+            </select>
+            
+        </td>
+        <td></td>
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <td><a href="@Url.Action("Index","Home")" class="btn btn-danger">Cerrar</a></td>
+        <td><a href="@Url.Action("Registrar","Interconsulta")" class=" btn btn-success">Ingresar interconsulta</a></td>
+        <td><a href="@Url.Action("Consultas","Interconsulta")" class="btn btn-success">Revisar respuestas</a></td>
+    </tr>
+</table>
+

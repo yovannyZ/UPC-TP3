@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Consultas";
+}
+
+<div>
+    <h2 style="text-align:center" class="text-success">Revisar Interconsultas</h2>
+</div>
+
+<table class="table table-bordered table-striped" >
+    <tr>
+        <td>Médicos especialistas</td>
+        <td>Fecha</td>
+        <td>Respondida</td>
+        <td>Acción</td>
+    </tr>
+    <tr>
+        <td>Juan Carmona</td>
+        <td>09/04/2017</td>
+        <td><input type="checkbox"/></td>
+        <td><a href="#">Actualizar</a>/<a href="#">Cerrar</a></td>
+    </tr>
+    <tr>
+        <td>Juan Carmona</td>
+        <td>09/04/2017</td>
+        <td><input type="checkbox" checked ="checked"/></td>
+        <td><a href="#">Actualizar</a>/<a href="#">Cerrar</a></td>
+    </tr>
+    <tr>
+        <td>Luis Zeballos</td>
+        <td>08/04/2017</td>
+        <td><input type="checkbox" /></td>
+        <td><a href="#">Actualizar</a>/<a href="#">Cerrar</a></td>
+    </tr>
+    <tr>
+        <td>Brayan Alvino</td>
+        <td>04/04/2017</td>
+        <td><input type="checkbox" checked="checked" /></td>
+        <td><a href="#">Actualizar</a>/<a href="#">Cerrar</a></td>
+    </tr>
+    <tr>
+        <td>Miky Honorio</td>
+        <td>02/04/2017</td>
+        <td><input type="checkbox" /></td>
+        <td><a href="#">Actualizar</a>/<a href="#">Cerrar</a></td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <td><a href="@Url.Action("Index","Interconsulta")" class="btn btn-danger">Cerrar</a></td>
+    </tr>
+</table>
+
