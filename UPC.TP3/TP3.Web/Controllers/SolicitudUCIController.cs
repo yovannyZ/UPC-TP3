@@ -44,20 +44,58 @@ namespace TP2.Web.Controllers
             tratamiento.idSolicitud = solicitud.idSolicitud;
             TTratamientoUCI.Insertar(tratamiento);
 
+            string emailMedicoSolicitante = solicitud.T_RESULTADO_ATENCION.T_EMPLEADO.dscCorreo;
+            string emailPariente = solicitud.T_PACIENTE.dscCorreoFamiliar;
+            string emailRecpcionistaAdim = "recepcion.ripalma@gmail.com";
+            string emailMedicoAprobador = "modulouci@gmail.com";
+            bool correoenviado = false;
+
             if (esValido)
             {
-                bool correoenviado = Util.mandarNotificacion("modulouci@gmail.com", solicitud.T_PACIENTE.T_PERSONA.nompersona,
-                    solicitud.gravedadPaciente, solicitud.T_EMPLEADO.T_PERSONA.nompersona, solicitud.estadoSolicitud,
-                    solicitud.T_PACIENTE.T_HISTORIA_CLINICA.FirstOrDefault().nroHistoriaClinica, solicitud.dscMedicinaTraslado,solicitud.numeroSolicitud,solicitud.tipoEquipoMedico,solicitud.tipoTraslado,
-                    solicitud.fechaEvaluacion,observacion);
-
-                if (correoenviado)
+                if (estado == "APR")
                 {
-                    mensaje = "Datos grabadas correctamente y notificaciones enviadas";
+                    if (emailPariente == "")
+                    {
+                        Util.mandarNotificacionRecepcionistaAdmin(emailRecpcionistaAdim, "APR", solicitud.T_RESULTADO_ATENCION.T_EMPLEADO.nomEmpleado,
+                            "Joselyn Rojas", solicitud.fechaEvaluacion, solicitud.T_PACIENTE.T_PERSONA.nompersona);
+
+                    }
+                    else
+                    {
+                        Util.mandarNotificacionPariente(emailPariente, "APR", solicitud.T_RESULTADO_ATENCION.T_EMPLEADO.nomEmpleado,
+                            "Joselyn Rojas", solicitud.fechaEvaluacion);
+                    }
+
+
+                     correoenviado = Util.mandarNotificacionMedico(emailMedicoSolicitante + "," + emailMedicoAprobador, solicitud.T_PACIENTE.T_PERSONA.nompersona,
+                        solicitud.gravedadPaciente, solicitud.T_EMPLEADO.T_PERSONA.nompersona, solicitud.estadoSolicitud,
+                        solicitud.T_PACIENTE.T_HISTORIA_CLINICA.FirstOrDefault().nroHistoriaClinica, solicitud.dscMedicinaTraslado, solicitud.numeroSolicitud, solicitud.tipoEquipoMedico, solicitud.tipoTraslado,
+                        solicitud.fechaEvaluacion, observacion);
+
                 }
                 else
                 {
-                    mensaje = "Datos grabadas correctamente y notificaciones NO enviadas";
+                    correoenviado = Util.mandarNotificacionMedico(emailMedicoSolicitante , solicitud.T_PACIENTE.T_PERSONA.nompersona,
+                        solicitud.gravedadPaciente, solicitud.T_EMPLEADO.T_PERSONA.nompersona, solicitud.estadoSolicitud,
+                        solicitud.T_PACIENTE.T_HISTORIA_CLINICA.FirstOrDefault().nroHistoriaClinica, solicitud.dscMedicinaTraslado, solicitud.numeroSolicitud, solicitud.tipoEquipoMedico, solicitud.tipoTraslado,
+                        solicitud.fechaEvaluacion, observacion);
+                }
+
+                if (correoenviado)
+                {
+                    if (estado == "APR")
+                        mensaje = "La solicitud del paciente ha sido aprobada.Las notificaciones han sido enviadas.";
+                    else
+                        mensaje = "La solicitud del paciente ha sido rechazada. La notificación al médico solicitante ha sido enviada.";
+
+                }
+                else
+                {
+                    if (estado == "APR")
+                        mensaje = "La solicitud del paciente ha sido aprobada.Las notificaciones no han sido enviadas.";
+                    else
+                        mensaje = "La solicitud del paciente ha sido rechazada. La notificación al médico solicitante  no ha sido enviada.";
+
                 }
             }
 

@@ -27,7 +27,7 @@ namespace TP3.Entidades.EF
         public Nullable<System.DateTime> fechaResultado { get; set; }
         public string diagnostico { get; set; }
         public string tipoExamen { get; set; }
-        public byte[] imagenResultado { get; set; }
+        public string imagenResultado { get; set; }
         public Nullable<int> idResultado { get; set; }
         public Nullable<int> idTratamenito { get; set; }
         public Nullable<int> idRecomendacion { get; set; }

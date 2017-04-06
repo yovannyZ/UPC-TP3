@@ -220,7 +220,7 @@
     <Property Name="fechaResultado" Type="datetime" />
     <Property Name="diagnostico" Type="varchar" MaxLength="200" />
     <Property Name="tipoExamen" Type="varchar" MaxLength="100" />
-    <Property Name="imagenResultado" Type="image" />
+    <Property Name="imagenResultado" Type="varchar" MaxLength="100" />
     <Property Name="idResultado" Type="int" />
     <Property Name="idTratamenito" Type="int" />
     <Property Name="idRecomendacion" Type="int" />

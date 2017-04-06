@@ -57,7 +57,7 @@
     </script>
 }
 <div>
-    <h2 style="text-align:center" class="text-success">Tratamiento de Pacientes UCI</h2>
+    <h2 style="text-align:center" class="text-success">Tratamiento de Paciente UCI</h2>
 </div>
 
 <input  type="hidden" id="idRecomendacion" value="@Model.idRecomendacionTrat"/>
@@ -65,9 +65,9 @@
 <table class="table">
     <tr>
         <td>Paciente:&nbsp;&nbsp;&nbsp;@paciente.T_PERSONA.nompersona </td>
-        <td>Tratamiento Recomendado</td>
-        <td><textarea cols="200" rows="5" readonly>@Model.definicionReco&nbsp;&nbsp; @Model.relacionCamaEnfer</textarea></td>
-        <td>Observaciones de enfermería</td>
+        <td>Tratamiento Recomendado:</td>
+        <td><textarea cols="200" rows="5" readonly >@Model.definicionReco&nbsp;&nbsp; @Model.relacionCamaEnfer</textarea></td>
+        <td>Observaciones de enfermería:</td>
         <td><textarea cols="200" rows="3" id="obsEnfermera"></textarea></td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success" id="btnGuardar">Guardar</button></td>
      </tr>
@@ -81,7 +81,7 @@
     <tr>
         <td>Resultado TISS</td>
         <td>Horario</td>
-        <td>Tratmiento</td>
+        <td>Tratamiento</td>
     </tr>
     @foreach (var item in resultados)
     {

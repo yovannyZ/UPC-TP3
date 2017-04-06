@@ -2060,6 +2060,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SignosVitalesController.cs" />
     <Compile Include="Controllers\SolicitudUCIController.cs" />
     <Compile Include="Controllers\TratamientoMedicoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2094,6 +2095,7 @@
     <Content Include="Views\TratamientoMedico\Index.cshtml" />
     <Content Include="Views\TratamientoMedico\Generar.cshtml" />
     <Content Include="Views\TratamientoMedico\Detalle.cshtml" />
+    <Content Include="Views\SignosVitales\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

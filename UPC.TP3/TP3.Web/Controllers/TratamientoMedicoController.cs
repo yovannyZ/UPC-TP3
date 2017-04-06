@@ -79,7 +79,7 @@ namespace TP2.Web.Controllers
                     iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                     // Escribimos el encabezamiento en el documento
-                    doc.Add(new Paragraph("Tratamientos del paciente : " + Paciente.T_PERSONA.nompersona + " DNI: " + Paciente.dniPaciente));
+                    doc.Add(new Paragraph("Tratamientos del paciente :    " + Paciente.T_PERSONA.nompersona + "       DNI: " + Paciente.dniPaciente));
                     doc.Add(Chunk.NEWLINE);
 
                     // Creamos una tabla que contendrá las partidas
@@ -92,11 +92,11 @@ namespace TP2.Web.Controllers
                     clGrado.BorderWidthBottom = 0.30f;
                     
 
-                    PdfPCell clPuntuacion = new PdfPCell(new Phrase("Puntuacion", _standardFont));
+                    PdfPCell clPuntuacion = new PdfPCell(new Phrase("Puntuación", _standardFont));
                     clPuntuacion.BorderWidth = 0;
                     clPuntuacion.BorderWidthBottom = 0.30f;
 
-                    PdfPCell clClasi = new PdfPCell(new Phrase("Clasificacion", _standardFont));
+                    PdfPCell clClasi = new PdfPCell(new Phrase("Clasificación", _standardFont));
                     clClasi.BorderWidth = 0;
                     clClasi.BorderWidthBottom = 0.30f;
 
